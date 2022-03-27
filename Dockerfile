@@ -35,7 +35,7 @@ ARG uid=1000
 ARG gid=1000
 ARG http_port=8080
 ARG agent_port=50000
-ARG JENKINS_HOME=/var/jenkins_home
+ARcG JENKINS_HOME=/var/jenkins_home
 ARG REF=/usr/share/jenkins/ref
 ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_SLAVE_AGENT_PORT ${agent_port}
