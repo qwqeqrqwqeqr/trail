@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.ui
+package kr.ac.kgu.app.trail.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.MainActivity
 import kr.ac.kgu.app.trail.databinding.ActivitySplashBinding
+import kr.ac.kgu.app.trail.util.Constants.SPLASH_DELAY
 import kr.ac.kgu.app.trail.util.viewBinding
 import javax.inject.Inject
 
@@ -22,12 +23,16 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        navigateToLogin()
+    }
 
+
+    private fun navigateToLogin(){
         handler.postDelayed({
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
                 finish()
             }
-        }, 2000)
+        }, SPLASH_DELAY)
     }
 }

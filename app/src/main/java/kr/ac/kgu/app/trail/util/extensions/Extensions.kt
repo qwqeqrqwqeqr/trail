@@ -12,15 +12,6 @@ import java.math.RoundingMode
 import java.text.NumberFormat
 import java.util.*
 
-private fun Context.hideKeyboard(view: View) {
-    val inputMethodManager =
-        getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-}
-
-fun Fragment.hideKeyboard() {
-    view?.let { activity?.hideKeyboard(it) }
-}
 
 fun String.makeShort(length: Int = 5): String {
     return if (this.length > length) {
