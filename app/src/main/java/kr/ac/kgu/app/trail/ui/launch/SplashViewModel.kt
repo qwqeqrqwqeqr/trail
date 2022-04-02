@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.ui.splash
+package kr.ac.kgu.app.trail.ui.launch
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
