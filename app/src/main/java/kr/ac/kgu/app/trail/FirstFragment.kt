@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kakao.sdk.user.UserApiClient
-import kr.ac.kgu.app.trail.data.remote.api.kakao.Kakao
+import kr.ac.kgu.app.trail.data.remote.service.kakao.Kakao
 import kr.ac.kgu.app.trail.databinding.FragmentFirstBinding
 
 /**

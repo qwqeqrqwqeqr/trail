@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.data.remote.api.kakao
+package kr.ac.kgu.app.trail.data.remote.service.kakao
 
 import android.util.Log
 import com.kakao.sdk.auth.model.OAuthToken

@@ -5,9 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import kr.ac.kgu.app.trail.data.remote.api.retrofit.TrailService
-import kr.ac.kgu.app.trail.repository.TrailRepository
-import kr.ac.kgu.app.trail.repository.TrailRepositoryImpl
+import kr.ac.kgu.app.trail.data.remote.service.retrofit.AuthService
+import kr.ac.kgu.app.trail.repository.AuthRepository
+import kr.ac.kgu.app.trail.repository.AuthRepositoryImpl
 
 
 @Module
@@ -17,7 +17,7 @@ object RepositoryModule {
     @Provides
     @ViewModelScoped
     fun provideMainRepository(
-        trailService : TrailService,
+        authService : AuthService,
         dispatcherProvider: DispatcherProvider
-    ): TrailRepository = TrailRepositoryImpl(trailService, dispatcherProvider)
+    ): AuthRepository = AuthRepositoryImpl(authService, dispatcherProvider)
 }

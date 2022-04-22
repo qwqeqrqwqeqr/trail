@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.data.local.entity
+package kr.ac.kgu.app.trail.data.local.datasource
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

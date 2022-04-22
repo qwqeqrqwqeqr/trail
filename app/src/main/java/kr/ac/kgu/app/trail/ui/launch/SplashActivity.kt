@@ -19,6 +19,8 @@ class SplashActivity : AppCompatActivity() {
     private var handler: Handler = Handler()
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
