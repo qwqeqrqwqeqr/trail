@@ -1,4 +1,6 @@
 package kr.ac.kgu.app.trail.ui.base
 
-abstract class BaseFragment {
+import androidx.fragment.app.Fragment
+
+abstract class BaseFragment : Fragment() {
 }
