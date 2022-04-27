@@ -5,10 +5,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kr.ac.kgu.app.trail.repository.AuthRepository
 import javax.inject.Inject
 
-@HiltViewModel
-class SplashViewModel @Inject constructor(authRepository: AuthRepository
-): ViewModel(){
+//@HiltViewModel
+class SplashViewModel(): ViewModel(){
 
-
+//    @Inject constructor(authRepository: AuthRepository
+//    )
 
 }

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kakao.sdk.user.UserApiClient
-import kr.ac.kgu.app.trail.data.remote.service.kakao.Kakao
 import kr.ac.kgu.app.trail.databinding.FragmentFirstBinding
 
 /**
@@ -50,7 +49,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            kakaoLogin()
+
         }
 
 
@@ -64,17 +63,8 @@ class FirstFragment : Fragment() {
         _binding = null
     }
 
-    private fun kakaoLogin(){
-        if (UserApiClient.instance.isKakaoTalkLoginAvailable(activity as MainActivity)) {
-            UserApiClient.instance.loginWithKakaoTalk(activity as MainActivity,
-                callback = Kakao.callback)
 
-        } else {
-            UserApiClient.instance.loginWithKakaoAccount(activity as MainActivity,
-                callback = Kakao.callback)
-        }
 
     }
 
 
-}

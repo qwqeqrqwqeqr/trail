@@ -5,7 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import kr.ac.kgu.app.trail.data.remote.service.retrofit.AuthService
+import kr.ac.kgu.app.trail.data.datastore.local.datastore.AppDataStore
+import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserService
+import kr.ac.kgu.app.trail.data.service.trail.AuthService
 import kr.ac.kgu.app.trail.repository.AuthRepository
 import kr.ac.kgu.app.trail.repository.AuthRepositoryImpl
 
@@ -14,10 +16,13 @@ import kr.ac.kgu.app.trail.repository.AuthRepositoryImpl
 @InstallIn(ViewModelComponent::class)
 object RepositoryModule {
 
-    @Provides
     @ViewModelScoped
-    fun provideMainRepository(
+    @Provides
+    fun provideMainRepository (
         authService : AuthService,
-        dispatcherProvider: DispatcherProvider
-    ): AuthRepository = AuthRepositoryImpl(authService, dispatcherProvider)
+        kakaoUserService: KakaoUserService,
+        dispatcherProvider: DispatcherProvider,
+        appDataStore: AppDataStore
+    ): AuthRepository = AuthRepositoryImpl(authService,kakaoUserService,dispatcherProvider,appDataStore)
+
 }
