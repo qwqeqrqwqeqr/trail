@@ -38,6 +38,7 @@ object KakaoCallback {
                      }
                 else -> {
                     Log.d("kakao", "에러")
+                    OAuthToken
                 }
 
             }

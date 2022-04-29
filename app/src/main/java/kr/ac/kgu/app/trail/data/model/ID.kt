@@ -1,5 +1,5 @@
 package kr.ac.kgu.app.trail.data.model
 
-data class IDEntity(
+data class ID(
     val id: String
 )

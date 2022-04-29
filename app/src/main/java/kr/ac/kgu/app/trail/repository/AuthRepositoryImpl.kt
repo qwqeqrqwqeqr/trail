@@ -2,9 +2,11 @@ package kr.ac.kgu.app.trail.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kr.ac.kgu.app.trail.data.datastore.local.datastore.AppDataStore
-import kr.ac.kgu.app.trail.data.model.IDEntity
-import kr.ac.kgu.app.trail.data.model.TokenEntity
+import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
+import kr.ac.kgu.app.trail.data.model.ID
+import kr.ac.kgu.app.trail.data.model.Token
+
+import kr.ac.kgu.app.trail.data.model.toSignUpRequsetDto
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserService
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
 import kr.ac.kgu.app.trail.di.DispatcherProvider
@@ -16,15 +18,24 @@ class AuthRepositoryImpl constructor(
     private val dispatcherProvider: DispatcherProvider,
     private val appDataStore: AppDataStore
 ) : AuthRepository {
-    override suspend fun signIn(): Flow<DataState<TokenEntity>> =
+
+
+    override suspend fun signIn(): Flow<DataState<Token>> =
         flow {
             emit(DataState.Loading)
             kakaoUserService.loginWithKakaoAccount()
+            kakaoUserService.getUserInfo().collect{
+                    authService.signUp(it.toSignUpRequsetDto())
+            }
+
 
         }
 
 
-    override suspend fun signUp(): Flow<DataState<IDEntity>> {
+
+
+
+    override suspend fun signUp(): Flow<DataState<ID>> {
         TODO("Not yet implemented")
     }
 

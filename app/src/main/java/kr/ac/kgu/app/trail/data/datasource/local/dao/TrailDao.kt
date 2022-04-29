@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.data.datastore.local.dao
+package kr.ac.kgu.app.trail.data.datasource.local.dao
 
 import androidx.room.Dao
 

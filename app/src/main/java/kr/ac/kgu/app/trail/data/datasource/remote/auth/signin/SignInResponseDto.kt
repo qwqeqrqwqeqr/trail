@@ -1,9 +1,9 @@
-package kr.ac.kgu.app.trail.data.datastore.remote.auth.signup
+package kr.ac.kgu.app.trail.data.datasource.remote.auth.signin
 
 import com.google.gson.annotations.SerializedName
-import kr.ac.kgu.app.trail.data.datastore.remote.auth.DataToken
+import kr.ac.kgu.app.trail.data.datasource.remote.auth.DataTokenDto
 
-data class SignUpResponse(
+data class SignInResponseDto(
     @SerializedName("status")
     var status: Int,
     @SerializedName("success")
@@ -11,7 +11,7 @@ data class SignUpResponse(
     @SerializedName("message")
     var meesage: String,
     @SerializedName("dataToken")
-    var dataToken: DataToken?,
+    var dataTokenDto: DataTokenDto?,
     @SerializedName("data")
     var data: Int?
 )

@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.data.datastore.local.datastore
+package kr.ac.kgu.app.trail.data.datasource.local.datastore
 
 object AppDataStoreConstants {
 

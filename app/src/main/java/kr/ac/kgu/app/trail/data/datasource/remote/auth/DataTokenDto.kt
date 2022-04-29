@@ -1,8 +1,8 @@
-package kr.ac.kgu.app.trail.data.datastore.remote.auth
+package kr.ac.kgu.app.trail.data.datasource.remote.auth
 
 import com.google.gson.annotations.SerializedName
 
-data class DataToken(
+data class DataTokenDto(
     @SerializedName("access_token")
     var accessToken: String,
     @SerializedName("refresh_token")

@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import kr.ac.kgu.app.trail.data.datastore.local.datastore.AppDataStore
+import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserService
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserServiceImpl
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
