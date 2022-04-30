@@ -2,6 +2,7 @@ package kr.ac.kgu.app.trail.data.datasource.remote.auth.signup
 
 import com.google.gson.annotations.SerializedName
 import kr.ac.kgu.app.trail.data.datasource.remote.auth.DataTokenDto
+import kr.ac.kgu.app.trail.data.model.ID
 
 data class SignUpResponseDto(
     @SerializedName("status")
@@ -15,3 +16,5 @@ data class SignUpResponseDto(
     @SerializedName("data")
     var data: Int?
 )
+
+fun SignUpResponseDto.SignUpResponseDtoToId(): ID = ID(id =  data.toString())

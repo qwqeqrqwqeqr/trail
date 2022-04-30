@@ -1,8 +1,10 @@
-package kr.ac.kgu.app.trail.data.datasource.local.datastore
+package kr.ac.kgu.app.trail.data.datasource.local
 
-object AppDataStoreConstants {
+object LocalDataConstants {
 
     const val APP_DATASTORE = "app"
+    const val APP_DATABASE = "app"
+
     const val REFRESH_TOKEN= "refreshToken"
     const val ACCESS_TOKEN = "accessToken"
 

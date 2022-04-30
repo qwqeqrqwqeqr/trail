@@ -12,6 +12,6 @@ data class KakaoUser(
     var thumbnailImageUrl: String? // 프로필 사진
 )
 
-fun KakaoUser.toSignUpRequsetDto(): SignUpRequestDto = SignUpRequestDto(snsId= id.toString(),name= nickname.toString())
+fun KakaoUser.KakaoUserToSignUpRequestDto(): SignUpRequestDto = SignUpRequestDto(snsId= id.toString(),name= nickname.toString())
 
 

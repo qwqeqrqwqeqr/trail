@@ -6,16 +6,19 @@ import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kr.ac.kgu.app.trail.data.datasource.local.LocalDataConstants
 
 
 class AppDataStoreManager(private val context: Context):AppDataStore {
 
 
-    private val Context.dataStore : DataStore<Preferences> by  preferencesDataStore(AppDataStoreConstants.APP_DATASTORE)
+    private val Context.dataStore : DataStore<Preferences> by  preferencesDataStore(
+        LocalDataConstants.APP_DATASTORE)
 
-    val ACCESS_TOKEN = stringPreferencesKey(AppDataStoreConstants.ACCESS_TOKEN)
-    val REFRESH_TOKEN = stringPreferencesKey(AppDataStoreConstants.REFRESH_TOKEN)
-    val ID = stringPreferencesKey(AppDataStoreConstants.ID)
+    val ACCESS_TOKEN = stringPreferencesKey(LocalDataConstants.ACCESS_TOKEN)
+    val REFRESH_TOKEN = stringPreferencesKey(LocalDataConstants.REFRESH_TOKEN)
+    val ID = stringPreferencesKey(LocalDataConstants.ID)
 
     override suspend fun setAccessToken(value: String) {
         context.dataStore.edit { settings -> settings[ACCESS_TOKEN] = value }

@@ -6,6 +6,6 @@ import kr.ac.kgu.app.trail.data.model.Token
 import kr.ac.kgu.app.trail.util.DataState
 
 interface AuthRepository {
-    suspend fun signIn(): Flow<DataState<Token>>
-    suspend fun signUp(): Flow<DataState<ID>>
+    suspend fun signIn(): Flow<DataState<Unit>>
+    suspend fun signUp(): Flow<DataState<Unit>>
 }
