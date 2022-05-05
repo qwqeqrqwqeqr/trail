@@ -12,6 +12,7 @@
     <color name="dividerColor">#E3E3E3</color>
     <color name="defaultIconColor">#6A6E73</color>
     <color name="hintColor">#B7B7B7</color>
+    <color name="progressBarTrackColor">#f0f2f2</color>
 
 
     <color name="black">#FF000000</color>

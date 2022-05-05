@@ -104,10 +104,10 @@ class KakaoUserServiceImpl @Inject constructor(private val context: Context) : K
             )
             trySend(
                 KakaoUser(
-                    user?.id,
-                    user?.kakaoAccount?.email,
-                    user?.kakaoAccount?.profile?.nickname,
-                    user?.kakaoAccount?.profile?.thumbnailImageUrl
+                    user?.id!!,
+                    user.kakaoAccount?.email!!,
+                    user.kakaoAccount?.profile?.nickname!!,
+                    user.kakaoAccount?.profile?.thumbnailImageUrl!!
                 )
             )
         }

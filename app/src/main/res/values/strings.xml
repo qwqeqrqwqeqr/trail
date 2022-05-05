@@ -18,4 +18,12 @@
     <string name="login_sub_title_text">편리하고 안전한 산책길</string>
 
     <string name="login_social_login_text">소셜 로그인</string>
+
+
+
+
+
+    /* Toast Message */
+    <string name="sign_up_error_toast_message_text">인증을 실패하셨습니다.</string>
+
 </resources>

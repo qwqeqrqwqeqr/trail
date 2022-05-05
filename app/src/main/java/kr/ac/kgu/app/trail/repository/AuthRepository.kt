@@ -1,8 +1,6 @@
 package kr.ac.kgu.app.trail.repository
 
 import kotlinx.coroutines.flow.Flow
-import kr.ac.kgu.app.trail.data.model.ID
-import kr.ac.kgu.app.trail.data.model.Token
 import kr.ac.kgu.app.trail.util.DataState
 
 interface AuthRepository {

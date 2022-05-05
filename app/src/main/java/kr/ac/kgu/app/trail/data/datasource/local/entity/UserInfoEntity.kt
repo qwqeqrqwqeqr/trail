@@ -23,3 +23,4 @@ data class UserInfoEntity(
     @ColumnInfo(name = "thumbnail_image_url")
     var thumbnailImageUrl: String // 프로필 사진
 )
+
