@@ -31,14 +31,14 @@ object AppModule {
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room
-            .databaseBuilder(context, AppDatabase::class.java, LocalDataConstants.APP_DATABASES)
+            .databaseBuilder(context, AppDatabase::class.java, LocalDataConstants.APP_DATABASE)
             .fallbackToDestructiveMigration() // get correct db version if schema changed
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideAuthTokenDao(appDatabase: AppDatabase): UserInfoDao {
+    fun provideUserInfoDao(appDatabase: AppDatabase): UserInfoDao {
         return appDatabase.GetUserInfoDao()
     }
 
