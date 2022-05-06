@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import dagger.hilt.android.AndroidEntryPoint
-import kr.ac.kgu.app.trail.MainActivity
+import kr.ac.kgu.app.trail.ui.main.MainActivity
 import kr.ac.kgu.app.trail.R
 import kr.ac.kgu.app.trail.databinding.ActivityLoginBinding
 import kr.ac.kgu.app.trail.util.DataState

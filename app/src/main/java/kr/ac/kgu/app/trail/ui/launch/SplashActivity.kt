@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import kr.ac.kgu.app.trail.MainActivity
 import kr.ac.kgu.app.trail.databinding.ActivitySplashBinding
 import kr.ac.kgu.app.trail.ui.login.LoginActivity
 import kr.ac.kgu.app.trail.util.Constants.SPLASH_DELAY

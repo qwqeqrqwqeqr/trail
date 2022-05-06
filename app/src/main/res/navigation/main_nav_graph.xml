@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="kr.ac.kgu.app.trail.ui.home.HomeFragment"
+        android:label="@string/main_nav_graph_home_fragment_label_text"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+    <fragment
+        android:id="@+id/CourseFragment"
+        android:name="kr.ac.kgu.app.trail.ui.course.CourseFragment"
+        android:label="@string/main_nav_graph_course_fragment_label_text"
+        tools:layout="@layout/fragment_course">
+
+    </fragment>
+    <fragment
+        android:id="@+id/HistoryFragment"
+        android:name="kr.ac.kgu.app.trail.ui.history.HistoryFragment"
+        android:label="@string/main_nav_graph_history_fragment_label_text"
+        tools:layout="@layout/fragment_history">
+
+    </fragment>
+    <fragment
+        android:id="@+id/AccountFragment"
+        android:name="kr.ac.kgu.app.trail.ui.account.AccountFragment"
+        android:label="@string/main_nav_graph_account_fragment_label_text"
+        tools:layout="@layout/fragment_account">
+
+    </fragment>
+</navigation>

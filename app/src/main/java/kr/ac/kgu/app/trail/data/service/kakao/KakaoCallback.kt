@@ -1,11 +1,8 @@
 package kr.ac.kgu.app.trail.data.service.kakao
 
-import android.content.Intent
 import android.util.Log
-import androidx.core.content.ContextCompat.startActivity
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
-import kr.ac.kgu.app.trail.MainActivity
 
 object KakaoCallback {
 

@@ -2,8 +2,6 @@
     <string name="app_name">늘솔길</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -19,11 +17,22 @@
 
     <string name="login_social_login_text">소셜 로그인</string>
 
+    <!-- Navigation Graph Label Text -->
 
+    <string name="main_nav_graph_home_fragment_label_text">HomeFragment</string>
+    <string name="main_nav_graph_course_fragment_label_text">CourseFragment</string>
+    <string name="main_nav_graph_history_fragment_label_text">HistoryFragment</string>
+    <string name="main_nav_graph_account_fragment_label_text">AccountFragment</string>
 
+    <!-- Bottom Navigation main menu item  -->
+    <string name="main_menu_home_item_text">홈</string>
+    <string name="main_menu_course_item_text">추천 코스</string>
+    <string name="main_menu_history_item_text">나의 여정</string>
+    <string name="main_menu_account_item_text">내 정보</string>
 
-
-    /* Toast Message */
+    <!-- Toast Message  -->
     <string name="sign_up_error_toast_message_text">인증을 실패하셨습니다.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

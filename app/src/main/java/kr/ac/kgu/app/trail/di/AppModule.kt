@@ -12,6 +12,7 @@ import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStoreManager
 import kr.ac.kgu.app.trail.data.datasource.local.db.AppDatabase
+import kr.ac.kgu.app.trail.ui.base.ConnectivityManager
 import javax.inject.Singleton
 
 @Module
@@ -41,5 +42,11 @@ object AppModule {
     fun provideUserInfoDao(appDatabase: AppDatabase): UserInfoDao {
         return appDatabase.GetUserInfoDao()
     }
+
+    @Singleton
+    @Provides
+    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager =
+        ConnectivityManager(context)
+
 
 }
