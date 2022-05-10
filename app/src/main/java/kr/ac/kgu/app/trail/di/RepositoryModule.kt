@@ -22,7 +22,8 @@ object RepositoryModule {
     fun provideAuthRepository (
         authService : AuthService,
         kakaoUserService: KakaoUserService,
-        userInfoDao: UserInfoDao
-    ): AuthRepository = AuthRepositoryImpl(authService,kakaoUserService,userInfoDao)
+        userInfoDao: UserInfoDao,
+        appDataStore: AppDataStore
+    ): AuthRepository = AuthRepositoryImpl(authService,kakaoUserService,userInfoDao,appDataStore)
 
 }

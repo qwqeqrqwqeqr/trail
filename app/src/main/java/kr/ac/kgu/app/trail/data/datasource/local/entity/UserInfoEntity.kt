@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 data class UserInfoEntity(
     @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: Int,
+    val id: String,
 
     @ColumnInfo(name = "sns_id")
     var snsId : String, //회원번호

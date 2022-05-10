@@ -16,12 +16,17 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val authService: AuthService,
     private val kakaoUserService: KakaoUserService,
-    private val userInfoDao: UserInfoDao
+    private val userInfoDao: UserInfoDao,
+    private val appDataStore: AppDataStore
 ) : AuthRepository {
 
 
     override suspend fun signIn(): Flow<DataState<Unit>> = flow{
         emit(DataState.Loading)
+        if(kakaoUserService.kakaoHasToken()){
+            val id = appDataStore.getId()
+            userInfoDao.getUserinfo(id.toString())
+        }
     }
 
 
@@ -34,7 +39,8 @@ class AuthRepositoryImpl @Inject constructor(
             kakaoUserService.getUserInfo().collect {
                 val response = authService.signUp(it.KakaoUserToSignUpRequestDto())
                 if (response.isSuccessful) {
-                        userInfoDao.insertUserinfo(UserInfo(response.body()?.data!!, it.id.toString(),it.email,it.nickname,it.thumbnailImageUrl).UserInfoToUserInfoEntity())
+                        appDataStore.setId(response.body()?.data.toString())
+                        userInfoDao.insertUserinfo(UserInfo(response.body()?.data.toString(), it.id.toString(),it.email,it.nickname,it.thumbnailImageUrl).UserInfoToUserInfoEntity())
                         emit(DataState.Success(Unit))
                 } else {
                     emit(DataState.Error(response.message()))

@@ -6,7 +6,7 @@ import kr.ac.kgu.app.trail.data.model.KakaoUser
 interface KakaoUserService {
 
     suspend fun loginWithKakaoAccount()
-    suspend fun KakaoHasToken()
+    suspend fun kakaoHasToken() : Boolean
     suspend fun accessTokenInfo()
     suspend fun unlink()
     suspend fun logout()

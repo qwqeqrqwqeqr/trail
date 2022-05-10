@@ -40,22 +40,22 @@ class KakaoUserServiceImpl @Inject constructor(private val context: Context) : K
     }
 
 
-    override suspend fun KakaoHasToken() {
-        if (AuthApiClient.instance.hasToken()) {
-            UserApiClient.instance.accessTokenInfo { _, error ->
-                if (error != null) {
-                    if (error is KakaoSdkError && error.isInvalidTokenError()) {
-                        //로그인 필요
-                    } else {
-                        //기타 에러
-                    }
-                } else {
-                }
-            }
-        } else {
-            //로그인 필요
-        }
-    }
+    override suspend fun kakaoHasToken(): Boolean = AuthApiClient.instance.hasToken()
+
+//    if (AuthApiClient.instance.hasToken()) {
+//        UserApiClient.instance.accessTokenInfo { _, error ->
+//            if (error != null) {
+//                if (error is KakaoSdkError && error.isInvalidTokenError()) {
+//                    //로그인 필요
+//                } else {
+//                    //기타 에러
+//                }
+//            } else {
+//            }
+//        }
+//    } else {
+//        //로그인 필요
+//    }
 
     override suspend fun accessTokenInfo() {
 

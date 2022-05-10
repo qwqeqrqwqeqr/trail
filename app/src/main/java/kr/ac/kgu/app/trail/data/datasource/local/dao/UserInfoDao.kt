@@ -11,7 +11,9 @@ interface UserInfoDao {
     @Query("SELECT * FROM user_info WHERE id = :id")
     suspend fun getUserinfo(id: String): UserInfoEntity?
 
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUserinfo(userInfoEntity: UserInfoEntity): Long
+    suspend fun insertUserinfo(userInfoEntity: UserInfoEntity)
 
 }
