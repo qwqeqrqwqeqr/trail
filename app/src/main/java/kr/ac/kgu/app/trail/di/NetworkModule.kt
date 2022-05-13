@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
+import kr.ac.kgu.app.trail.data.model.UserToken
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserService
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserServiceImpl
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
@@ -17,6 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import okhttp3.Interceptor
+import javax.inject.Qualifier
 
 import javax.inject.Singleton
 
@@ -24,9 +26,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+
     @Provides
     @Singleton
-    fun provideOKHttpClient(
+    fun provideHttpClient(
         interceptor: HttpLoggingInterceptor,
         authInterceptor: Interceptor
     ): OkHttpClient {
@@ -40,12 +43,15 @@ object NetworkModule {
             .build()
     }
 
+
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(
+        client: OkHttpClient
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
-            .client(okHttpClient)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -53,27 +59,23 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
-        }
-    }
+    fun provideLoggingInterceptor() =
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BASIC }
 
 
-    @Singleton
     @Provides
-    suspend fun provideAuthInterceptor(appDataStore: AppDataStore): Interceptor {
-        val token = appDataStore.getAccessToken()
+    @Singleton
+    fun provideAuthInterceptor(): Interceptor {
         return Interceptor { chain: Interceptor.Chain ->
             with(chain) {
                 val newRequest = request().newBuilder()
-                    .addHeader("Authorization",Constants.BEARER + token)
+                    .addHeader("Authorization", Constants.BEARER + UserToken.accessToken)
                     .build()
                 proceed(newRequest)
             }
         }
     }
-
 
 
     @Provides
@@ -83,7 +85,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideKakaoUserService(@ApplicationContext context: Context
+    fun provideKakaoUserService(
+        @ApplicationContext context: Context
     ): KakaoUserService =
         KakaoUserServiceImpl(context)
 

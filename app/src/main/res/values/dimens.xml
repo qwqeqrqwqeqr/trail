@@ -17,4 +17,8 @@
     <dimen name="login_title_layout_top_margin">16dp</dimen>
     <dimen name="login_layout_divide_margin">24dp</dimen>
     <dimen name="login_social_login_btn_top_margin">12dp</dimen>
+
+
+    <dimen name="appbar_height">48dp</dimen>
+    <dimen name="appbar_extented_height"></dimen>
 </resources>

@@ -23,10 +23,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+//        kakaoUserService.loginWithKakaoAccount()
         subscribeToObservers()
-
         binding.loginKakaoLoginBtn.setOnClickListener {
-            viewModel.SignUp()
+            viewModel.signUp()
         }
     }
 

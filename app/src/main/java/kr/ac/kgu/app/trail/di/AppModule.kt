@@ -7,6 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kr.ac.kgu.app.trail.data.datasource.local.LocalDataConstants
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
@@ -27,21 +29,21 @@ object AppModule {
     ): AppDataStore =  AppDataStoreManager(context)
 
 
-
     @Singleton
     @Provides
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room
-            .databaseBuilder(context, AppDatabase::class.java, LocalDataConstants.APP_DATABASE)
-            .fallbackToDestructiveMigration() // get correct db version if schema changed
-            .build()
+    fun provideDispatchers(): DispatcherProvider = object : DispatcherProvider {
+        override val main: CoroutineDispatcher
+            get() = Dispatchers.Main
+        override val io: CoroutineDispatcher
+            get() = Dispatchers.IO
+        override val default: CoroutineDispatcher
+            get() = Dispatchers.Default
+        override val unconfined: CoroutineDispatcher
+            get() = Dispatchers.Unconfined
     }
 
-    @Singleton
-    @Provides
-    fun provideUserInfoDao(appDatabase: AppDatabase): UserInfoDao {
-        return appDatabase.GetUserInfoDao()
-    }
+
+
 
     @Singleton
     @Provides

@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2795" />
         <entry key="app/src/main/res/drawable/ic_baseline_near_me_24.xml" value="0.2795" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2795" />
+        <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.2795" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.36770833333333336" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.36770833333333336" />
