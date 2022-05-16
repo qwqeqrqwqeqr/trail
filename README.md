@@ -48,14 +48,15 @@ MVVM Pattern에 기반한 AAC Architecture를 사용하였습니다.
 
 ### Storyboard
 
----
+___
 
 **[Figma](https://www.figma.com/file/jrwPduDIE6RBzsi6FzGWIi/%EB%8A%98%EC%86%94%EA%B8%B8?node-id=0%3A1)** 
 
- ****초기 설계 단게에서 작성된 UI 디자인 입니다.
+   초기 설계 단게에서 작성된 UI 디자인 입니다.
+
 
 ### SceenShot
 
----
+___
 
 추가 예정
