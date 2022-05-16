@@ -1,3 +1,5 @@
+
+
 ### 교통약자를 위한 코스 추천 서비스앱
 
 ---
@@ -7,15 +9,6 @@
 - 산책을 도전할때마다 성취감을 쌓을 수 있도록 리워드나 히스토리를 제공합니다.
 - 해당 서비스는 2022년  경기대 캡스톤 디자인 작품입니다.
 
-### GitHub Repository
-
----
-
-[https://github.com/qwqeqrqwqeqr/trail](https://github.com/qwqeqrqwqeqr/trail)
-
-### Package
-
----
 
 ### 사용기술 및 도구
 
