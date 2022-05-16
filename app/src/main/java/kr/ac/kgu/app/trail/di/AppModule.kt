@@ -7,6 +7,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kr.ac.kgu.app.trail.data.datasource.local.LocalDataConstants
@@ -42,7 +45,19 @@ object AppModule {
             get() = Dispatchers.Unconfined
     }
 
+    @Provides
+    @Singleton
+    fun provideSchedulerProvider(): SchedulerProvider = object: SchedulerProvider{
 
+        override val ioScheduler: Scheduler
+            get() = Schedulers.io()
+
+        override val uiScheduler: Scheduler
+            get() = AndroidSchedulers.mainThread()
+
+        override val subScheduler: Scheduler
+            get() = Schedulers.newThread()
+    }
 
 
     @Singleton

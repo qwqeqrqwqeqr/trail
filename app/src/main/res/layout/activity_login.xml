@@ -5,109 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/secondaryBackgroundColor"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.auth.LoginActivity">
 
 
-    <LinearLayout
-        android:id="@+id/login_title_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/login_center_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/login_fragment_container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/nanum"
-            android:gravity="center"
-            android:text="@string/login_title_text"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/login_title_text_size" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_sub_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/login_title_layout_top_margin"
-            android:gravity="center"
-            android:text="@string/login_sub_title_text"
-            android:textColor="@color/secondaryTextColor"
-            android:textSize="@dimen/login_sub_title_text_size" />
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/login_center_view"
-        android:layout_width="@dimen/default_view"
-        android:layout_height="@dimen/default_view"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/login_social_login_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_title_layout_top_margin"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_center_view">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_social_login_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/login_social_login_text"
-            android:textColor="@color/secondaryTextColor"
-            android:textSize="@dimen/login_social_login_text_size" />
-
-        <View
-            android:id="@+id/login_social_login_divide"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/default_view"
-            android:layout_marginTop="@dimen/login_layout_divide_margin"
-            android:background="@color/dividerColor" />
-
-
-        <androidx.constraintlayout.utils.widget.ImageFilterButton
-            android:id="@+id/login_kakao_login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/login_social_login_btn_top_margin"
-            android:minHeight="48dp"
-            android:src="@drawable/kakao_login_medium_wide"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:indicatorColor="@color/primaryColor"
-            app:trackColor="@color/progressBarTrackColor"
-            android:layout_gravity="center"/>
+        app:navGraph="@navigation/login_nav_graph" />
 
 
-    </FrameLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

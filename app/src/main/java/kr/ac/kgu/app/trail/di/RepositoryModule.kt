@@ -1,16 +1,21 @@
 package kr.ac.kgu.app.trail.di
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
-import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserService
+import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
 import kr.ac.kgu.app.trail.repository.AuthRepository
 import kr.ac.kgu.app.trail.repository.AuthRepositoryImpl
+import kr.ac.kgu.app.trail.repository.KaKaoRepository
+import kr.ac.kgu.app.trail.repository.KakaoRepositoryImpl
 
 
 @Module
@@ -21,9 +26,16 @@ object RepositoryModule {
     @Provides
     fun provideAuthRepository (
         authService : AuthService,
-        kakaoUserService: KakaoUserService,
         userInfoDao: UserInfoDao,
         appDataStore: AppDataStore
-    ): AuthRepository = AuthRepositoryImpl(authService,kakaoUserService,userInfoDao,appDataStore)
+    ): AuthRepository = AuthRepositoryImpl(authService,userInfoDao,appDataStore)
+
+
+    @ViewModelScoped
+    @Provides
+    fun providekakaoRepository(
+        kakaoService: KakaoService,
+        userInfoDao: UserInfoDao,
+    ):KaKaoRepository =  KakaoRepositoryImpl(kakaoService,userInfoDao)
 
 }

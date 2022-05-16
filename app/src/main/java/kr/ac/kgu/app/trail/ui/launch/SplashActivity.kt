@@ -1,13 +1,14 @@
 package kr.ac.kgu.app.trail.ui.launch
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.databinding.ActivitySplashBinding
-import kr.ac.kgu.app.trail.ui.login.LoginActivity
+import kr.ac.kgu.app.trail.ui.auth.LoginActivity
 import kr.ac.kgu.app.trail.util.Constants.SPLASH_DELAY
 import kr.ac.kgu.app.trail.util.viewBinding
 
@@ -31,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
     private fun navigateToLogin(){
         handler.postDelayed({
             Intent(this, LoginActivity::class.java).also {
-                startActivity(it)
+                startActivity(it.addFlags(FLAG_ACTIVITY_NEW_TASK))
                 finish()
             }
         }, SPLASH_DELAY)

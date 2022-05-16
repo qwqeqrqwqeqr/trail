@@ -4,12 +4,13 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.model.UserToken
-import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserService
-import kr.ac.kgu.app.trail.data.service.kakao.KakaoUserServiceImpl
+import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
+import kr.ac.kgu.app.trail.data.service.kakao.KakaoServiceImpl
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
 import kr.ac.kgu.app.trail.util.Constants
 import okhttp3.OkHttpClient
@@ -47,11 +48,10 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(
-        client: OkHttpClient
-    ): Retrofit {
+        okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
-            .client(client)
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -85,9 +85,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideKakaoUserService(
-        @ApplicationContext context: Context
-    ): KakaoUserService =
-        KakaoUserServiceImpl(context)
+    fun provideKakaoUserService(): KakaoService =  KakaoServiceImpl()
 
 }

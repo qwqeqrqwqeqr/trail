@@ -1,24 +1,40 @@
 <resources>
+
+    <!--default-->
     <dimen name="default_view">1dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-
-<!--    text-->
-    <dimen name="splash_title_text_size">60sp</dimen>
-
-    <dimen name="login_title_text_size">60sp</dimen>
-    <dimen name="login_sub_title_text_size">16sp</dimen>
-
-    <dimen name="login_social_login_text_size">14sp</dimen>
-
-
-
-
-<!--dimen-->
-    <dimen name="login_title_layout_top_margin">16dp</dimen>
-    <dimen name="login_layout_divide_margin">24dp</dimen>
-    <dimen name="login_social_login_btn_top_margin">12dp</dimen>
-
-
     <dimen name="appbar_height">48dp</dimen>
     <dimen name="appbar_extented_height"></dimen>
+    <dimen name="btn_radius">8dp</dimen>
+    
+    
+<!--    splash-->
+    <dimen name="splash_title_text_size">60sp</dimen>
+    
+    
+    
+    
+<!--    signin-->
+    <dimen name="sign_in_title_text_size">60sp</dimen>
+    <dimen name="sign_in_sub_title_text_size">16sp</dimen>
+    <dimen name="sign_in_social_login_text_size">14sp</dimen>
+
+    <dimen name="sign_in_title_layout_top_margin">16dp</dimen>
+    <dimen name="sign_in_title_layout_bottom_margin">24dp</dimen>
+    <dimen name="sign_in_layout_divide_margin">24dp</dimen>
+    <dimen name="sign_in_social_login_btn_top_margin">12dp</dimen>
+    
+    
+<!--    address-->
+    <dimen name="address_layout_vertical_margin">16dp</dimen>
+    <dimen name="address_layout_horizontal_margin">16dp</dimen>
+    <dimen name="address_layout_bottom_margin">24dp</dimen>
+    <dimen name="address_title_text_size">24sp</dimen>
+    <dimen name="address_sub_title_text_size">14sp</dimen>
+    <dimen name="address_text_vertical_margin">8dp</dimen>
+
+    <dimen name="address_btn_layout_vertical_margin">32dp</dimen>
+    <dimen name="address_btn_height">64dp</dimen>
+    <dimen name="address_btn_text_size">14sp</dimen>
+
+
 </resources>

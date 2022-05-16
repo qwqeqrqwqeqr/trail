@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/SignInFragment"
+    android:id="@+id/login_nav_graph">
+
+    <fragment
+        android:id="@+id/SignInFragment"
+        android:name="kr.ac.kgu.app.trail.ui.auth.signin.SignInFragment"
+        android:label="@string/main_nav_graph_sign_in_fragment_label_text"
+        tools:layout="@layout/fragment_sign_in">
+
+        <action
+            android:id="@+id/action_sign_in_to_address"
+            app:destination="@id/AddressFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddressFragment"
+        android:name="kr.ac.kgu.app.trail.ui.auth.address.AddressFragment"
+        android:label="@string/main_nav_graph_address_fragment_label_text"
+        tools:layout="@layout/fragment_address">
+
+    </fragment>
+</navigation>

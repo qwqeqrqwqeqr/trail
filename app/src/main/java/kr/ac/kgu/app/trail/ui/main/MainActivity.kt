@@ -4,15 +4,12 @@ import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.ac.kgu.app.trail.R
 import kr.ac.kgu.app.trail.databinding.ActivityMainBinding
@@ -43,8 +40,11 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container_view) as NavHostFragment
-
+        val  appBarConfiguration = AppBarConfiguration(setOf(R.id.home),(R.id.))
         navController = navHostFragment.navController
+        setSupportActionBar(binding.mainToolbar)
+
+        NavigationUI.setupActionBarWithNavController(this,navController,)
         binding.mainBottomNavigation.setupWithNavController(navController)
 
         val homeFragment = HomeFragment()

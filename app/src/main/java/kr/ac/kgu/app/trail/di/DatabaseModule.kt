@@ -21,12 +21,14 @@ object DatabaseModule {
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room
-            .databaseBuilder(context, AppDatabase::class.java, LocalDataConstants.APP_DATABASE).build()
+            .databaseBuilder(context, AppDatabase::class.java, LocalDataConstants.APP_DATABASE)
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Singleton
     @Provides
     fun provideUserInfoDao(appDatabase: AppDatabase): UserInfoDao {
-        return appDatabase.GetUserInfoDao()
+        return appDatabase.UserInfoDao()
     }
 }

@@ -3,24 +3,22 @@ package kr.ac.kgu.app.trail.data.datasource.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kr.ac.kgu.app.trail.data.datasource.remote.auth.signup.SignUpRequestDto
+import kr.ac.kgu.app.trail.data.model.KakaoUserInfo
 
 
 @Entity(tableName = "user_info")
-data class UserInfoEntity(
+data class KakaoUserInfoEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id")
-    val id: String,
-
     @ColumnInfo(name = "sns_id")
     var snsId : String, //회원번호
 
     @ColumnInfo(name = "email")
-    var email: String, //이메일
+    var email: String?, //이메일
 
     @ColumnInfo(name = "nickname")
     var nickname: String, //이름
-    
-    @ColumnInfo(name = "thumbnail_image_url")
-    var thumbnailImageUrl: String // 프로필 사진
 )
 
+
+fun KakaoUserInfoEntity.KakaoUserInfoToSignUpRequestDto(): SignUpRequestDto = SignUpRequestDto(snsId= snsId,name= nickname)
