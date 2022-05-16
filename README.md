@@ -10,6 +10,8 @@
 - 해당 서비스는 2022년  경기대 캡스톤 디자인 작품입니다.
 
 
+
+
 ### 사용기술 및 도구
 
  <hr/>
@@ -29,6 +31,8 @@
 - GPS Sensor
 - AAC(LiveData, ViewModel, ViewBinding)
 
+
+
 ### API
 
  <hr/>
@@ -40,11 +44,15 @@
     Kakao Maps API를 통하여 지도를 불러옵니다.
     
 
+
+
 ### Architecture
 
  <hr/>
 
 MVVM Pattern에 기반한 AAC Architecture를 사용하였습니다.
+
+
 
 ### Storyboard
 
@@ -53,6 +61,8 @@ MVVM Pattern에 기반한 AAC Architecture를 사용하였습니다.
 **[Figma](https://www.figma.com/file/jrwPduDIE6RBzsi6FzGWIi/%EB%8A%98%EC%86%94%EA%B8%B8?node-id=0%3A1)** 
 
    초기 설계 단게에서 작성된 UI 디자인 입니다.
+
+
 
 
 ### SceenShot
