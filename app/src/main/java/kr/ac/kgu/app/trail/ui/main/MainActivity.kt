@@ -7,10 +7,12 @@ import androidx.navigation.findNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
 import kr.ac.kgu.app.trail.databinding.ActivityMainBinding
 import kr.ac.kgu.app.trail.ui.account.AccountFragment
@@ -18,9 +20,10 @@ import kr.ac.kgu.app.trail.ui.course.CourseFragment
 import kr.ac.kgu.app.trail.ui.history.HistoryFragment
 import kr.ac.kgu.app.trail.ui.home.HomeFragment
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         setupNavigation()
 
         binding.mainBottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        binding.mainBottomNavigation.selectedItemId = R.id.main_menu_home_item
 
     }
 
@@ -40,11 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container_view) as NavHostFragment
-        val  appBarConfiguration = AppBarConfiguration(setOf(R.id.home),(R.id.))
         navController = navHostFragment.navController
-        setSupportActionBar(binding.mainToolbar)
-
-        NavigationUI.setupActionBarWithNavController(this,navController,)
         binding.mainBottomNavigation.setupWithNavController(navController)
 
         val homeFragment = HomeFragment()
@@ -54,29 +54,21 @@ class MainActivity : AppCompatActivity() {
     }
     private val onNavigationItemSelectedListener = BottomNavigationView
         .OnNavigationItemSelectedListener{
+            changeFragment(
             when(it.itemId){
-                R.id.main_menu_home_item -> {
-                    val homeFragment = HomeFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_container_view, homeFragment).commit()
-                }
-                R.id.main_menu_course_item -> {
-                   val courseFragment = CourseFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_container_view, courseFragment).commit()
-                }
-                R.id.main_menu_history_item -> {
-                    val historyFragment = HistoryFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_container_view, historyFragment).commit()
-                }
-                R.id.main_menu_account_item -> {
-                    val accountFragment = AccountFragment()
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_container_view, accountFragment).commit()
-                }
-            }
+                R.id.main_menu_home_item -> { HomeFragment() }
+                R.id.main_menu_course_item -> { CourseFragment() }
+                R.id.main_menu_history_item -> { HistoryFragment() }
+                else -> { AccountFragment() }
+            })
             true
         }
 
+
+    fun changeFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.nav_host_fragment_container_view, fragment)
+            .commit()
+    }
 }

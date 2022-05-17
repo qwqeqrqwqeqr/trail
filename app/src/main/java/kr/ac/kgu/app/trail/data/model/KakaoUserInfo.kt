@@ -13,7 +13,7 @@ data class KakaoUserInfo(
 
 
 
-fun KakaoUserInfo.KakaoUserToUserKakaoInfoEntity(): KakaoUserInfoEntity = KakaoUserInfoEntity(
+fun KakaoUserInfo.kakaoUserToUserKakaoInfoEntity(): KakaoUserInfoEntity = KakaoUserInfoEntity(
     snsId=snsId,
     email=email,
     nickname=nickname,

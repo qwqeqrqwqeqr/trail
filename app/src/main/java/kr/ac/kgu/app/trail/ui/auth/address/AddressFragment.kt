@@ -44,7 +44,22 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
     }
 
     private fun subscribeToObservers() {
-        viewModel.authUserLiveData.observe(viewLifecycleOwner) { result ->
+        viewModel.signUpLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Error -> {
+                    binding.progressBar.isVisible = false
+                    this.toast(resources.getString(R.string.sign_up_error_toast_message_text))
+                }
+                is DataState.Success -> {
+                    binding.progressBar.isVisible = false
+                    viewModel.signIn()
+//                    navigateMainScreen()
+                }
+                DataState.Loading -> binding.progressBar.isVisible = true
+            }
+        }
+
+        viewModel.signInLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is DataState.Error -> {
                     binding.progressBar.isVisible = false
@@ -57,8 +72,9 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
         }
-
     }
+
+
 
     private fun navigateMainScreen() {
         val intent = Intent(requireActivity(), MainActivity::class.java)

@@ -17,7 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.model.KakaoUserInfo
-import kr.ac.kgu.app.trail.data.model.KakaoUserToUserKakaoInfoEntity
+import kr.ac.kgu.app.trail.data.model.kakaoUserToUserKakaoInfoEntity
 import kr.ac.kgu.app.trail.di.DispatcherProvider
 import kr.ac.kgu.app.trail.di.SchedulerProvider
 import kr.ac.kgu.app.trail.repository.AuthRepository
@@ -45,9 +45,13 @@ class SignInViewModel
                     KakaoUserInfo(
                         it.id.toString(),
                         it.kakaoAccount?.email.toString(),
-                        it.kakaoAccount?.name.toString()
-                    ).KakaoUserToUserKakaoInfoEntity()
+                        it.kakaoAccount?.profile?.nickname.toString()
+                    ).kakaoUserToUserKakaoInfoEntity()
                 )
+                Timber.i("save userinfo id?: "+it.id)
+                Timber.i("save userinfo email?: "+it.kakaoAccount?.email.toString())
+                Timber.i("save userinfo name?: "+ it.kakaoAccount?.profile?.nickname.toString())
+
             }, {
                 Timber.d(it.message.toString())
             })

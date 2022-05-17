@@ -8,9 +8,7 @@ import com.kakao.sdk.user.model.User
 import io.reactivex.Single
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.model.KakaoUserInfo
-import kr.ac.kgu.app.trail.data.model.KakaoUserToUserKakaoInfoEntity
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
-import timber.log.Timber
 import javax.inject.Inject
 
 interface KaKaoRepository {

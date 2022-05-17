@@ -3,6 +3,7 @@ package kr.ac.kgu.app.trail.data.datasource.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kr.ac.kgu.app.trail.data.datasource.remote.auth.signin.SignInRequestDto
 import kr.ac.kgu.app.trail.data.datasource.remote.auth.signup.SignUpRequestDto
 import kr.ac.kgu.app.trail.data.model.KakaoUserInfo
 
@@ -21,4 +22,5 @@ data class KakaoUserInfoEntity(
 )
 
 
-fun KakaoUserInfoEntity.KakaoUserInfoToSignUpRequestDto(): SignUpRequestDto = SignUpRequestDto(snsId= snsId,name= nickname)
+fun KakaoUserInfoEntity.kakaoUserInfoToSignUpRequestDto(): SignUpRequestDto = SignUpRequestDto(snsId= snsId,name= nickname)
+fun KakaoUserInfoEntity.kakaoUserInfoToSignInRequestDto(): SignInRequestDto = SignInRequestDto(snsId= snsId,name= nickname)

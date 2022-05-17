@@ -46,6 +46,5 @@ class Application : Application() {
 
     private fun setupTimber() {
         Timber.plant(Timber.DebugTree())
-
     }
 }

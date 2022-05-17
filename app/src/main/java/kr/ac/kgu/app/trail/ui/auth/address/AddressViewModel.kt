@@ -20,13 +20,25 @@ class AddressViewModel @Inject constructor(
     private val dispatcherProvider: DispatcherProvider
 ): ViewModel(){
 
-    private val _authUserLiveData = MutableLiveData<DataState<Unit>>()
-    val authUserLiveData: LiveData<DataState<Unit>> = _authUserLiveData
+    private val _signInLiveData = MutableLiveData<DataState<Unit>>()
+    val signInLiveData: LiveData<DataState<Unit>> = _signInLiveData
+
+    private val _signUpLiveData = MutableLiveData<DataState<Unit>>()
+    val signUpLiveData: LiveData<DataState<Unit>> = _signUpLiveData
+
 
     fun signUp() {
         viewModelScope.launch(dispatcherProvider.io) {
             authRepository.signUp().collect {
-                _authUserLiveData.postValue(it)
+                _signUpLiveData.postValue(it)
+            }
+        }
+    }
+
+    fun signIn() {
+        viewModelScope.launch(dispatcherProvider.io) {
+            authRepository.signIn().collect {
+                _signInLiveData.postValue(it)
             }
         }
     }

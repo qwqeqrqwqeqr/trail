@@ -11,13 +11,17 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
-import kr.ac.kgu.app.trail.data.datasource.local.entity.KakaoUserInfoToSignUpRequestDto
+import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoToSignInRequestDto
+import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoToSignUpRequestDto
+import kr.ac.kgu.app.trail.data.datasource.remote.auth.dataTokenDtoToUserToken
+import kr.ac.kgu.app.trail.data.datasource.remote.auth.signin.SignInRequestDto
+import kr.ac.kgu.app.trail.data.datasource.remote.auth.signup.SignUpRequestDto
 import kr.ac.kgu.app.trail.data.model.*
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
 import kr.ac.kgu.app.trail.util.DataState
-import javax.inject.Inject
 import timber.log.Timber
+import javax.inject.Inject
 
 interface AuthRepository {
     suspend fun signIn(): Flow<DataState<Unit>>
@@ -35,24 +39,40 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun signIn(): Flow<DataState<Unit>> = flow {
         emit(DataState.Loading)
-//        if (kakaoUserService.kakaoHasToken()) {
-//            val id = appDataStore.getId()
-//            userInfoDao.getUserinfo(id.toString())
-//        }
+        userInfoDao.getUserinfo().last().kakaoUserInfoToSignInRequestDto()
+        val response = authService.signIn(SignInRequestDto("100","sangsang"))
+        if(response.isSuccessful){
+            Timber.i("signUp response is success?: "+response.body()?.success)
+            Timber.i("signUp response code: "+response.body()?.status)
+            Timber.i("signUp response message: "+response.body()?.meesage)
+            Timber.i("signUp response id: "+response.body()?.data)
+            response.body()?.dataTokenDto?.dataTokenDtoToUserToken()
+            emit(DataState.Success(Unit))
+        }else{
+            emit(DataState.Error(response.body()?.meesage.toString()))
+            Timber.i("signUp response is success?: "+response.body()?.success)
+            Timber.i("signUp response code: "+response.body()?.status)
+            Timber.i("signUp response message: "+response.body()?.meesage)
+        }
     }
     @SuppressLint("CheckResult")
     override suspend fun signUp(): Flow<DataState<Unit>> =
 
         flow {
             emit(DataState.Loading)
-            val response = authService.signUp(userInfoDao.getUserinfo()[0].KakaoUserInfoToSignUpRequestDto())
+            val response = authService.signUp(userInfoDao.getUserinfo().last().kakaoUserInfoToSignUpRequestDto())
             if (response.isSuccessful) {
-                appDataStore.setId(response.body()?.data.toString())
+                Timber.i("signUp response is success?: "+response.body()?.success)
+                Timber.i("signUp response code: "+response.body()?.status)
+                Timber.i("signUp response message: "+response.body()?.meesage)
+                Timber.i("signUp response id: "+response.body()?.data)
                 emit(DataState.Success(Unit))
             } else {
-                emit(DataState.Error(response.message()))
+                emit(DataState.Error(response.body()?.meesage.toString()))
+                 Timber.i("signUp response is success?: "+response.body()?.success)
+                Timber.i("signUp response code: "+response.body()?.status)
+                Timber.i("signUp response message: "+response.body()?.meesage)
             }
-
         }
 
 }

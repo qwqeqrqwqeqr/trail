@@ -5,7 +5,8 @@
     <dimen name="appbar_height">48dp</dimen>
     <dimen name="appbar_extented_height"></dimen>
     <dimen name="btn_radius">8dp</dimen>
-    
+    <dimen name="default_layout_radius">32dp</dimen>
+    <dimen name="default_layout_padding">8dp</dimen>
     
 <!--    splash-->
     <dimen name="splash_title_text_size">60sp</dimen>
