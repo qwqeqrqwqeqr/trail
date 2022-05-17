@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-
     <application
         android:name=".Application"
         android:allowBackup="true"
@@ -18,15 +17,16 @@
         android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.App"
         tools:targetApi="n">
 
         <activity
             android:name=".ui.auth.LoginActivity"
+            android:theme="@style/main.theme"
             android:exported="true" />
 
         <activity
             android:name=".ui.launch.SplashActivity"
+            android:theme="@style/splash.theme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +37,7 @@
         </activity>
         <activity
             android:name=".ui.main.MainActivity"
+            android:theme="@style/main.theme"
             android:exported="true">
 
         </activity>

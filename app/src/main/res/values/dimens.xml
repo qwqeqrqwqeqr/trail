@@ -3,10 +3,11 @@
     <!--default-->
     <dimen name="default_view">1dp</dimen>
     <dimen name="appbar_height">48dp</dimen>
-    <dimen name="appbar_extented_height"></dimen>
+    <dimen name="appbar_extended_height">96dp</dimen>
     <dimen name="btn_radius">8dp</dimen>
-    <dimen name="default_layout_radius">32dp</dimen>
+    <dimen name="default_layout_radius">8dp</dimen>
     <dimen name="default_layout_padding">8dp</dimen>
+    <dimen name="default_appbar_title_text_size">18sp</dimen>
     
 <!--    splash-->
     <dimen name="splash_title_text_size">60sp</dimen>
