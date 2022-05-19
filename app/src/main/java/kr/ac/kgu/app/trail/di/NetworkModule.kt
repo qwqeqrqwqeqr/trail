@@ -12,6 +12,7 @@ import kr.ac.kgu.app.trail.data.model.UserToken
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoServiceImpl
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
+import kr.ac.kgu.app.trail.data.service.trail.TrailService
 import kr.ac.kgu.app.trail.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -82,6 +83,12 @@ object NetworkModule {
     @Singleton
     fun provideAuthService(retrofit: Retrofit): AuthService =
         retrofit.create(AuthService::class.java)
+
+
+    @Provides
+    @Singleton
+    fun provideTrailService(retrofit: Retrofit): TrailService =
+        retrofit.create(TrailService::class.java)
 
     @Provides
     @Singleton

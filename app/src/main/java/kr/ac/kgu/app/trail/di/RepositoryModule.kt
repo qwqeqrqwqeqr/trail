@@ -12,10 +12,7 @@ import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
-import kr.ac.kgu.app.trail.repository.AuthRepository
-import kr.ac.kgu.app.trail.repository.AuthRepositoryImpl
-import kr.ac.kgu.app.trail.repository.KaKaoRepository
-import kr.ac.kgu.app.trail.repository.KakaoRepositoryImpl
+import kr.ac.kgu.app.trail.repository.*
 
 
 @Module
@@ -29,6 +26,11 @@ object RepositoryModule {
         userInfoDao: UserInfoDao,
         appDataStore: AppDataStore
     ): AuthRepository = AuthRepositoryImpl(authService,userInfoDao,appDataStore)
+
+    @ViewModelScoped
+    @Provides
+    fun provideCourseRepository():CourseRepository =  CourseRepositoryImpl()
+
 
 
     @ViewModelScoped
