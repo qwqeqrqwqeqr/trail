@@ -31,10 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/nanum_square_round_bold"
+            android:fontFamily="@font/nanum"
             android:gravity="center"
             android:text="@string/sign_in_title_text"
-            android:textColor="@color/primary_color_opacity_60"
+            android:textColor="@color/primaryColor"
             android:textSize="@dimen/sign_in_title_text_size" />
 
         <com.google.android.material.textview.MaterialTextView

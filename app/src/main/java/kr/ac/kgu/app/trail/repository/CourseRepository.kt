@@ -13,5 +13,6 @@ interface CourseRepository{
 class CourseRepositoryImpl @Inject constructor():CourseRepository{
     override suspend fun getAllCourseList(): Flow<DataState<List<CourseEntry>>> = flow{
         emit(DataState.Loading)
+
     }
 }

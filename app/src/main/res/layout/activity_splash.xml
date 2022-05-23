@@ -10,7 +10,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/lightTextColor"
+        android:textColor="@color/primaryLightTextColor"
         android:textSize="@dimen/splash_title_text_size"
         android:fontFamily="@font/nanum"
         android:text="@string/splash_title_text"

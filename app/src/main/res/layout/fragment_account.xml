@@ -21,7 +21,7 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/appbar_extended_height"
+                android:layout_height="@dimen/appbar_height"
                 android:background="@color/secondaryBackgroundColor">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -44,17 +44,19 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/account_coordinatorLayout">
-
+        app:layout_constraintTop_toBottomOf="@id/account_coordinatorLayout"
+        app:layout_constraintVertical_bias="1.0">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:background="@color/secondaryBackgroundColor"
             android:orientation="vertical"
@@ -74,7 +76,6 @@
                     android:text="내 위치 변경"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="14sp" />
-
 
                 <View
                     android:layout_width="24dp"

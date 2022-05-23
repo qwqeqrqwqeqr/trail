@@ -4,10 +4,11 @@
     <color name="secondaryColor">#00306D</color>
     <color name="primaryBackgroundColor">#f0f2f2</color>
     <color name="secondaryBackgroundColor">#ffffff</color>
-    <color name="thirtiaryColor">#B7B7B7</color>
+    <color name="tertiaryColor">#B7B7B7</color>
     <color name="secondaryTextColor">#424242</color>
     <color name="primaryTextColor">#212121</color>
-    <color name="lightTextColor">#ffffff</color>
+    <color name="primaryLightTextColor">#ffffff</color>
+    <color name="SecondaryLightTextColor">#dbdbdb</color>
     <color name="appbarColor">#ffffff</color>
     <color name="shadowColor">#aaa</color>
     <color name="dividerColor">#E3E3E3</color>

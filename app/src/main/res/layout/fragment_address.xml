@@ -72,7 +72,7 @@
                 android:backgroundTint="@color/unableColor"
                 android:gravity="center"
                 android:text="@string/address_ok_btn_title_text"
-                android:textColor="@color/lightTextColor"
+                android:textColor="@color/primaryLightTextColor"
                 android:textSize="@dimen/address_btn_text_size"
                 android:theme="@style/Theme.MaterialComponents.DayNight" />
         </LinearLayout>

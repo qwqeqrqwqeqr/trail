@@ -27,6 +27,7 @@ object RepositoryModule {
         appDataStore: AppDataStore
     ): AuthRepository = AuthRepositoryImpl(authService,userInfoDao,appDataStore)
 
+
     @ViewModelScoped
     @Provides
     fun provideCourseRepository():CourseRepository =  CourseRepositoryImpl()

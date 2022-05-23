@@ -16,4 +16,6 @@ interface UserInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
      fun insertUserinfo(kakaoUserInfoEntity: KakaoUserInfoEntity)
 
+
+
 }

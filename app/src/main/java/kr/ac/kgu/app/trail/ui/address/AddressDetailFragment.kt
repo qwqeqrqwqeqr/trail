@@ -21,7 +21,7 @@ class AddressDetailFragment : BaseFragment<AddressDetailViewModel, DataState<Lis
 
     private val binding by viewBinding(FragmentAddressBinding::bind)
     private val addressDetailViewModel: AddressDetailViewModel by activityViewModels()
-    private lateinit var addressAdapter: AddressAdapter
+//    private lateinit var addressAdapter: AddressAdapter
 
 
     override fun updateUi(model: DataState<List<AddressEntry>>) {
@@ -32,7 +32,7 @@ class AddressDetailFragment : BaseFragment<AddressDetailViewModel, DataState<Lis
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        addressAdapter = AddressAdapter(requireContext())
+//        addressAdapter = AddressAdapter(requireContext())
     }
 
 }

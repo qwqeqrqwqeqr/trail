@@ -45,17 +45,27 @@
         <entry key="app/src/main/res/drawable/ic_baseline_near_me_24.xml" value="0.2795" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2795" />
         <entry key="app/src/main/res/drawable/menu_selector_color.xml" value="0.2795" />
+        <entry key="app/src/main/res/drawable/primary_color_corner_layout.xml" value="0.2795" />
+        <entry key="app/src/main/res/drawable/primary_color_opacity_100.xml" value="0.312" />
+        <entry key="app/src/main/res/drawable/primary_color_opacity_20_corner_layout.xml" value="0.312" />
+        <entry key="app/src/main/res/drawable/primary_color_opacity_40_corner_layout.xml" value="0.312" />
+        <entry key="app/src/main/res/drawable/primary_color_opacity_60_corner_layout.xml" value="0.312" />
+        <entry key="app/src/main/res/drawable/primary_color_opacity_80_corner_layout.xml" value="0.312" />
         <entry key="app/src/main/res/drawable/primary_corner_layout.xml" value="0.226" />
+        <entry key="app/src/main/res/drawable/secondary_corner_layout.xml" value="0.2795" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.36770833333333336" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.36770833333333336" />
+        <entry key="app/src/main/res/layout/address_list_item.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.36770833333333336" />
+        <entry key="app/src/main/res/layout/course_list_item.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/fragment_address.xml" value="0.4125" />
+        <entry key="app/src/main/res/layout/fragment_address_detail.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/fragment_course.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.36770833333333336" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.4125" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.4125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2780517578125" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.4125" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.4125" />
