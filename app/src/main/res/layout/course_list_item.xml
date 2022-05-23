@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/secondary_corner_layout"
+    android:paddingHorizontal="@dimen/default_layout_padding"
+    android:layout_marginVertical="@dimen/course_list_item_vertical_margin"
+    android:orientation="horizontal">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/course_list_item_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="청계천 거리"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/course_item_list_title_text_size" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/course_list_item_title_detail_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/course_list_item_title_detail_vertical_margin"
+            android:maxLines="1"
+            android:text="서울특별시중구세종대로99"
+            android:textColor="@color/thirtiaryColor"
+            android:textSize="@dimen/course_list_item_title_detail_text_size" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/course_list_item_contents_layout_vertical_margin"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_time_pre_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="left"
+                android:text="소요시간"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_title_text_size"/>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="right"
+                android:text="32"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_text_size"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_time_next_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="left"
+                android:text="분"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_title_text_size"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_distance_pre_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="left"
+                android:text="코스 거리"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_title_text_size" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_distance_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="right"
+                android:text="805"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_text_size"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_distance_next_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="left"
+                android:text="m"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_title_text_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_level_pre_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="left"
+                android:text="난이도"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_title_text_size" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_level_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                android:gravity="right"
+                android:text="쉬움"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="@dimen/course_list_item_contents_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+
+        <View
+            android:layout_width="@dimen/default_view"
+            android:layout_height="match_parent"
+            android:background="@color/dividerColor" />
+
+        <View
+            android:id="@+id/course_list_item_btn_image"
+            android:layout_width="@dimen/course_list_item_btn_image_width"
+            android:layout_height="@dimen/course_list_item_btn_image_height"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:gravity="center" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/address_layout_horizontal_margin"
     android:layout_marginVertical="@dimen/address_layout_vertical_margin"
-    tools:context=".ui.auth.address.AddressFragment">
+    tools:context=".ui.address.AddressFragment">
 
 
     <LinearLayout
@@ -69,7 +69,7 @@
                 app:cornerRadius="@dimen/btn_radius"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_weight="1"
-                android:backgroundTint="@color/primaryColor"
+                android:backgroundTint="@color/unableColor"
                 android:gravity="center"
                 android:text="@string/address_ok_btn_title_text"
                 android:textColor="@color/lightTextColor"
@@ -104,7 +104,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:indicatorColor="@color/primaryColor"
-            app:trackColor="@color/progressBarTrackColor"
             android:layout_gravity="center"/>
 
 

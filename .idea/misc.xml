@@ -8,6 +8,7 @@
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.349" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.349" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/ic_launcher_background.xml" value="0.35989583333333336" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/menu_selector_color.xml" value="0.349" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/pastel_circle_100.xml" value="0.111" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/pastel_circle_200.xml" value="0.111" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/pastel_circle_300.xml" value="0.111" />
@@ -17,13 +18,17 @@
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/primary_color_opacity_20.xml" value="0.111" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/primary_color_opacity_60.xml" value="0.111" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/primary_color_opacity_80.xml" value="0.111" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/primary_corner_layout.xml" value="0.349" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/drawable/secondary_corner_layout.xml" value="0.111" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/activity_main.xml" value="0.20786516853932585" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/address_list_item.xml" value="0.25" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/content_main.xml" value="0.34375" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/course_list_item.xml" value="0.33" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_account.xml" value="0.34739583333333335" />
-        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_address.xml" value="0.22" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_address.xml" value="0.33" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_address_detail.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_course.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_first.xml" value="0.34375" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_history.xml" value="0.33" />

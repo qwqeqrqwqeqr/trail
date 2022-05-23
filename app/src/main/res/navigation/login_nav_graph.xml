@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/AddressFragment"
-        android:name="kr.ac.kgu.app.trail.ui.auth.address.AddressFragment"
+        android:name="kr.ac.kgu.app.trail.ui.address.AddressFragment"
         android:label="@string/main_nav_graph_address_fragment_label_text"
         tools:layout="@layout/fragment_address">
 

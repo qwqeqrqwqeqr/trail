@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.ui.auth.address
+package kr.ac.kgu.app.trail.ui.address
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,8 +8,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kr.ac.kgu.app.trail.di.DispatcherProvider
 import kr.ac.kgu.app.trail.repository.AuthRepository
-import kr.ac.kgu.app.trail.repository.KaKaoRepository
-import kr.ac.kgu.app.trail.ui.base.BaseViewModel
 import kr.ac.kgu.app.trail.util.DataState
 import javax.inject.Inject
 

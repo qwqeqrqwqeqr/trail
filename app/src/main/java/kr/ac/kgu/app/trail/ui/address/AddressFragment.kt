@@ -1,20 +1,17 @@
-package kr.ac.kgu.app.trail.ui.auth.address
+package kr.ac.kgu.app.trail.ui.address
 
 import android.content.Intent
 import android.os.Bundle
+import android.system.Os.bind
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
 import kr.ac.kgu.app.trail.databinding.FragmentAddressBinding
-import kr.ac.kgu.app.trail.ui.base.BaseFragment
 import kr.ac.kgu.app.trail.ui.base.InitView
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.ui.main.MainActivity
