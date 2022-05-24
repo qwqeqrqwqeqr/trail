@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/primaryColor"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <!--    android:background="@drawable/sign_in_background"-->
     <FrameLayout
@@ -26,27 +26,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <View
+            android:id="@+id/splash_icon"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
             android:layout_gravity="center"
-            android:fontFamily="@font/nanum"
-            android:gravity="center"
-            android:text="@string/sign_in_title_text"
-            android:textColor="@color/primaryColor"
-            android:textSize="@dimen/sign_in_title_text_size" />
+            android:background="@mipmap/trail_app_icon" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_sub_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/sign_in_title_layout_top_margin"
-            android:gravity="center"
-            android:text="@string/sign_in_sub_title_text"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="@dimen/sign_in_sub_title_text_size" />
+            android:layout_marginTop="-40dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
+            android:letterSpacing="0.05"
+            android:text="@string/sign_in_title_text"
+            android:textColor="@color/primaryLightTextColor"
+            android:textSize="@dimen/splash_title_text_size"/>
+
 
     </LinearLayout>
 
@@ -76,7 +73,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/sign_in_social_login_text"
-            android:textColor="@color/secondaryTextColor"
+            android:textColor="@color/primaryLightTextColor"
             android:textSize="@dimen/sign_in_social_login_text_size" />
 
         <View

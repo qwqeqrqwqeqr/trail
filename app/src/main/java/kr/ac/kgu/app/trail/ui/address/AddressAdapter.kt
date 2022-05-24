@@ -30,9 +30,9 @@ class AddressAdapter(private val context: Context) :
         val weightEntry = getItem(position)
 
 
-        holder.binding.currentWeight.text =
-            context.getString(R.string.kg, weightEntry.currentWeight.toString())
-        holder.binding.date.text = weightEntry.date
+//        holder.binding.currentWeight.text =
+//            context.getString(R.string.kg, weightEntry.currentWeight.toString())
+//        holder.binding.date.text = weightEntry.date
     }
 
     override fun getItemCount(): Int= entries.count()

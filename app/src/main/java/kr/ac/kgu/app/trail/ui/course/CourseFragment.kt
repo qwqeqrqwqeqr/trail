@@ -7,7 +7,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
 
 import kr.ac.kgu.app.trail.data.model.CourseEntry
+import kr.ac.kgu.app.trail.databinding.FragmentCourseBinding
 import kr.ac.kgu.app.trail.ui.base.BaseFragment
+import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.util.DataState
 
 @AndroidEntryPoint
@@ -16,6 +18,8 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
     CourseViewModel::class.java
 ) {
 
+    private val binding by viewBinding(FragmentCourseBinding::bind)
+    private lateinit var courseAdapter: CourseAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +37,21 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
+
     override fun updateUi(model: DataState<List<CourseEntry>>) {
-        TODO("Not yet implemented")
+        when (model) {
+            is DataState.Success -> {
+                entriesAdapter.submitList(model.data.toMutableList())
+                binding.progressBar.isVisible = false
+            }
+            is DataState.Error -> {
+                showErrorDialog()
+                binding.progressBar.isVisible = false
+            }
+            DataState.Loading -> {
+                binding.progressBar.isVisible = true
+            }
+        }
     }
 
 }

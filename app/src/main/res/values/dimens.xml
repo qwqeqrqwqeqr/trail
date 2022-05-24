@@ -2,15 +2,15 @@
 
     <!--default-->
     <dimen name="default_view">1dp</dimen>
-    <dimen name="appbar_height">48dp</dimen>
+    <dimen name="appbar_height">64dp</dimen>
     <dimen name="appbar_extended_height">96dp</dimen>
     <dimen name="btn_radius">8dp</dimen>
-    <dimen name="default_layout_radius">8dp</dimen>
+    <dimen name="default_layout_radius">16dp</dimen>
     <dimen name="default_layout_padding">8dp</dimen>
-    <dimen name="default_appbar_title_text_size">18sp</dimen>
+    <dimen name="default_appbar_title_text_size">24sp</dimen>
     
 <!--    splash-->
-    <dimen name="splash_title_text_size">60sp</dimen>
+    <dimen name="splash_title_text_size">28sp</dimen>
     
     
     
@@ -18,7 +18,7 @@
 <!--    signin-->
     <dimen name="sign_in_title_text_size">60sp</dimen>
     <dimen name="sign_in_sub_title_text_size">16sp</dimen>
-    <dimen name="sign_in_social_login_text_size">14sp</dimen>
+    <dimen name="sign_in_social_login_text_size">18sp</dimen>
 
     <dimen name="sign_in_title_layout_top_margin">16dp</dimen>
     <dimen name="sign_in_title_layout_bottom_margin">24dp</dimen>
@@ -31,12 +31,12 @@
     <dimen name="address_layout_horizontal_margin">16dp</dimen>
     <dimen name="address_layout_bottom_margin">24dp</dimen>
     <dimen name="address_title_text_size">24sp</dimen>
-    <dimen name="address_sub_title_text_size">14sp</dimen>
+    <dimen name="address_sub_title_text_size">18sp</dimen>
     <dimen name="address_text_vertical_margin">8dp</dimen>
 
     <dimen name="address_btn_layout_vertical_margin">32dp</dimen>
     <dimen name="address_btn_height">64dp</dimen>
-    <dimen name="address_btn_text_size">14sp</dimen>
+    <dimen name="address_btn_text_size">18sp</dimen>
 
 
 <!--    address list item-->
@@ -47,17 +47,17 @@
 
 <!--    course list item-->
     <dimen name="course_list_item_vertical_margin">8dp</dimen>
-    <dimen name="course_item_list_title_text_size">24sp</dimen>
-    <dimen name="course_list_item_title_detail_text_size">12sp</dimen>
+    <dimen name="course_item_list_title_text_size">20sp</dimen>
+    <dimen name="course_list_item_title_detail_text_size">14sp</dimen>
     <dimen name="course_list_item_title_detail_vertical_margin">8dp</dimen>
     <dimen name="course_list_item_contents_layout_vertical_margin">4dp</dimen>
     <dimen name="course_list_item_contents_horizontal_margin">2dp</dimen>
-    <dimen name="course_list_item_contents_title_text_size">12sp</dimen>
-    <dimen name="course_list_item_contents_text_size">12sp</dimen>
+    <dimen name="course_list_item_contents_title_text_size">14sp</dimen>
+    <dimen name="course_list_item_contents_text_size">16sp</dimen>
     <dimen name="course_list_item_btn_image_width">4dp</dimen>
     <dimen name="course_list_item_btn_image_height">32dp</dimen>
 
 
-<!--    title 20sp-->
+<!--    24 20 18-->
 
 </resources>

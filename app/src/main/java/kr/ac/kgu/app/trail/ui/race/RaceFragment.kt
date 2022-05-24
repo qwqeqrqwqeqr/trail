@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kr.ac.kgu.app.trail.ui.race.R
+import kr.ac.kgu.app.trail.R
 
 class RaceFragment : Fragment() {
 

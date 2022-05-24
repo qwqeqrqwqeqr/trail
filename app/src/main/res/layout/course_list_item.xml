@@ -9,6 +9,8 @@
     android:orientation="horizontal">
 
 
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -17,21 +19,23 @@
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/course_list_item_title_text"
+            android:id="@+id/course_list_item_couse_name_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="청계천 거리"
             android:textColor="@color/primaryColor"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:textSize="@dimen/course_item_list_title_text_size" />
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/course_list_item_title_detail_text"
+            android:id="@+id/course_list_item_course_address_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/course_list_item_title_detail_vertical_margin"
             android:maxLines="1"
+            android:fontFamily="@font/noto_sans_kr_regular"
             android:text="서울특별시중구세종대로99"
             android:textColor="@color/tertiaryColor"
             android:textSize="@dimen/course_list_item_title_detail_text_size" />
@@ -49,7 +53,6 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/course_list_item_contents_layout_vertical_margin"
             android:orientation="horizontal">
 
             <com.google.android.material.textview.MaterialTextView
@@ -59,6 +62,7 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="left"
                 android:text="소요시간"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/course_list_item_contents_title_text_size"/>
 
@@ -70,6 +74,7 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="right"
                 android:text="32"
+                android:fontFamily="@font/noto_sans_kr_bold"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/course_list_item_contents_text_size"
                 android:textStyle="bold" />
@@ -81,6 +86,7 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="left"
                 android:text="분"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/course_list_item_contents_title_text_size"/>
 
@@ -90,7 +96,6 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textview.MaterialTextView
@@ -100,6 +105,7 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="left"
                 android:text="코스 거리"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/course_list_item_contents_title_text_size" />
 
@@ -111,9 +117,9 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="right"
                 android:text="805"
+                android:fontFamily="@font/noto_sans_kr_bold"
                 android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_text_size"
-                android:textStyle="bold" />
+                android:textSize="@dimen/course_list_item_contents_text_size" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/course_list_item_distance_next_text"
@@ -122,16 +128,17 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="left"
                 android:text="m"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/course_list_item_contents_title_text_size" />
 
         </LinearLayout>
 
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textview.MaterialTextView
@@ -141,6 +148,7 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="left"
                 android:text="난이도"
+                android:fontFamily="@font/noto_sans_kr_regular"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/course_list_item_contents_title_text_size" />
 
@@ -152,6 +160,7 @@
                 android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
                 android:gravity="right"
                 android:text="쉬움"
+                android:fontFamily="@font/noto_sans_kr_bold"
                 android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/course_list_item_contents_text_size"
                 android:textStyle="bold" />
@@ -165,7 +174,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="5"
         android:orientation="horizontal">
 
 

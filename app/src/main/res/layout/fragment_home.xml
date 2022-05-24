@@ -8,13 +8,48 @@
     tools:context=".ui.home.HomeFragment">
 
 
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/home_coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/appbar_height"
+                android:background="@color/primaryBackgroundColor">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:text="늘솔길"
+                    android:textColor="@color/tertiaryColor"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_coordinatorLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,23 +57,6 @@
 
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="4dp"
-                android:layout_height="48dp">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_sans_kr_regular"
-                    android:textStyle="bold"
-                    android:text="늘솔길"
-                    android:textColor="@color/tertiaryColor"
-                    android:textSize="24sp" />
-
-
-            </LinearLayout>
 
 
             <LinearLayout
@@ -47,9 +65,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:padding="8dp"
                 android:background="@drawable/secondary_corner_layout"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -61,8 +79,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
-                        android:layout_marginRight="2dp"
                         android:layout_marginLeft="8dp"
+                        android:layout_marginRight="2dp"
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:gravity="center_vertical"
                         android:text="테스트"
@@ -75,12 +93,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
-                        android:textStyle="bold"
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:gravity="center_vertical"
                         android:text="님 오늘은 어디로 떠나볼까요?"
                         android:textColor="@color/secondaryTextColor"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -100,29 +118,29 @@
                             android:layout_width="128dp"
                             android:layout_height="160dp"
                             android:layout_marginHorizontal="8dp"
-                            android:orientation="vertical"
-                            android:background="@drawable/primary_color_opacity_40_corner_layout">
+                            android:background="@drawable/primary_color_corner_layout"
+                            android:orientation="vertical">
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left|top"
+                                android:layout_weight="9"
                                 android:fontFamily="@font/noto_sans_kr_regular"
                                 android:gravity="left|top"
                                 android:padding="16dp"
                                 android:text="추천코스 보기"
-                                android:layout_weight="9"
                                 android:textColor="@color/primaryLightTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <View
-                                android:layout_marginVertical="8dp"
-                                android:layout_marginHorizontal="4dp"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:layout_weight="1"
                                 android:layout_gravity="bottom|right"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginVertical="8dp"
+                                android:layout_weight="1"
                                 android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
                                 android:backgroundTint="@color/primaryBackgroundColor" />
 
@@ -134,30 +152,30 @@
                             android:layout_width="128dp"
                             android:layout_height="160dp"
                             android:layout_marginHorizontal="8dp"
-                            android:orientation="vertical"
-                            android:background="@drawable/primary_color_opacity_80_corner_layout">
+                            android:background="@drawable/primary_color_opacity_40_corner_layout"
+                            android:orientation="vertical">
 
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left|top"
+                                android:layout_weight="9"
                                 android:fontFamily="@font/noto_sans_kr_regular"
                                 android:gravity="left|top"
                                 android:padding="16dp"
                                 android:text="입문자용 코스"
-                                android:layout_weight="9"
                                 android:textColor="@color/primaryLightTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <View
-                                android:layout_marginVertical="8dp"
-                                android:layout_marginHorizontal="4dp"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:layout_weight="1"
                                 android:layout_gravity="right|bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginVertical="8dp"
+                                android:layout_weight="1"
                                 android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
                                 android:backgroundTint="@color/primaryBackgroundColor" />
 
@@ -168,37 +186,35 @@
                             android:layout_width="128dp"
                             android:layout_height="160dp"
                             android:layout_marginHorizontal="8dp"
-                            android:orientation="vertical"
-                            android:background="@drawable/primary_color_opacity_60_corner_layout">
-
+                            android:background="@drawable/primary_color_opacity_60_corner_layout"
+                            android:orientation="vertical">
 
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left|top"
+                                android:layout_weight="9"
                                 android:fontFamily="@font/noto_sans_kr_regular"
                                 android:gravity="left|top"
                                 android:padding="16dp"
                                 android:text="추천코스 보기"
-                                android:layout_weight="9"
                                 android:textColor="@color/primaryLightTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <View
-                                android:layout_marginVertical="8dp"
-                                android:layout_marginHorizontal="4dp" android:layout_width="32dp"
+                                android:layout_width="32dp"
                                 android:layout_height="32dp"
-                                android:layout_weight="1"
                                 android:layout_gravity="right|bottom"
+                                android:layout_marginHorizontal="4dp"
+                                android:layout_marginVertical="8dp"
+                                android:layout_weight="1"
                                 android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
                                 android:backgroundTint="@color/primaryBackgroundColor" />
 
 
-
                         </LinearLayout>
-
 
 
                     </LinearLayout>
@@ -212,9 +228,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
-                android:padding="16dp"
                 android:background="@drawable/secondary_corner_layout"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -240,10 +256,10 @@
                         android:layout_marginLeft="2dp"
                         android:fontFamily="@font/noto_sans_kr_regular"
                         android:gravity="center_vertical|center_horizontal"
-                        android:textStyle="bold"
                         android:text="님이 달성하신 기록입니다."
                         android:textColor="@color/primaryTextColor"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
 
@@ -257,8 +273,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:layout_weight="1"
                         android:layout_marginVertical="8dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <View
@@ -266,18 +282,18 @@
                             android:layout_height="48dp"
                             android:layout_gravity="left|center_vertical"
                             android:layout_weight="0"
-                            android:background="@drawable/primary_color_opacity_100" />
+                            android:background="@drawable/home_step_icon" />
 
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginHorizontal="16dp"
+                            android:layout_weight="8"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:gravity="left"
-                            android:layout_gravity="center_vertical"
                             android:text="걸음 수"
-                            android:layout_weight="8"
                             android:textColor="@color/primaryTextColor"
                             android:textSize="18sp" />
 
@@ -286,22 +302,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
+                            android:layout_weight="8"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:gravity="right|center_vertical"
                             android:text="12,324"
-                            android:textStyle="bold"
-                            android:layout_weight="8"
                             android:textColor="@color/primaryTextColor"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right|center_vertical"
+                            android:layout_weight="1"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:gravity="center_vertical"
                             android:text="걸음"
-                            android:layout_weight="1"
                             android:textColor="@color/secondaryTextColor"
                             android:textSize="18sp" />
 
@@ -319,8 +335,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:layout_weight="1"
                         android:layout_marginVertical="8dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <View
@@ -328,18 +344,18 @@
                             android:layout_height="48dp"
                             android:layout_gravity="left|center_vertical"
                             android:layout_weight="0"
-                            android:background="@drawable/primary_color_opacity_60" />
+                            android:background="@drawable/home_clock_icon" />
 
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginHorizontal="16dp"
+                            android:layout_weight="8"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:gravity="left"
-                            android:layout_gravity="center_vertical"
                             android:text="시간"
-                            android:layout_weight="8"
                             android:textColor="@color/primaryTextColor"
                             android:textSize="18sp" />
 
@@ -348,21 +364,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right|center_vertical"
+                            android:layout_weight="8"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:gravity="right"
                             android:text="35"
-                            android:textStyle="bold"
-                            android:layout_weight="8"
                             android:textColor="@color/primaryTextColor"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/noto_sans_kr_regular"
                             android:layout_gravity="right|center_vertical"
-                            android:text="분"
                             android:layout_weight="1"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="분"
                             android:textColor="@color/secondaryTextColor"
                             android:textSize="18sp" />
 
@@ -376,13 +392,12 @@
                         android:background="@color/dividerColor" />
 
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:layout_weight="1"
                         android:layout_marginVertical="8dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal">
 
                         <View
@@ -390,17 +405,17 @@
                             android:layout_height="48dp"
                             android:layout_gravity="left|center_vertical"
                             android:layout_weight="0"
-                            android:background="@drawable/primary_color_opacity_80" />
+                            android:background="@drawable/home_distance_icon" />
 
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:fontFamily="@font/noto_sans_kr_regular"
                             android:layout_gravity="center_vertical"
-                            android:text="이동거리"
+                            android:layout_marginHorizontal="16dp"
                             android:layout_weight="8"
+                            android:fontFamily="@font/noto_sans_kr_regular"
+                            android:text="이동거리"
                             android:textColor="@color/primaryTextColor"
                             android:textSize="18sp" />
 
@@ -409,36 +424,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right|center_vertical"
+                            android:layout_weight="8"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:gravity="right"
                             android:text="19"
-                            android:textStyle="bold"
-                            android:layout_weight="8"
                             android:textColor="@color/primaryTextColor"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right|center_vertical"
+                            android:layout_weight="1"
                             android:fontFamily="@font/noto_sans_kr_regular"
                             android:gravity="center_vertical"
                             android:text="km"
-                            android:layout_weight="1"
                             android:textColor="@color/secondaryTextColor"
                             android:textSize="18sp" />
 
 
                     </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/default_view"
-                        android:layout_marginVertical="4dp"
-                        android:background="@color/dividerColor" />
-
-
-
 
 
                 </LinearLayout>
@@ -460,9 +466,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
                     android:layout_marginHorizontal="16dp"
+                    android:layout_weight="99"
                     android:fontFamily="@font/noto_sans_kr_regular"
                     android:gravity="left"
-                    android:layout_weight="99"
                     android:letterSpacing="-0.05"
                     android:text="저희 서비스에 대해서 궁금하신가요?"
                     android:textColor="@color/primaryLightTextColor"
@@ -470,17 +476,51 @@
                     android:textStyle="bold" />
 
                 <View
-                    android:layout_marginVertical="8dp"
-                    android:layout_marginHorizontal="4dp"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center|right"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginVertical="8dp"
                     android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:backgroundTint="@color/primaryBackgroundColor" />
 
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/secondary_color_corner_layout"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_weight="99"
+                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:gravity="left"
+                    android:letterSpacing="-0.05"
+                    android:text="저희 서비스를 활용해 보세요"
+                    android:textColor="@color/primaryLightTextColor"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center|right"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
+                    android:backgroundTint="@color/primaryBackgroundColor" />
+
+
+            </LinearLayout>
 
 
             <LinearLayout
