@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.databinding.CourseListItemBinding
 
-class CourseAdapter(private val context: Context):   RecyclerView.Adapter<CourseAdapter.EntriesAdapter.EntriesViewHolder>() {
+class CourseAdapter(private val context: Context):   RecyclerView.Adapter<CourseAdapter.EntriesViewHolder>() {
 
     private var entries = mutableListOf<CourseEntry>()
 
@@ -28,8 +28,8 @@ class CourseAdapter(private val context: Context):   RecyclerView.Adapter<Course
 
         holder.itemView.setOnClickListener {
             onItemClickListener?.let { click ->
-                if (position == itemCount - 1) courseEntry.isInitialEntry = true
-                click(weightEntry)
+//                if (position == itemCount - 1) courseEntry.isInitialEntry = true
+//                click(weightEntry)
             }
         }
     }

@@ -49,8 +49,8 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
                 }
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
-//                    viewModel.signIn()
-                    navigateMainScreen()
+                    viewModel.signIn()
+//                    navigateMainScreen()
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }

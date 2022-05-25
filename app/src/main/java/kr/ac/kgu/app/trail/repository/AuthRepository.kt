@@ -42,17 +42,19 @@ class AuthRepositoryImpl @Inject constructor(
         userInfoDao.getUserinfo().last().kakaoUserInfoToSignInRequestDto()
         val response = authService.signIn(SignInRequestDto("100","sangsang"))
         if(response.isSuccessful){
-            Timber.i("signUp response is success?: "+response.body()?.success)
-            Timber.i("signUp response code: "+response.body()?.status)
-            Timber.i("signUp response message: "+response.body()?.meesage)
-            Timber.i("signUp response id: "+response.body()?.data)
+            Timber.i("signIn response is success?: "+response.body()?.success)
+            Timber.i("signIn response code: "+response.body()?.status)
+            Timber.i("signIn response message: "+response.body()?.meesage)
+            Timber.i("signIn response id: "+response.body()?.data)
+            Timber.i("signIn response accessToken: "+ response.body()?.dataTokenDto!!.accessToken)
+            Timber.i("signIn response refreshToken: "+ response.body()?.dataTokenDto!!.refreshToken)
             response.body()?.dataTokenDto?.dataTokenDtoToUserToken()
             emit(DataState.Success(Unit))
         }else{
             emit(DataState.Error(response.body()?.meesage.toString()))
-            Timber.i("signUp response is success?: "+response.body()?.success)
-            Timber.i("signUp response code: "+response.body()?.status)
-            Timber.i("signUp response message: "+response.body()?.meesage)
+            Timber.i("signIn response is success?: "+response.body()?.success)
+            Timber.i("signIn response code: "+response.body()?.status)
+            Timber.i("signIn response message: "+response.body()?.meesage)
         }
     }
     @SuppressLint("CheckResult")
@@ -66,7 +68,7 @@ class AuthRepositoryImpl @Inject constructor(
                 Timber.i("signUp response code: "+response.body()?.status)
                 Timber.i("signUp response message: "+response.body()?.meesage)
                 Timber.i("signUp response id: "+response.body()?.data)
-                emit(DataState.Success(Unit))
+                  emit(DataState.Success(Unit))
             } else {
                 emit(DataState.Error(response.body()?.meesage.toString()))
                  Timber.i("signUp response is success?: "+response.body()?.success)
