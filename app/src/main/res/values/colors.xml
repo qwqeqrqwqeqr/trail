@@ -19,11 +19,15 @@
     <color name="unableColor">#424242</color>
     <color name="background_black_opacity_screen">#33000000</color>
 
-
+    <color name="opacity_zero_color">#00ffffff</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="error">#CC0B04</color>
     <color name="success">#00CB51</color>
+
+    <color name="easy_level_color">#21ADD7</color>
+    <color name="normal_level_color">#F4CF47</color>
+    <color name="hard_level_color">#C8331B</color>
 
 
     <color name="pastel_color_100">#F5BA67</color>

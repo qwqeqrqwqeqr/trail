@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/RaceMapFragment"
+    android:id="@+id/course_nav_graph">
+
+    <fragment
+        android:id="@+id/RaceMapFragment"
+        android:name="kr.ac.kgu.app.trail.ui.race.RaceMapFragment"
+        android:label="@string/course_nav_graph_race_fragment_label_text"
+        tools:layout="@layout/fragment_race_map">
+
+<!--        <action-->
+<!--            android:id="@+id/action_sign_in_to_address"-->
+<!--            app:destination="@id/AddressFragment" />-->
+
+    </fragment>
+
+
+</navigation>

@@ -12,6 +12,7 @@ import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
+import kr.ac.kgu.app.trail.data.service.trail.TrailService
 import kr.ac.kgu.app.trail.repository.*
 
 
@@ -30,7 +31,7 @@ object RepositoryModule {
 
     @ViewModelScoped
     @Provides
-    fun provideCourseRepository():CourseRepository =  CourseRepositoryImpl()
+    fun provideCourseRepository(trailService : TrailService,appDataStore: AppDataStore):CourseRepository =  CourseRepositoryImpl(trailService, appDataStore)
 
 
 

@@ -8,7 +8,8 @@
     <dimen name="default_layout_radius">16dp</dimen>
     <dimen name="default_layout_padding">8dp</dimen>
     <dimen name="default_appbar_title_text_size">24sp</dimen>
-    
+    <dimen name="default_list_item_layout_padding">16dp</dimen>
+
 <!--    splash-->
     <dimen name="splash_title_text_size">28sp</dimen>
     
@@ -54,7 +55,7 @@
     <dimen name="course_list_item_contents_horizontal_margin">2dp</dimen>
     <dimen name="course_list_item_contents_title_text_size">14sp</dimen>
     <dimen name="course_list_item_contents_text_size">16sp</dimen>
-    <dimen name="course_list_item_btn_image_width">4dp</dimen>
+    <dimen name="course_list_item_btn_image_width">32dp</dimen>
     <dimen name="course_list_item_btn_image_height">32dp</dimen>
 
 

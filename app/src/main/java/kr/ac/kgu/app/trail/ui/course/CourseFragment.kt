@@ -3,22 +3,18 @@ package kr.ac.kgu.app.trail.ui.course
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
-
+import kr.ac.kgu.app.trail.data.model.Constants.COURSE_ENTRY
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.databinding.FragmentCourseBinding
-import kr.ac.kgu.app.trail.ui.auth.LoginActivity
 import kr.ac.kgu.app.trail.ui.base.BaseFragment
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.ui.race.RaceActivity
 import kr.ac.kgu.app.trail.util.DataState
+
 
 @AndroidEntryPoint
 class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>>>(
@@ -36,14 +32,9 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
         courseAdapter = CourseAdapter(requireContext())
         binding.courseRecyclerView.apply {
             adapter = courseAdapter
-              }
-
-        courseAdapter.setItemClickListener {
-            //Todo  Naigate RaceActivity
         }
+        courseAdapter.setItemClickListener { showConfirmationDialog(it) }
     }
-
-
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -69,6 +60,30 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
         }
     }
 
+
+    private fun showConfirmationDialog(courseEntry: CourseEntry) {
+        MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialogStyle)
+            .setTitle(getString(R.string.course_dialog_title))
+            .setMessage(setCourseConfirmationDialogDescription(courseEntry))
+            .setPositiveButton(getString(R.string.course_dialog_yes)) { _, _ ->
+                navigateToRace(courseEntry)
+            }
+            .setNegativeButton(getString(R.string.course_dialog_cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }.create().show()
+    }
+
+    private fun setCourseConfirmationDialogDescription(courseEntry: CourseEntry): String =
+        "\n" + resources.getString(R.string.course_list_item_name_text) + ": \t" + courseEntry.courseName + "\n" +
+                resources.getString(R.string.course_list_item_address_text) + ": \t" + courseEntry.courseAddress + "\n" +
+                resources.getString(R.string.course_list_item_distance_text) + ": \t" + courseEntry.courseDistance + "\n" +
+                resources.getString(R.string.course_list_item_time_text) + ": \t" + courseEntry.time + "\n"
+
+    private fun navigateToRace(courseEntry: CourseEntry) {
+        val intent = Intent(requireContext(), RaceActivity::class.java)
+        intent.putExtra(COURSE_ENTRY, courseEntry)
+        startActivity(intent)
+    }
 
 
 }

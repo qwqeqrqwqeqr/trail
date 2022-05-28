@@ -1,8 +1,7 @@
-package kr.ac.kgu.app.trail.ui.address
+package kr.ac.kgu.app.trail.ui.login.address
 
 import android.content.Intent
 import android.os.Bundle
-import android.system.Os.bind
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
@@ -11,7 +10,6 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
-import kr.ac.kgu.app.trail.databinding.FragmentAddressBinding
 import kr.ac.kgu.app.trail.ui.base.InitView
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.ui.main.MainActivity
@@ -21,7 +19,7 @@ import kr.ac.kgu.app.trail.util.toast
 class AddressFragment : Fragment(R.layout.fragment_address), InitView {
 
     private val viewModel: AddressViewModel by viewModels()
-    private val binding by viewBinding(FragmentAddressBinding::bind)
+    private val binding by viewBinding(kr.ac.kgu.app.trail.databinding.FragmentAddressBinding::bind)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

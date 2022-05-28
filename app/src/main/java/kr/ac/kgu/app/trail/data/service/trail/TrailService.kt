@@ -11,7 +11,7 @@ interface TrailService {
 
     @GET("courseList")
     suspend fun getCourseList(
-        @Query("attribute") attribute : String
+        @Query("courseAddress") attribute : String
     ): Response<CourseResponseDto>
 
 

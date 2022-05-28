@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/SignInFragment"
-        android:name="kr.ac.kgu.app.trail.ui.auth.signin.SignInFragment"
-        android:label="@string/main_nav_graph_sign_in_fragment_label_text"
+        android:name="kr.ac.kgu.app.trail.ui.login.signin.SignInFragment"
+        android:label="@string/login_nav_graph_sign_in_fragment_label_text"
         tools:layout="@layout/fragment_sign_in">
 
         <action
@@ -19,8 +19,8 @@
 
     <fragment
         android:id="@+id/AddressFragment"
-        android:name="kr.ac.kgu.app.trail.ui.address.AddressFragment"
-        android:label="@string/main_nav_graph_address_fragment_label_text"
+        android:name="kr.ac.kgu.app.trail.ui.login.address.AddressFragment"
+        android:label="@string/login_nav_graph_address_fragment_label_text"
         tools:layout="@layout/fragment_address">
 
     </fragment>

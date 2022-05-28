@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/address_list_item_text_vertical_margin"
         android:maxLines="1"
-        android:fontFamily="@font/noto_sans_kr_bold"
+        android:fontFamily="@font/noto_sans"
+        android:textStyle="bold"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/address_list_item_text_size"
         android:text="주소"/>

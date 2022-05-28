@@ -1,10 +1,6 @@
-package kr.ac.kgu.app.trail.ui.address
+package kr.ac.kgu.app.trail.ui.login.address
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R

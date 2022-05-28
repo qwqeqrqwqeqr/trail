@@ -4,196 +4,191 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/secondary_corner_layout"
-    android:paddingHorizontal="@dimen/default_layout_padding"
-    android:layout_marginVertical="@dimen/course_list_item_vertical_margin"
-    android:orientation="horizontal">
-
-
-
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:orientation="vertical">
-
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/course_list_item_couse_name_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="청계천 거리"
-            android:textColor="@color/primaryColor"
-            android:fontFamily="@font/noto_sans_kr_bold"
-            android:textSize="@dimen/course_item_list_title_text_size" />
-
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/course_list_item_course_address_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/course_list_item_title_detail_vertical_margin"
-            android:maxLines="1"
-            android:fontFamily="@font/noto_sans_kr_regular"
-            android:text="서울특별시중구세종대로99"
-            android:textColor="@color/tertiaryColor"
-            android:textSize="@dimen/course_list_item_title_detail_text_size" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="6"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_time_pre_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="left"
-                android:text="소요시간"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_title_text_size"/>
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_time_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="right"
-                android:text="32"
-                android:fontFamily="@font/noto_sans_kr_bold"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_text_size"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_time_next_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="left"
-                android:text="분"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_title_text_size"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_distance_pre_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="left"
-                android:text="코스 거리"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_title_text_size" />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_distance_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="right"
-                android:text="805"
-                android:fontFamily="@font/noto_sans_kr_bold"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_text_size" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_distance_next_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="left"
-                android:text="m"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_title_text_size" />
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_level_pre_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="left"
-                android:text="난이도"
-                android:fontFamily="@font/noto_sans_kr_regular"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_title_text_size" />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/course_list_item_level_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
-                android:gravity="right"
-                android:text="쉬움"
-                android:fontFamily="@font/noto_sans_kr_bold"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="@dimen/course_list_item_contents_text_size"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_list_item_layout_padding"
         android:orientation="horizontal">
 
 
-        <View
-            android:layout_width="@dimen/default_view"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/dividerColor" />
+            android:layout_weight="10"
+            android:orientation="vertical">
 
-        <View
-            android:id="@+id/course_list_item_btn_image"
-            android:layout_width="@dimen/course_list_item_btn_image_width"
-            android:layout_height="@dimen/course_list_item_btn_image_height"
-            android:layout_gravity="center"
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_couse_name_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:includeFontPadding="false"
+                android:text="청계천 거리"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/course_item_list_title_text_size" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/course_list_item_course_address_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/course_list_item_title_detail_vertical_margin"
+                android:fontFamily="@font/noto_sans"
+                android:maxLines="1"
+                android:includeFontPadding="false"
+                android:text="서울특별시중구세종대로99"
+                android:textColor="@color/tertiaryColor"
+                android:textSize="@dimen/course_list_item_title_detail_text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/course_list_item_time_pre_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                    android:fontFamily="@font/noto_sans"
+                    android:includeFontPadding="false"
+                    android:gravity="left"
+                    android:text="@string/course_list_item_time_text"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/course_list_item_contents_title_text_size" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/course_list_item_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:includeFontPadding="false"
+                    android:gravity="right"
+                    android:text="32분"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/course_list_item_contents_text_size"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/course_list_item_distance_pre_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                    android:fontFamily="@font/noto_sans"
+                    android:includeFontPadding="false"
+                    android:gravity="left"
+                    android:text="@string/course_list_item_distance_text"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/course_list_item_contents_title_text_size" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/course_list_item_distance_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:gravity="right"
+                    android:includeFontPadding="false"
+                    android:text="805m"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/course_list_item_contents_text_size" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="2dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/course_list_item_level_pre_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="left"
+                    android:includeFontPadding="false"
+                    android:text="@string/course_list_item_level_text"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/course_list_item_contents_title_text_size" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/course_list_item_level_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/course_list_item_contents_horizontal_margin"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:gravity="right"
+                    android:text="쉬움"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/course_list_item_contents_text_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:gravity="center" />
+
+            android:orientation="horizontal">
 
 
+
+            <View
+                android:id="@+id/course_list_item_btn_image"
+                android:layout_marginHorizontal="4dp"
+                android:layout_width="@dimen/course_list_item_btn_image_width"
+                android:layout_height="@dimen/course_list_item_btn_image_height"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+
+
+        </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_view"
+        android:background="@color/dividerColor" />
 
 
 </LinearLayout>

@@ -29,7 +29,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center_vertical"
-                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:fontFamily="@font/noto_sans"
                     android:textStyle="bold"
                     android:text="@string/account_appbar_item_title_text"
                     android:textColor="@color/primaryTextColor"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center_vertical"
                     android:layout_weight="999"
-                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:fontFamily="@font/noto_sans"
                     android:text="내 위치 변경"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="18sp" />
@@ -134,7 +134,7 @@
                     android:layout_gravity="left|center_vertical"
                     android:layout_weight="999"
                     android:text="회원 정보 수정"
-                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:fontFamily="@font/noto_sans"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="18sp" />
 
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center_vertical"
                     android:layout_weight="999"
-                    android:fontFamily="@font/noto_sans_kr_regular"
+                    android:fontFamily="@font/noto_sans"
                     android:text="로그아웃"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="18sp" />

@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.ui.address
+package kr.ac.kgu.app.trail.ui.login.address
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

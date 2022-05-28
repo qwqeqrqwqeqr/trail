@@ -1,6 +1,5 @@
-package kr.ac.kgu.app.trail.ui.address
+package kr.ac.kgu.app.trail.ui.login.address
 
-import androidx.lifecycle.ViewModel
 import kr.ac.kgu.app.trail.data.model.AddressEntry
 import kr.ac.kgu.app.trail.di.DispatcherProvider
 import kr.ac.kgu.app.trail.ui.base.BaseViewModel

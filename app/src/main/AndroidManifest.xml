@@ -23,18 +23,14 @@
             android:theme="@style/main.theme"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:theme="@style/sub.theme" />
         <activity
             android:name=".ui.launch.SplashActivity"
             android:exported="true"
             android:theme="@style/splash.theme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -42,6 +38,11 @@
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:theme="@style/main.theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity

@@ -1,16 +1,11 @@
-package kr.ac.kgu.app.trail.ui.auth
+package kr.ac.kgu.app.trail.ui.login
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.core.view.isVisible
 import dagger.hilt.android.AndroidEntryPoint
-import kr.ac.kgu.app.trail.ui.main.MainActivity
-import kr.ac.kgu.app.trail.R
 import kr.ac.kgu.app.trail.databinding.ActivityLoginBinding
-import kr.ac.kgu.app.trail.util.DataState
-import kr.ac.kgu.app.trail.util.toast
+import kr.ac.kgu.app.trail.databinding.ActivityLoginBinding.inflate
 import kr.ac.kgu.app.trail.util.viewBinding
 
 

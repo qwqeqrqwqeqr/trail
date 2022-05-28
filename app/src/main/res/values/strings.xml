@@ -29,8 +29,10 @@
     <string name="main_nav_graph_account_fragment_label_text">AccountFragment</string>
 
 
-    <string name="main_nav_graph_sign_in_fragment_label_text">SignInFragment</string>
-    <string name="main_nav_graph_address_fragment_label_text">AddressFragment</string>
+    <string name="login_nav_graph_sign_in_fragment_label_text">SignInFragment</string>
+    <string name="login_nav_graph_address_fragment_label_text">AddressFragment</string>
+
+    <string name="course_nav_graph_race_fragment_label_text">RaceFragment</string>
 
 
     <!-- Bottom Navigation main menu item  -->
@@ -47,6 +49,21 @@
 
     <!-- Toast Message  -->
     <string name="sign_up_error_toast_message_text">인증을 실패하셨습니다.</string>
+
+
+    <!--    course Fragment  Dialog -->
+    <string name="course_dialog_title">해당 코스로 산책을 진행할까요?</string>
+<!--    <string name="sign_up_error_toast_message_text">인증을 실패하셨습니다.</string>-->
+    <string name="course_dialog_yes">시작하기</string>
+    <string name="course_dialog_cancel">취소</string>
+
+
+<!--    course list item-->
+    <string name="course_list_item_name_text">코스이름</string>
+    <string name="course_list_item_address_text">코스주소</string>
+    <string name="course_list_item_time_text">소요시간</string>
+    <string name="course_list_item_distance_text">코스거리</string>
+    <string name="course_list_item_level_text">난이도</string>
 
 
 </resources>

@@ -18,12 +18,12 @@ class CourseViewModel @Inject constructor(
     private val dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<DataState<List<CourseEntry>>>() {
     override fun fetchInitialData() {
-        getAllCourseEntries()
+        getCourseEntries()
     }
 
-    private fun getAllCourseEntries() {
+    private fun getCourseEntries() {
         viewModelScope.launch(dispatcherProvider.io) {
-            courseRepository.getAllCourseList().collect {
+            courseRepository.getCourseList().collect {
                 modelLiveData.postValue(it)
             }
         }

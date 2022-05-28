@@ -3,6 +3,7 @@ package kr.ac.kgu.app.trail.repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
+import kr.ac.kgu.app.trail.data.datasource.remote.auth.course.courseDtoToCourseEntry
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.data.service.trail.AuthService
 import kr.ac.kgu.app.trail.data.service.trail.TrailService
@@ -24,17 +25,14 @@ class CourseRepositoryImpl @Inject constructor(
         emit(DataState.Loading)
         val response = trailService.getCourseList(testCode)
         if (response.isSuccessful) {
-            response.let {
-                emit(DataState.Success(response.body()?.data.))
-            }
+            emit(DataState.Success(response.body()?.courseDtoToCourseEntry()?.sortedByDescending(){it.courseId}
+                ?: emptyList()))
         } else {
             emit(DataState.Error(response.body()?.meesage.toString()))
             Timber.i("getCourseList response is success?: "+response.body()?.success)
             Timber.i("getCourseList response code: "+response.body()?.status)
             Timber.i("getCourseList response message: "+response.body()?.meesage)
         }
-
-
     }
 }
 
