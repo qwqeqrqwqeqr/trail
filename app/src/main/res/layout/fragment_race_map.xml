@@ -6,9 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <RelativeLayout
         android:id="@+id/race_map_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/race_map_trace_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="128dp"
+        android:layout_gravity="right|bottom"
+        android:background="@drawable/gps_circle_btn"/>
+
+
+
+
+
 
 </FrameLayout>
