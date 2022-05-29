@@ -1,5 +1,7 @@
 package kr.ac.kgu.app.trail.ui.course
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,9 +19,16 @@ class CourseViewModel @Inject constructor(
     private val courseRepository: CourseRepository,
     private val dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<DataState<List<CourseEntry>>>() {
+
+
+    private val _saveTempCourseLiveData = MutableLiveData<DataState<Unit>>()
+    val saveTempCourseLiveData: LiveData<DataState<Unit>> = _saveTempCourseLiveData
+
     override fun fetchInitialData() {
         getCourseEntries()
     }
+
+
 
     private fun getCourseEntries() {
         viewModelScope.launch(dispatcherProvider.io) {
@@ -28,4 +37,15 @@ class CourseViewModel @Inject constructor(
             }
         }
     }
+
+
+    fun saveTempCourse(courseEntry: CourseEntry) {
+        viewModelScope.launch(dispatcherProvider.io) {
+            courseRepository.saveTempCourse(courseEntry).collect {
+                _saveTempCourseLiveData.postValue(it)
+            }
+        }
+    }
+
+
 }

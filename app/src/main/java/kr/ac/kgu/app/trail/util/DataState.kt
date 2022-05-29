@@ -7,9 +7,4 @@ sealed class DataState<out R> {
 
     object Loading : DataState<Nothing>()
 
-//    override fun toString(): String {
-//        return  when(this){
-//
-//        }
-//    }
 }

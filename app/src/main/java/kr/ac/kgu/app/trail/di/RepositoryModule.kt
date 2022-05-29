@@ -8,6 +8,7 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
+import kr.ac.kgu.app.trail.data.datasource.local.dao.CourseDao
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
@@ -31,7 +32,10 @@ object RepositoryModule {
 
     @ViewModelScoped
     @Provides
-    fun provideCourseRepository(trailService : TrailService,appDataStore: AppDataStore):CourseRepository =  CourseRepositoryImpl(trailService, appDataStore)
+    fun provideCourseRepository(
+        trailService : TrailService,
+        appDataStore: AppDataStore,
+        courseDao: CourseDao):CourseRepository =  CourseRepositoryImpl(trailService, appDataStore,courseDao)
 
 
 

@@ -6,7 +6,9 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-const val DATE_FORMAT = "dd.MM.yyyy"
+const val DATE_FORMAT = "yyyy-MM-dd HH:mm:ss"
+
+
 
 fun getCurrentDate(): String {
     val calendar = Calendar.getInstance()
@@ -35,3 +37,4 @@ fun parseNoYearDate(selectedDate: String): String {
         ""
     }
 }
+

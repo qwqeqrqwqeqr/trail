@@ -15,7 +15,8 @@ import kotlinx.coroutines.Dispatchers
 import kr.ac.kgu.app.trail.data.datasource.local.LocalDataConstants
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
-import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStoreManager
+import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStoreImpl
+
 import kr.ac.kgu.app.trail.data.datasource.local.db.AppDatabase
 import kr.ac.kgu.app.trail.ui.base.ConnectivityManager
 import javax.inject.Singleton
@@ -29,7 +30,7 @@ object AppModule {
     fun provideDataStoreManager(
         @ApplicationContext
         context: Context
-    ): AppDataStore =  AppDataStoreManager(context)
+    ): AppDataStore =  AppDataStoreImpl(context)
 
 
     @Singleton

@@ -1,11 +1,16 @@
 package kr.ac.kgu.app.trail.data.model
 
-data class SaveCourseInfo(
-    val courseName: String,
-    val CourseAddress: String,
-    val workStartTime: String,
-    val workFinishTime: String,
-    val distance: Float
-)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-//Todo step에 대한 model 정보 추가하기
+@Parcelize
+data class SaveCourseInfo(
+    val courseName:String,
+    val courseAddress: String,
+    val workStartTime: String = "",
+    val workFinishTime: String ="",
+    val distance : Int,
+    val stepCount : Int =0,
+    val workTime : Int =0
+): Parcelable
+

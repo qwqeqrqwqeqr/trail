@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kr.ac.kgu.app.trail.data.datasource.local.LocalDataConstants
+import kr.ac.kgu.app.trail.data.datasource.local.dao.CourseDao
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.db.AppDatabase
 import javax.inject.Singleton
@@ -30,5 +31,11 @@ object DatabaseModule {
     @Provides
     fun provideUserInfoDao(appDatabase: AppDatabase): UserInfoDao {
         return appDatabase.UserInfoDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideCourseDao(appDatabase: AppDatabase): CourseDao {
+        return appDatabase.CourseDao()
     }
 }

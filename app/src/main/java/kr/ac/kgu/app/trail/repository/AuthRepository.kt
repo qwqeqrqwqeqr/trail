@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
-import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoToSignInRequestDto
-import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoToSignUpRequestDto
+import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoEntityToSignInRequestDto
+import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoEntityToSignUpRequestDto
 import kr.ac.kgu.app.trail.data.datasource.remote.auth.dataTokenDtoToUserToken
 import kr.ac.kgu.app.trail.data.datasource.remote.auth.signin.SignInRequestDto
 import kr.ac.kgu.app.trail.data.datasource.remote.auth.signup.SignUpRequestDto
@@ -39,7 +39,7 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun signIn(): Flow<DataState<Unit>> = flow {
         emit(DataState.Loading)
-        userInfoDao.getUserinfo().last().kakaoUserInfoToSignInRequestDto()
+        userInfoDao.getUserinfo().last().kakaoUserInfoEntityToSignInRequestDto()
         val response = authService.signIn(SignInRequestDto("100","sangsang"))
         if(response.isSuccessful){
             Timber.i("signIn response is success?: "+response.body()?.success)
@@ -62,7 +62,7 @@ class AuthRepositoryImpl @Inject constructor(
 
         flow {
             emit(DataState.Loading)
-            val response = authService.signUp(userInfoDao.getUserinfo().last().kakaoUserInfoToSignUpRequestDto())
+            val response = authService.signUp(userInfoDao.getUserinfo().last().kakaoUserInfoEntityToSignUpRequestDto())
             if (response.isSuccessful) {
                 Timber.i("signUp response is success?: "+response.body()?.success)
                 Timber.i("signUp response code: "+response.body()?.status)

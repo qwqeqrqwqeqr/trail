@@ -2,18 +2,20 @@ package kr.ac.kgu.app.trail.ui.course
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.core.view.isVisible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
-import kr.ac.kgu.app.trail.data.model.Constants.COURSE_ENTRY
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.databinding.FragmentCourseBinding
 import kr.ac.kgu.app.trail.ui.base.BaseFragment
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.ui.race.RaceActivity
 import kr.ac.kgu.app.trail.util.DataState
+import kr.ac.kgu.app.trail.util.parser.getCurrentDate
+import kr.ac.kgu.app.trail.util.toast
 
 
 @AndroidEntryPoint
@@ -29,11 +31,9 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        courseAdapter = CourseAdapter(requireContext())
-        binding.courseRecyclerView.apply {
-            adapter = courseAdapter
-        }
-        courseAdapter.setItemClickListener { showConfirmationDialog(it) }
+        subscribeToObservers()
+        initUi()
+
     }
 
 
@@ -43,6 +43,13 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
+    private fun initUi() {
+        courseAdapter = CourseAdapter(requireContext())
+        binding.courseRecyclerView.apply {
+            adapter = courseAdapter
+        }
+        courseAdapter.setItemClickListener { showConfirmationDialog(it) }
+    }
 
     override fun updateUi(model: DataState<List<CourseEntry>>) {
         when (model) {
@@ -60,13 +67,30 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
         }
     }
 
+    private fun subscribeToObservers() {
+        viewModel.saveTempCourseLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Error -> {
+                    binding.progressBar.isVisible = false
+                    this.toast(resources.getString(R.string.sign_up_error_toast_message_text))
+                }
+                is DataState.Success -> {
+                    binding.progressBar.isVisible = false
+                    navigateToRace()
+                }
+                DataState.Loading -> binding.progressBar.isVisible = true
+            }
+        }
+
+    }
+
 
     private fun showConfirmationDialog(courseEntry: CourseEntry) {
         MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialogStyle)
             .setTitle(getString(R.string.course_dialog_title))
             .setMessage(setCourseConfirmationDialogDescription(courseEntry))
             .setPositiveButton(getString(R.string.course_dialog_yes)) { _, _ ->
-                navigateToRace(courseEntry)
+                viewModel.saveTempCourse(courseEntry)
             }
             .setNegativeButton(getString(R.string.course_dialog_cancel)) { dialog, _ ->
                 dialog.dismiss()
@@ -79,9 +103,9 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
                 resources.getString(R.string.course_list_item_distance_text) + ": \t" + courseEntry.courseDistance + "\n" +
                 resources.getString(R.string.course_list_item_time_text) + ": \t" + courseEntry.time + "\n"
 
-    private fun navigateToRace(courseEntry: CourseEntry) {
+
+    private fun navigateToRace() {
         val intent = Intent(requireContext(), RaceActivity::class.java)
-        intent.putExtra(COURSE_ENTRY, courseEntry)
         startActivity(intent)
     }
 

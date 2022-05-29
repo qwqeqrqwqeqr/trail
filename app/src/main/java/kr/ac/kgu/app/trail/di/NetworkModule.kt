@@ -54,8 +54,7 @@ object NetworkModule {
             .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+            .build() }
 
 
     @Singleton

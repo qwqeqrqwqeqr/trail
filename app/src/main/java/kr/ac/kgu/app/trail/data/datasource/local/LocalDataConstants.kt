@@ -6,4 +6,5 @@ object LocalDataConstants {
     const val APP_DATABASE = "app"
 
     const val ID="id"
+    const val COURSE_ID="course_id"
 }
