@@ -1,7 +1,8 @@
 package kr.ac.kgu.app.trail.data.datasource.remote.auth.signin
 
 import com.google.gson.annotations.SerializedName
-import kr.ac.kgu.app.trail.data.datasource.remote.auth.DataTokenDto
+import kr.ac.kgu.app.trail.data.datasource.remote.DataTokenDto
+
 
 data class SignInResponseDto(
     @SerializedName("status")

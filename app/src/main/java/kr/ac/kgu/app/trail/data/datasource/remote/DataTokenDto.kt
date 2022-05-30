@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.data.datasource.remote.auth
+package kr.ac.kgu.app.trail.data.datasource.remote
 
 import com.google.gson.annotations.SerializedName
 import kr.ac.kgu.app.trail.data.model.UserToken

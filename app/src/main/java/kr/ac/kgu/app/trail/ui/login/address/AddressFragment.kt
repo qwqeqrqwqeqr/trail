@@ -1,10 +1,12 @@
 package kr.ac.kgu.app.trail.ui.login.address
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -12,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
 import kr.ac.kgu.app.trail.ui.base.InitView
 import kr.ac.kgu.app.trail.ui.base.viewBinding
+import kr.ac.kgu.app.trail.ui.login.address.bottomsheet.AddressBottomSheetFragment
 import kr.ac.kgu.app.trail.ui.main.MainActivity
 import kr.ac.kgu.app.trail.util.DataState
 import kr.ac.kgu.app.trail.util.toast
@@ -36,6 +39,9 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
         binding.addressNextBtn.setOnClickListener {
             viewModel.signUp()
         }
+         binding.addressSelectBtn.setOnClickListener {
+             viewModel.getAddressList()
+         }
     }
 
     private fun subscribeToObservers() {
@@ -48,7 +54,6 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
                     viewModel.signIn()
-//                    navigateMainScreen()
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
@@ -67,8 +72,43 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
         }
+
+        viewModel.getAddressListLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Error -> {
+                    binding.progressBar.isVisible = false
+                }
+                is DataState.Success -> {
+                    binding.progressBar.isVisible = false
+                    showAddressBottomSheet(result.data)
+                }
+                DataState.Loading -> binding.progressBar.isVisible = true
+            }
+        }
+        viewModel.selectedAddressLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                "" -> {
+                    binding.addressNextBtn.isEnabled =false
+                    binding.addressNextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.unableColor))
+                }
+                else -> {
+                    binding.addressNextBtn.isEnabled =true
+                    binding.addressNextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.primaryColor))
+                }
+            }
+        }
     }
 
+
+    private fun showAddressBottomSheet(addressEntryList : List<String>) {
+        val bottomSheetFragment = AddressBottomSheetFragment(requireContext(),addressEntryList)
+        bottomSheetFragment.show(childFragmentManager, bottomSheetFragment.tag)
+        bottomSheetFragment.setOnClickListener(object :AddressBottomSheetFragment.onBottomSheetClickListener{
+            override fun onClick(item: String) {
+                viewModel.selectAddress(item)
+            }
+        })
+    }
 
 
     private fun navigateMainScreen() {

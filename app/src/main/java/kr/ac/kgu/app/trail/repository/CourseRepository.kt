@@ -1,13 +1,12 @@
 package kr.ac.kgu.app.trail.repository
 
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kr.ac.kgu.app.trail.data.datasource.local.LocalDataConstants
 import kr.ac.kgu.app.trail.data.datasource.local.dao.CourseDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.datasource.local.entity.courseEntityToSaveCourseInfo
-import kr.ac.kgu.app.trail.data.datasource.remote.auth.course.courseDtoToCourseEntry
+import kr.ac.kgu.app.trail.data.datasource.remote.course.course.courseDtoToCourseEntry
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.data.model.SaveCourseInfo
 import kr.ac.kgu.app.trail.data.model.courseEntryToCourseEntity
@@ -32,7 +31,7 @@ class CourseRepositoryImpl @Inject constructor(
 
     override suspend fun getCourseList(): Flow<DataState<List<CourseEntry>>> = flow {
         emit(DataState.Loading)
-        val response = trailService.getCourseList(testCode)
+        val response = trailService.getCourseList("","","","")
         if (response.isSuccessful) {
             emit(DataState.Success(response.body()?.courseDtoToCourseEntry()?.sortedByDescending(){it.courseId}
                 ?: emptyList()))

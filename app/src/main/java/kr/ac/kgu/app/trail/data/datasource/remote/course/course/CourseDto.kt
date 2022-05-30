@@ -1,8 +1,6 @@
-package kr.ac.kgu.app.trail.data.datasource.remote.auth.course
+package kr.ac.kgu.app.trail.data.datasource.remote.course.course
 
 import com.google.gson.annotations.SerializedName
-import kr.ac.kgu.app.trail.data.datasource.remote.auth.DataTokenDto
-import kr.ac.kgu.app.trail.data.model.UserToken
 
 data class CourseDto(
     @SerializedName("courseId")

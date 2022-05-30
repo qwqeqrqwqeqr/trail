@@ -1,10 +1,13 @@
 package kr.ac.kgu.app.trail.ui.course
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
@@ -14,7 +17,6 @@ import kr.ac.kgu.app.trail.ui.base.BaseFragment
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.ui.race.RaceActivity
 import kr.ac.kgu.app.trail.util.DataState
-import kr.ac.kgu.app.trail.util.parser.getCurrentDate
 import kr.ac.kgu.app.trail.util.toast
 
 
@@ -43,12 +45,16 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
+    @SuppressLint("ResourceType")
     private fun initUi() {
         courseAdapter = CourseAdapter(requireContext())
         binding.courseRecyclerView.apply {
             adapter = courseAdapter
         }
         courseAdapter.setItemClickListener { showConfirmationDialog(it) }
+
+
+
     }
 
     override fun updateUi(model: DataState<List<CourseEntry>>) {

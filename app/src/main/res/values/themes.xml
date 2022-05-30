@@ -80,9 +80,32 @@
     <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar"><item name="android:windowFullscreen">true</item></style>
 
 
+<!--    Chip-->
+    <style name="ChipStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="fontFamily">@font/noto_sans</item>
+    </style>
 
+<!--        bottomSheet theme-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
+    </style>
+    <style name="BottomSheetDialog"
+        parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+    <style name="BottomSheet" parent="Widget.Material3.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceBottomSheetDialog</item>
+    </style>
 
-
+    <style name="ShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/bottom_sheet_layout_radius</item>
+        <item name="cornerSizeTopRight">@dimen/bottom_sheet_layout_radius</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
 
 
 <!--    material alert-->

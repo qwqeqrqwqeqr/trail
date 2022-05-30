@@ -6,20 +6,24 @@
     android:padding="@dimen/default_layout_padding"
     android:orientation="vertical">
 
+
+
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/address_list_item_text"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/address_list_item_text_vertical_margin"
-        android:maxLines="1"
+        android:includeFontPadding="false"
+        android:gravity="center"
         android:fontFamily="@font/noto_sans"
         android:textStyle="bold"
         android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/address_list_item_text_size"
+        android:layout_marginBottom="8dp"
         android:text="주소"/>
 
     <View
-        android:id="@+id/address_list_item_divide"
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_view"
         android:layout_marginVertical="@dimen/address_list_item_divider_vertical_margin"

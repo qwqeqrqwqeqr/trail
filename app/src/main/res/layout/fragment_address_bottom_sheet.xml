@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_view"
+    android:padding="@dimen/default_layout_padding"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:animateLayoutChanges="false"
+    android:orientation="vertical"
+    tools:context=".ui.login.address.bottomsheet.AddressBottomSheetFragment">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/address_bottom_sheet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="주소를 선택하세요"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="24sp"
+        android:includeFontPadding="false"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/noto_sans"/>
+
+    <ListView
+        android:id="@+id/address_bottom_sheet_list_view"
+        android:textAlignment="center"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:nestedScrollingEnabled="true"
+        android:layout_height="256dp"
+        />
+
+
+</LinearLayout>
+
+

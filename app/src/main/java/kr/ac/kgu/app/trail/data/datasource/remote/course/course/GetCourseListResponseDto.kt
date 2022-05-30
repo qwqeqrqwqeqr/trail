@@ -1,10 +1,11 @@
-package kr.ac.kgu.app.trail.data.datasource.remote.auth.course
+package kr.ac.kgu.app.trail.data.datasource.remote.course.course
 
 import com.google.gson.annotations.SerializedName
-import kr.ac.kgu.app.trail.data.datasource.remote.auth.DataTokenDto
+import kr.ac.kgu.app.trail.data.datasource.remote.DataTokenDto
+
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 
-data class CourseResponseDto(
+data class GetCourseListResponseDto(
     @SerializedName("status")
     var status: Int,
     @SerializedName("success")
@@ -18,7 +19,7 @@ data class CourseResponseDto(
 )
 
 
-fun CourseResponseDto.courseDtoToCourseEntry(): List<CourseEntry> {
+fun GetCourseListResponseDto.courseDtoToCourseEntry(): List<CourseEntry> {
     return data?.map {
         CourseEntry(
             courseId = it.courseId,

@@ -3,7 +3,6 @@ package kr.ac.kgu.app.trail.data.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import kr.ac.kgu.app.trail.data.datasource.local.entity.CourseEntity
-import kr.ac.kgu.app.trail.data.datasource.remote.auth.course.CourseResponseDto
 
 @Parcelize
 class CourseEntry(

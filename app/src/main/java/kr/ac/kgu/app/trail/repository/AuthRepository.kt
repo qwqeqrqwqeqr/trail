@@ -13,9 +13,9 @@ import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoEntityToSignInRequestDto
 import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoEntityToSignUpRequestDto
-import kr.ac.kgu.app.trail.data.datasource.remote.auth.dataTokenDtoToUserToken
 import kr.ac.kgu.app.trail.data.datasource.remote.auth.signin.SignInRequestDto
 import kr.ac.kgu.app.trail.data.datasource.remote.auth.signup.SignUpRequestDto
+import kr.ac.kgu.app.trail.data.datasource.remote.dataTokenDtoToUserToken
 import kr.ac.kgu.app.trail.data.model.*
 import kr.ac.kgu.app.trail.data.service.kakao.KakaoService
 import kr.ac.kgu.app.trail.data.service.trail.AuthService

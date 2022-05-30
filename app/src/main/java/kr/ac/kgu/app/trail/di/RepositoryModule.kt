@@ -38,6 +38,13 @@ object RepositoryModule {
         courseDao: CourseDao):CourseRepository =  CourseRepositoryImpl(trailService, appDataStore,courseDao)
 
 
+    @ViewModelScoped
+    @Provides
+    fun provideUserRepository(
+        trailService : TrailService):UserRepository =  UserRepositoryImpl(trailService)
+
+
+
 
     @ViewModelScoped
     @Provides

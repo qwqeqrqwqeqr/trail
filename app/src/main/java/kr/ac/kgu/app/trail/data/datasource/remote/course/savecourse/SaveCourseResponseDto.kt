@@ -1,10 +1,10 @@
-package kr.ac.kgu.app.trail.data.datasource.remote.auth.signup
+package kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse
 
 import com.google.gson.annotations.SerializedName
 import kr.ac.kgu.app.trail.data.datasource.remote.DataTokenDto
 
 
-data class SignUpResponseDto(
+data class SaveCourseResponseDto(
     @SerializedName("status")
     var status: Int,
     @SerializedName("success")
@@ -16,4 +16,3 @@ data class SignUpResponseDto(
     @SerializedName("data")
     var data: Int?
 )
-

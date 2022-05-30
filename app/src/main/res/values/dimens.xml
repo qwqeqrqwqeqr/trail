@@ -6,14 +6,15 @@
     <dimen name="appbar_extended_height">96dp</dimen>
     <dimen name="btn_radius">8dp</dimen>
     <dimen name="default_layout_radius">16dp</dimen>
-    <dimen name="default_layout_padding">8dp</dimen>
+    <dimen name="bottom_sheet_layout_radius">32dp</dimen>
+    <dimen name="default_layout_padding">16dp</dimen>
     <dimen name="default_appbar_title_text_size">24sp</dimen>
     <dimen name="default_list_item_layout_padding">16dp</dimen>
 
 <!--    splash-->
     <dimen name="splash_title_text_size">28sp</dimen>
     
-    
+
     
     
 <!--    signin-->
@@ -43,9 +44,10 @@
 <!--    address list item-->
     <dimen name="address_list_item_text_vertical_margin">4dp</dimen>
     <dimen name="address_list_item_divider_vertical_margin">2dp</dimen>
-    <dimen name="address_list_item_text_size">18sp</dimen>
+    <dimen name="address_list_item_text_size">20sp</dimen>
 
-
+<!--    course-->
+    <dimen name="course_recycler_view_top_margin">112dp</dimen>
 <!--    course list item-->
     <dimen name="course_list_item_vertical_margin">8dp</dimen>
     <dimen name="course_item_list_title_text_size">20sp</dimen>

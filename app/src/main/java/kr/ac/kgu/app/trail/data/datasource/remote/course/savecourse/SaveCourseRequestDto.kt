@@ -1,4 +1,4 @@
-package kr.ac.kgu.app.trail.data.datasource.remote.auth.savecourse
+package kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse
 
 import com.google.gson.annotations.SerializedName
 
