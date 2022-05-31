@@ -1,5 +1,6 @@
 package kr.ac.kgu.app.trail.ui.launch
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import kr.ac.kgu.app.trail.ui.login.LoginActivity
 import kr.ac.kgu.app.trail.util.Constants.SPLASH_DELAY
 import kr.ac.kgu.app.trail.util.viewBinding
 
+@SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 

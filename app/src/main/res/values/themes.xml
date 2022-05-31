@@ -81,11 +81,7 @@
 
 
 <!--    Chip-->
-    <style name="ChipStyle">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/primaryTextColor</item>
-        <item name="fontFamily">@font/noto_sans</item>
-    </style>
+
 
 <!--        bottomSheet theme-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">

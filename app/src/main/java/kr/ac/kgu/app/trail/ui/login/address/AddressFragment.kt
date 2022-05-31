@@ -67,7 +67,7 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
                 }
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
-                    navigateMainScreen()
+                    viewModel.saveAddress()
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
@@ -81,6 +81,19 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
                     showAddressBottomSheet(result.data)
+                }
+                DataState.Loading -> binding.progressBar.isVisible = true
+            }
+        }
+
+        viewModel.saveAddressListLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Error -> {
+                    binding.progressBar.isVisible = false
+                }
+                is DataState.Success -> {
+                    binding.progressBar.isVisible = false
+                    navigateMainScreen()
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }

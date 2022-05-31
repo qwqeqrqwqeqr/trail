@@ -31,6 +31,9 @@ class AddressViewModel @Inject constructor(
     private val _getAddressListLiveData = MutableLiveData<DataState<List<String>>>()
     val getAddressListLiveData: LiveData<DataState<List<String>>> = _getAddressListLiveData
 
+    private val _saveAddressListLiveData = MutableLiveData<DataState<Unit>>()
+    val saveAddressListLiveData: LiveData<DataState<Unit>> = _saveAddressListLiveData
+
     init { _selectedAddressLiveData.postValue("") }
 
     fun selectAddress(item:String){
@@ -49,6 +52,14 @@ class AddressViewModel @Inject constructor(
         viewModelScope.launch(dispatcherProvider.io) {
             userRepository.getAddressList().collect {
                 _getAddressListLiveData.postValue(it)
+            }
+        }
+    }
+
+    fun saveAddress(){
+        viewModelScope.launch(dispatcherProvider.io) {
+            userRepository.saveAddress(_selectedAddressLiveData.value.toString()).collect {
+                _saveAddressListLiveData.postValue(it)
             }
         }
     }

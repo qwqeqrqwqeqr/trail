@@ -4,6 +4,7 @@ import kr.ac.kgu.app.trail.data.datasource.remote.course.course.GetCourseListRes
 import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseRequestDto
 import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.address.GetAddressListResponseDto
+import kr.ac.kgu.app.trail.data.datasource.remote.user.address.SaveAddressResponseDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -29,5 +30,6 @@ interface TrailService {
     @GET("address")
     suspend fun getAddressList(): Response<GetAddressListResponseDto>
 
-
+    @POST("userLocation")
+    suspend fun saveAddress(@Body location: String): Response<SaveAddressResponseDto>
 }

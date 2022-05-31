@@ -51,54 +51,38 @@
             app:layout_constraintTop_toBottomOf="@id/account_coordinatorLayout">
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/course_chip_group"
+                    android:id="@+id/course_filter_chip_group"
                     android:padding="16dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:singleLine="true"
-                    app:singleSelection="true">
+                    app:chipSpacingHorizontal="12dp"
+                    app:singleLine="true">
+
 
                     <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:id="@+id/chip1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="1번"/>
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
                         android:text="1번"/>
 
+<!--                    android:checked="true"-->
+<!--                    android:textColor="@color/primaryLightTextColor"-->
+<!--                    app:chipBackgroundColor="@color/primaryColor"-->
+<!--                    android:textSize="14sp"-->
                     <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
+
+                        android:id="@+id/chip2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="1번"/>
+                        style="@style/Widget.MaterialComponents.Chip.Filter"
+                        android:text="2번"/>
 
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="1번"/>
 
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="1번"/>
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="1번"/>
-
+<!--                    android:checked="true"-->
+<!--                    android:textColor="@color/primaryLightTextColor"-->
+<!--                    app:chipBackgroundColor="@color/primaryColor"-->
+<!--                    android:textSize="14sp"-->
 
                 </com.google.android.material.chip.ChipGroup>
 

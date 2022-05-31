@@ -53,6 +53,15 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
         }
         courseAdapter.setItemClickListener { showConfirmationDialog(it) }
 
+        binding.courseFilterChipGroup.setOnCheckedChangeListener {
+                group, checkedId ->
+            when(checkedId){
+                R.id.chip1 -> {
+                    requireActivity().toast("ㅇㄴㅁㅇㅁㅇㅁ")
+                }
+            }
+
+        }
 
 
     }

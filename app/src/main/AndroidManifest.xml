@@ -31,9 +31,11 @@
             android:name=".ui.launch.SplashActivity"
             android:exported="true"
             android:theme="@style/splash.theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
@@ -41,11 +43,7 @@
             android:exported="true"
             android:theme="@style/main.theme">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
