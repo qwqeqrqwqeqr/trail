@@ -14,6 +14,7 @@ import kr.ac.kgu.app.trail.R
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.databinding.FragmentCourseBinding
 import kr.ac.kgu.app.trail.ui.base.BaseFragment
+import kr.ac.kgu.app.trail.ui.base.InitView
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.ui.race.RaceActivity
 import kr.ac.kgu.app.trail.util.DataState
@@ -24,7 +25,7 @@ import kr.ac.kgu.app.trail.util.toast
 class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>>>(
     R.layout.fragment_course,
     CourseViewModel::class.java
-) {
+),InitView {
 
     private val binding by viewBinding(FragmentCourseBinding::bind)
     private lateinit var courseAdapter: CourseAdapter
@@ -35,6 +36,7 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
 
         subscribeToObservers()
         initUi()
+        initListeners()
 
     }
 
@@ -46,11 +48,17 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
     }
 
     @SuppressLint("ResourceType")
-    private fun initUi() {
+    override fun initUi() {
         courseAdapter = CourseAdapter(requireContext())
         binding.courseRecyclerView.apply {
             adapter = courseAdapter
         }
+
+
+
+    }
+
+    override fun initListeners() {
         courseAdapter.setItemClickListener { showConfirmationDialog(it) }
 
         binding.courseFilterChipGroup.setOnCheckedChangeListener {
@@ -62,8 +70,6 @@ class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>
             }
 
         }
-
-
     }
 
     override fun updateUi(model: DataState<List<CourseEntry>>) {
