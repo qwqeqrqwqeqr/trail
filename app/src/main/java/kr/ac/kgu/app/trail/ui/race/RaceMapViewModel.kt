@@ -1,8 +1,11 @@
 package kr.ac.kgu.app.trail.ui.race
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kr.ac.kgu.app.trail.data.model.CourseDetail
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.data.model.SaveCourseInfo
 import kr.ac.kgu.app.trail.di.DispatcherProvider
@@ -20,6 +23,18 @@ class RaceMapViewModel @Inject constructor(
         loadTempCourse()
     }
 
+    private val _getCourseDetailLiveData = MutableLiveData<DataState<CourseDetail>>()
+    val getCourseDetailLiveData: LiveData<DataState<CourseDetail>> = _getCourseDetailLiveData
+
+
+
+     fun getCourseDetail(){
+        viewModelScope.launch(dispatcherProvider.io) {
+            courseRepository.getCourseDetail().collect {
+                _getCourseDetailLiveData.postValue(it)
+            }
+        }
+    }
 
     private fun loadTempCourse() {
         viewModelScope.launch(dispatcherProvider.io) {
@@ -29,5 +44,4 @@ class RaceMapViewModel @Inject constructor(
         }
     }
 
-    //TODO model live data type을 좌표정보로 바꿔야함
 }

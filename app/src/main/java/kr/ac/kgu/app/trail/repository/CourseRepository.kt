@@ -7,6 +7,9 @@ import kr.ac.kgu.app.trail.data.datasource.local.dao.CourseDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.datasource.local.entity.courseEntityToSaveCourseInfo
 import kr.ac.kgu.app.trail.data.datasource.remote.course.course.courseDtoToCourseEntry
+import kr.ac.kgu.app.trail.data.datasource.remote.course.detail.courseDetailDtoToCourseDetail
+import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseRequestDto
+import kr.ac.kgu.app.trail.data.model.CourseDetail
 import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.data.model.SaveCourseInfo
 import kr.ac.kgu.app.trail.data.model.courseEntryToCourseEntity
@@ -21,6 +24,8 @@ interface CourseRepository {
     suspend fun getCourseList(): Flow<DataState<List<CourseEntry>>>
     suspend fun saveTempCourse(courseEntry: CourseEntry): Flow<DataState<Unit>>
     suspend fun loadTempCourse(): Flow<DataState<SaveCourseInfo>>
+    suspend fun getCourseDetail(): Flow<DataState<CourseDetail>>
+    suspend fun saveCourse(): Flow<DataState<Unit>>
 }
 
 class CourseRepositoryImpl @Inject constructor(
@@ -62,7 +67,44 @@ class CourseRepositoryImpl @Inject constructor(
             Timber.i("loadTempCourse courseId $it")
         }
     }
+
+    override suspend fun getCourseDetail(): Flow<DataState<CourseDetail>> = flow{
+        emit(DataState.Loading)
+        appDataStore.readInt(LocalDataConstants.COURSE_ID).collect {
+            val response = trailService.getCourseDetail(it)
+            if (response.isSuccessful) {
+                emit(DataState.Success(response.body()!!.courseDetailDtoToCourseDetail()))
+                Timber.i("getAddressList response is success: " + response.body()?.success)
+                Timber.i("getAddressList response code: " + response.body()?.status)
+                Timber.i("getAddressList response message: " + response.body()?.meesage)
+            } else {
+                emit(DataState.Error(response.body()?.meesage.toString()))
+                Timber.i("getCourseList response is success: " + response.body()?.success)
+                Timber.i("getCourseList response code: " + response.body()?.status)
+                Timber.i("getCourseList response message: " + response.body()?.meesage)
+            }
+        }
+    }
+
+    override suspend fun saveCourse(): Flow<DataState<Unit>> = flow{
+        emit(DataState.Loading)
+        appDataStore.readInt(LocalDataConstants.COURSE_ID).collect {
+//            val response = trailService.saveCourse(saveCourseRequestDto)
+//            if (response.isSuccessful) {
+//                emit(DataState.Success(Unit))
+//                Timber.i("saveCourse response is success: " + response.body()?.success)
+//                Timber.i("saveCourse response code: " + response.body()?.status)
+//                Timber.i("saveCourse response message: " + response.body()?.meesage)
+//            } else {
+//                emit(DataState.Error(response.body()?.meesage.toString()))
+//                Timber.i("saveCourse response is success: " + response.body()?.success)
+//                Timber.i("saveCourse response code: " + response.body()?.status)
+//                Timber.i("saveCourse response message: " + response.body()?.meesage)
+//            }
+        }
+    }
+    
+    //TODO view에서 획득한 코스데이터를 종합해서 DTO로 변환하는 과정이 필요함
+
+
 }
-
-
-const val testCode = "중"

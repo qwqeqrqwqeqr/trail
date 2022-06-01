@@ -13,7 +13,7 @@ class SensorHelper(private val context: Context, private val sensorType: Int, pr
 
 
     fun registerListener() {
-        getSensorManager().registerListener(eventListener ,getSensor(), SensorManager.SENSOR_DELAY_NORMAL)
+        getSensorManager().registerListener(eventListener ,getSensor(), SensorManager.SENSOR_DELAY_UI)
     }
     fun unRegisterListener(){
         getSensorManager().unregisterListener(eventListener, getSensor() )

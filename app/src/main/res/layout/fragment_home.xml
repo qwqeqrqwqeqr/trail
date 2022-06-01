@@ -8,6 +8,8 @@
     tools:context=".ui.home.HomeFragment">
 
 
+
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/home_coordinatorLayout"
         android:layout_width="match_parent"
@@ -76,6 +78,7 @@
 
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/name_title_text"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
@@ -238,6 +241,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/name_reward_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
@@ -299,6 +303,7 @@
 
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/step_counter_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
@@ -361,6 +366,7 @@
 
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/time_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right|center_vertical"
@@ -421,6 +427,7 @@
 
 
                         <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/distance_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right|center_vertical"
@@ -541,5 +548,22 @@
 
     </ScrollView>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            app:indicatorColor="@color/primaryColor"
+            app:trackColor="@color/secondaryBackgroundColor" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

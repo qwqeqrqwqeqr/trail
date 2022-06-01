@@ -4,6 +4,7 @@ import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
@@ -11,6 +12,7 @@ import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
@@ -58,22 +60,29 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         if (checkLocationService()) { permissionCheck() }
         initUi()
         initListener()
+        initSensor()
+        subscribeToObservers()
 
-
-        sensorHelper = SensorHelper(requireContext(), Constants.TYPE_STEP_DETECTOR, this)
-        sensorHelper.registerListener()
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
     }
+
+
+    private fun initSensor(){
+        sensorHelper = SensorHelper(requireContext(), Constants.TYPE_STEP_DETECTOR, this)
+        sensorHelper.registerListener()
+        binding.stepDetectorText.text = stepCounter.toString()
+    }
+
 
 
     private fun initListener() {
         binding.raceMapTraceBtn.setOnClickListener {
-//            startTracking()
 
         }
     }
@@ -84,10 +93,27 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     }
 
+    private fun subscribeToObservers() {
+        viewModel.getCourseDetailLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Error -> {
+                    binding.progressBar.isVisible = false
+                    this.toast(resources.getString(R.string.sign_up_error_toast_message_text))
+                }
+                is DataState.Success -> {
+                    binding.progressBar.isVisible = false
+                }
+                DataState.Loading -> binding.progressBar.isVisible = true
+            }
+        }
+
+    }
+
     override fun updateUi(model: DataState<SaveCourseInfo>) {
         when (model) {
             is DataState.Success -> {
                 binding.progressBar.isVisible = false
+                viewModel.getCourseDetail()
             }
             is DataState.Error -> {
                 showErrorDialog()
@@ -182,10 +208,10 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         }
     }
 
-    override fun onSensorChanged(sensorEvent: SensorEvent?) {
-        stepCounter = (stepCounter + sensorEvent?.values!![0]).toInt()
+    override fun onSensorChanged(sensorEvent: SensorEvent) {
+        stepCounter += 1
         binding.stepDetectorText.text = stepCounter.toString()
-        Timber.i("counter" + stepCounter)
+        Timber.i("counter : $stepCounter")
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {

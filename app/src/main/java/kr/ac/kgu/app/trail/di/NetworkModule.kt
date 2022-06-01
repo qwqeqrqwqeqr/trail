@@ -20,6 +20,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import okhttp3.Interceptor
+import timber.log.Timber
 import javax.inject.Qualifier
 
 import javax.inject.Singleton
@@ -72,6 +73,7 @@ object NetworkModule {
                 val newRequest = request().newBuilder()
                     .addHeader("Authorization", Constants.BEARER + UserToken.accessToken)
                     .build()
+                Timber.i("access token info "+ Constants.BEARER + UserToken.accessToken)
                 proceed(newRequest)
             }
         }

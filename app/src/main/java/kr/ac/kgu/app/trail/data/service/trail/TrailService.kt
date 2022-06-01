@@ -1,8 +1,10 @@
 package kr.ac.kgu.app.trail.data.service.trail
 
 import kr.ac.kgu.app.trail.data.datasource.remote.course.course.GetCourseListResponseDto
+import kr.ac.kgu.app.trail.data.datasource.remote.course.detail.GetCourseDetailResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseRequestDto
 import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseResponseDto
+import kr.ac.kgu.app.trail.data.datasource.remote.history.GetHistoryResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.address.GetAddressListResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.address.SaveAddressResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.info.GetUserInfoResponseDto
@@ -32,12 +34,16 @@ interface TrailService {
     suspend fun getAddressList(): Response<GetAddressListResponseDto>
 
     @POST("userLocation")
-    suspend fun saveAddress(@Body location: String): Response<SaveAddressResponseDto>
+    suspend fun saveAddress(@Query("location") location: String): Response<SaveAddressResponseDto>
 
+    @GET("detail")
+    suspend fun getCourseDetail(@Query("courseId") courseId: Int) : Response<GetCourseDetailResponseDto>
 
     @GET("user/view/myPage")
     suspend fun getUserInfo() : Response<GetUserInfoResponseDto>
 
+    @GET("user/history/view")
+    suspend fun getHistory() : Response<GetHistoryResponseDto>
 
 
 

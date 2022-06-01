@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
@@ -28,9 +29,24 @@ class HomeFragment : BaseFragment<HomeViewModel,DataState<UserInfo>>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        subscribeToObservers()
+        initUi()
+        initListeners()
     }
     override fun updateUi(model: DataState<UserInfo>) {
-
+        when (model) {
+            is DataState.Success -> {
+                bindUserInfoText(model.data)
+                binding.progressBar.isVisible = false
+            }
+            is DataState.Error -> {
+                showErrorDialog()
+                binding.progressBar.isVisible = false
+            }
+            DataState.Loading -> {
+                binding.progressBar.isVisible = true
+            }
+        }
     }
 
     private fun subscribeToObservers(){
@@ -41,9 +57,16 @@ class HomeFragment : BaseFragment<HomeViewModel,DataState<UserInfo>>(
     override fun initUi() {
 
     }
+    private fun bindUserInfoText(useInfo: UserInfo){
+        binding.distanceText.text =useInfo.distanceTotal.toString()
+        binding.timeText.text =useInfo.timeTotal.toString()
+        binding.stepCounterText.text =useInfo.stepCountTotal.toString()
+        binding.nameRewardText.text =useInfo.name.toString()
+        binding.nameTitleText.text =useInfo.name.toString()
+    }
 
     override fun initListeners() {
-        TODO("Not yet implemented")
+
     }
 
 

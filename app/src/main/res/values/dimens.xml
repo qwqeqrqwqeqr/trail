@@ -6,6 +6,7 @@
     <dimen name="appbar_extended_height">96dp</dimen>
     <dimen name="btn_radius">8dp</dimen>
     <dimen name="default_layout_radius">16dp</dimen>
+    <dimen name="small_layout_radius">16dp</dimen>
     <dimen name="bottom_sheet_layout_radius">32dp</dimen>
     <dimen name="default_layout_padding">16dp</dimen>
     <dimen name="default_appbar_title_text_size">24sp</dimen>

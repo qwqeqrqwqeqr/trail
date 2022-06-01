@@ -9,6 +9,7 @@ import io.reactivex.Single
 import io.reactivex.internal.operators.single.SingleDoOnSuccess
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kr.ac.kgu.app.trail.data.datasource.local.LocalDataConstants
 import kr.ac.kgu.app.trail.data.datasource.local.dao.UserInfoDao
 import kr.ac.kgu.app.trail.data.datasource.local.datastore.AppDataStore
 import kr.ac.kgu.app.trail.data.datasource.local.entity.kakaoUserInfoEntityToSignInRequestDto
@@ -26,6 +27,7 @@ import javax.inject.Inject
 interface AuthRepository {
     suspend fun signIn(): Flow<DataState<Unit>>
     suspend fun signUp(): Flow<DataState<Unit>>
+    suspend fun checkLogin() : Flow<DataState<Boolean>>
 
 }
 
@@ -36,11 +38,24 @@ class AuthRepositoryImpl @Inject constructor(
     private val appDataStore: AppDataStore
 ) : AuthRepository {
 
+    override suspend fun checkLogin(): Flow<DataState<Boolean>> = flow {
+        emit(DataState.Loading)
+        appDataStore.readInt(LocalDataConstants.ID).collect{
+            if(it!=0){
+                emit(DataState.Success(true))
+                Timber.i("기존에 로그인이 되어 있습니다.")
+            } //아이디가 존재함
+            else{
+                emit(DataState.Success(false))
+                Timber.i("기존에 로그인이 되어있지 않습니다.")
+            } //아이디가 존재하지않음
+        }
+    }
 
     override suspend fun signIn(): Flow<DataState<Unit>> = flow {
         emit(DataState.Loading)
-        userInfoDao.getUserinfo().last().kakaoUserInfoEntityToSignInRequestDto()
-        val response = authService.signIn(SignInRequestDto("100","sangsang"))
+        val result = userInfoDao.getUserinfo().last().kakaoUserInfoEntityToSignInRequestDto()
+        val response = authService.signIn(SignInRequestDto(result.snsId,result.name))
         if(response.isSuccessful){
             Timber.i("signIn response is success?: "+response.body()?.success)
             Timber.i("signIn response code: "+response.body()?.status)
@@ -68,7 +83,9 @@ class AuthRepositoryImpl @Inject constructor(
                 Timber.i("signUp response code: "+response.body()?.status)
                 Timber.i("signUp response message: "+response.body()?.meesage)
                 Timber.i("signUp response id: "+response.body()?.data)
-                  emit(DataState.Success(Unit))
+                response.body()?.data?.let { appDataStore.setInt(LocalDataConstants.ID, it) }
+
+                emit(DataState.Success(Unit))
             } else {
                 emit(DataState.Error(response.body()?.meesage.toString()))
                  Timber.i("signUp response is success?: "+response.body()?.success)
