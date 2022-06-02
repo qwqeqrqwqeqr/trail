@@ -4,7 +4,7 @@ import kr.ac.kgu.app.trail.data.datasource.remote.course.course.GetCourseListRes
 import kr.ac.kgu.app.trail.data.datasource.remote.course.detail.GetCourseDetailResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseRequestDto
 import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseResponseDto
-import kr.ac.kgu.app.trail.data.datasource.remote.history.GetHistoryResponseDto
+import kr.ac.kgu.app.trail.data.datasource.remote.history.GetHistoryListResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.address.GetAddressListResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.address.SaveAddressResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.info.GetUserInfoResponseDto
@@ -43,7 +43,7 @@ interface TrailService {
     suspend fun getUserInfo() : Response<GetUserInfoResponseDto>
 
     @GET("user/history/view")
-    suspend fun getHistory() : Response<GetHistoryResponseDto>
+    suspend fun getHistoryList() : Response<GetHistoryListResponseDto>
 
 
 

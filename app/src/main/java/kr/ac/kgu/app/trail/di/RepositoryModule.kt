@@ -44,6 +44,10 @@ object RepositoryModule {
         trailService : TrailService):UserRepository =  UserRepositoryImpl(trailService)
 
 
+    @ViewModelScoped
+    @Provides
+    fun provideHistoryRepository(
+        trailService : TrailService):HistoryRepository =  HistoryRepositoryImpl(trailService)
 
 
     @ViewModelScoped
