@@ -28,7 +28,6 @@ interface AuthRepository {
     suspend fun signIn(): Flow<DataState<Unit>>
     suspend fun signUp(): Flow<DataState<Unit>>
     suspend fun checkLogin() : Flow<DataState<Boolean>>
-
 }
 
 
@@ -40,38 +39,43 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun checkLogin(): Flow<DataState<Boolean>> = flow {
         emit(DataState.Loading)
-        appDataStore.readInt(LocalDataConstants.ID).collect{
-            if(it!=0){
+        appDataStore.readInt(LocalDataConstants.ID).collect {
+            if (it != 0) {
                 emit(DataState.Success(true))
                 Timber.i("기존에 로그인이 되어 있습니다.")
             } //아이디가 존재함
-            else{
+            else {
                 emit(DataState.Success(false))
                 Timber.i("기존에 로그인이 되어있지 않습니다.")
             } //아이디가 존재하지않음
         }
     }
 
+
+
     override suspend fun signIn(): Flow<DataState<Unit>> = flow {
         emit(DataState.Loading)
         val result = userInfoDao.getUserinfo().last().kakaoUserInfoEntityToSignInRequestDto()
-        val response = authService.signIn(SignInRequestDto(result.snsId,result.name))
-        if(response.isSuccessful){
-            Timber.i("signIn response is success?: "+response.body()?.success)
-            Timber.i("signIn response code: "+response.body()?.status)
-            Timber.i("signIn response message: "+response.body()?.meesage)
-            Timber.i("signIn response id: "+response.body()?.data)
-            Timber.i("signIn response accessToken: "+ response.body()?.dataTokenDto!!.accessToken)
-            Timber.i("signIn response refreshToken: "+ response.body()?.dataTokenDto!!.refreshToken)
+        val response = authService.signIn(SignInRequestDto(result.snsId, result.name))
+        if (response.isSuccessful) {
+            Timber.i("signIn response is success?: " + response.body()?.success)
+            Timber.i("signIn response code: " + response.body()?.status)
+            Timber.i("signIn response message: " + response.body()?.meesage)
+            Timber.i("signIn response id: " + response.body()?.data)
+            Timber.i("signIn response accessToken: " + response.body()?.dataTokenDto!!.accessToken)
+            Timber.i("signIn response refreshToken: " + response.body()?.dataTokenDto!!.refreshToken)
             response.body()?.dataTokenDto?.dataTokenDtoToUserToken()
             emit(DataState.Success(Unit))
-        }else{
+        } else {
             emit(DataState.Error(response.body()?.meesage.toString()))
-            Timber.i("signIn response is success?: "+response.body()?.success)
-            Timber.i("signIn response code: "+response.body()?.status)
-            Timber.i("signIn response message: "+response.body()?.meesage)
+            Timber.i("signIn response is success?: " + response.body()?.success)
+            Timber.i("signIn response code: " + response.body()?.status)
+            Timber.i("signIn response message: " + response.body()?.meesage)
         }
     }
+
+
+
     @SuppressLint("CheckResult")
     override suspend fun signUp(): Flow<DataState<Unit>> =
 

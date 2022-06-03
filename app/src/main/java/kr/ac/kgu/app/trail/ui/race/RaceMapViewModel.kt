@@ -36,6 +36,9 @@ class RaceMapViewModel @Inject constructor(
         }
     }
 
+
+
+
     private fun loadTempCourse() {
         viewModelScope.launch(dispatcherProvider.io) {
             courseRepository.loadTempCourse().collect {

@@ -35,9 +35,7 @@ import kr.ac.kgu.app.trail.util.Constants.REQUIRED_PERMISSIONS
 import kr.ac.kgu.app.trail.util.DataState
 import kr.ac.kgu.app.trail.util.SensorHelper
 import kr.ac.kgu.app.trail.util.toast
-import net.daum.mf.map.api.MapPOIItem
-import net.daum.mf.map.api.MapPoint
-import net.daum.mf.map.api.MapView
+import net.daum.mf.map.api.*
 import timber.log.Timber
 
 
@@ -51,6 +49,8 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     private lateinit var sensorHelper: SensorHelper
     private val binding by viewBinding(FragmentRaceMapBinding::bind)
     private lateinit var locationManager: LocationManager
+    private lateinit var mapPolyline: MapPolyline
+    private lateinit var mapPointBounds : MapPointBounds
     private var stepCounter =0
 
 
@@ -71,6 +71,25 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
 
     }
+
+
+    fun setCoursePolyLine(coordinate: Map<String,String>){
+        mapPolyline  = MapPolyline()
+        mapPolyline.tag= 1000
+        mapPolyline.lineColor = resources.getColor(R.color.primaryColor)
+        setCourseAddPointCoordinate(mapPolyline,coordinate)
+
+        mapView.addPolyline(mapPolyline);
+        mapPointBounds = MapPointBounds(mapPolyline.getMapPoints());
+        mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, 100));
+    }
+
+    fun setCourseAddPointCoordinate(mapPolyline: MapPolyline,coordinate: Map<String,String>) =
+        coordinate.map {
+            mapPolyline.addPoint(MapPoint.mapPointWithGeoCoord(it.key.toDouble(),it.value.toDouble()))
+    }
+
+
 
 
     private fun initSensor(){
@@ -102,6 +121,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 }
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
+                    setCoursePolyLine(result.data.courseCoordinateList)
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
@@ -217,6 +237,9 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 
     }
+
+
+
 
 
 
