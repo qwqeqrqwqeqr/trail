@@ -26,21 +26,32 @@ class RaceMapViewModel @Inject constructor(
     private val _getCourseDetailLiveData = MutableLiveData<DataState<CourseDetail>>()
     val getCourseDetailLiveData: LiveData<DataState<CourseDetail>> = _getCourseDetailLiveData
 
+    private val _saveCourseLiveData = MutableLiveData<DataState<Unit>>()
+    val saveCourseLiveData: LiveData<DataState<Unit>> = _saveCourseLiveData
 
 
-     fun getCourseDetail(){
-        viewModelScope.launch(dispatcherProvider.io) {
+
+    fun getCourseDetail(){
+        viewModelScope.launch(dispatcherProvider.default) {
             courseRepository.getCourseDetail().collect {
                 _getCourseDetailLiveData.postValue(it)
             }
         }
     }
 
+//    fun saveCourse(){
+//        viewModelScope.launch(dispatcherProvider.default) {
+//            courseRepository.saveCourse().collect{
+//
+//            }
+//        }
+//
+//    } //TODO save course 구현하기
 
 
 
     private fun loadTempCourse() {
-        viewModelScope.launch(dispatcherProvider.io) {
+        viewModelScope.launch(dispatcherProvider.default) {
             courseRepository.loadTempCourse().collect {
                 modelLiveData.postValue(it)
             }

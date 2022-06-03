@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RaceViewModel @Inject constructor() : ViewModel() {
-    // TODO: Implement the ViewModel
+
 }

@@ -93,7 +93,7 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
                 }
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
-                    navigateMainScreen()
+                    navigateMain()
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
@@ -124,7 +124,7 @@ class AddressFragment : Fragment(R.layout.fragment_address), InitView {
     }
 
 
-    private fun navigateMainScreen() {
+    private fun navigateMain() {
         val intent = Intent(requireActivity(), MainActivity::class.java)
         startActivity(intent)
     }

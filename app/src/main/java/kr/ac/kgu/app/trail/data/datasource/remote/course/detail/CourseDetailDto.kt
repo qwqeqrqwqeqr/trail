@@ -10,3 +10,12 @@ data class CourseDetailDto(
     @SerializedName("facilityDtoList")
     var facilityDtoList : List<FacilityDto>
 )
+
+
+//
+//data class Coordinate(
+//    @SerializedName("x")
+//    var x: String,
+//    @SerializedName("y")
+//    var y: String
+//)

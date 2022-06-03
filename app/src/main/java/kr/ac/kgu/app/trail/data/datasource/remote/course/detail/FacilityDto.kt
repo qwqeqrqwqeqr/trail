@@ -13,3 +13,4 @@ data class FacilityDto(
     var coordinate: Map<String,String>,
 )
 
+

@@ -6,3 +6,4 @@ data class HistoryContentDto(
     @SerializedName("content")
     var content: HistoryDto,
 )
+

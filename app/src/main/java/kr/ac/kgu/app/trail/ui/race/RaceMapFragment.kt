@@ -29,6 +29,7 @@ import kr.ac.kgu.app.trail.data.model.SaveCourseInfo
 import kr.ac.kgu.app.trail.databinding.FragmentRaceMapBinding
 import kr.ac.kgu.app.trail.ui.base.BaseFragment
 import kr.ac.kgu.app.trail.ui.base.viewBinding
+import kr.ac.kgu.app.trail.ui.main.MainActivity
 import kr.ac.kgu.app.trail.util.Constants
 import kr.ac.kgu.app.trail.util.Constants.PERMISSIONS_REQUEST_CODE
 import kr.ac.kgu.app.trail.util.Constants.REQUIRED_PERMISSIONS
@@ -36,6 +37,8 @@ import kr.ac.kgu.app.trail.util.DataState
 import kr.ac.kgu.app.trail.util.SensorHelper
 import kr.ac.kgu.app.trail.util.toast
 import net.daum.mf.map.api.*
+
+
 import timber.log.Timber
 
 
@@ -45,19 +48,21 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     RaceMapViewModel::class.java
 ), SensorEventListener {
 
-    private lateinit var mapView : MapView
+    private lateinit var mapView: MapView
     private lateinit var sensorHelper: SensorHelper
     private val binding by viewBinding(FragmentRaceMapBinding::bind)
     private lateinit var locationManager: LocationManager
     private lateinit var mapPolyline: MapPolyline
-    private lateinit var mapPointBounds : MapPointBounds
-    private var stepCounter =0
+    private lateinit var mapPointBounds: MapPointBounds
+    private var stepCounter = 0
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (checkLocationService()) { permissionCheck() }
+        if (checkLocationService()) {
+            permissionCheck()
+        }
         initUi()
         initListener()
         initSensor()
@@ -66,38 +71,38 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
 
-    }
-
-
-    fun setCoursePolyLine(coordinate: Map<String,String>){
-        mapPolyline  = MapPolyline()
-        mapPolyline.tag= 1000
+    private fun setCoursePolyLine(coordinate: Map<String, String>) {
+        mapPolyline = MapPolyline()
+        mapPolyline.tag = 1000
         mapPolyline.lineColor = resources.getColor(R.color.primaryColor)
-        setCourseAddPointCoordinate(mapPolyline,coordinate)
 
-        mapView.addPolyline(mapPolyline);
-        mapPointBounds = MapPointBounds(mapPolyline.getMapPoints());
-        mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, 100));
+        setCourseAddPointCoordinate(mapPolyline, coordinate)
+        mapView.addPolyline(mapPolyline)
+        mapPointBounds = MapPointBounds(mapPolyline.mapPoints)
+        mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, 1000))
+
+        Timber.i("setCoursePolyLine")
     }
 
-    fun setCourseAddPointCoordinate(mapPolyline: MapPolyline,coordinate: Map<String,String>) =
+    private fun setCourseAddPointCoordinate(mapPolyline: MapPolyline, coordinate: Map<String, String>) =
         coordinate.map {
-            mapPolyline.addPoint(MapPoint.mapPointWithGeoCoord(it.key.toDouble(),it.value.toDouble()))
-    }
+            Timber.i("coordinate : ${it.value.toString()} ${it.key.toString()}")
+            mapPolyline.addPoint(
+                MapPoint.mapPointWithGeoCoord(
+                    it.value.toDouble(),
+                    it.key.toDouble()
+                )
+            )
+        }
 
 
-
-
-    private fun initSensor(){
+    private fun initSensor() {
         sensorHelper = SensorHelper(requireContext(), Constants.TYPE_STEP_DETECTOR, this)
         sensorHelper.registerListener()
         binding.stepDetectorText.text = stepCounter.toString()
     }
-
 
 
     private fun initListener() {
@@ -106,7 +111,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         }
     }
 
-    private fun initUi(){
+    private fun initUi() {
         mapView = MapView(requireActivity())
         binding.raceMapView.addView(mapView)
 
@@ -122,6 +127,20 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
                     setCoursePolyLine(result.data.courseCoordinateList)
+                }
+                DataState.Loading -> binding.progressBar.isVisible = true
+            }
+        }
+
+        viewModel.saveCourseLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is DataState.Error -> {
+                    binding.progressBar.isVisible = false
+                    this.toast(resources.getString(R.string.sign_up_error_toast_message_text))
+                }
+                is DataState.Success -> {
+                    binding.progressBar.isVisible = false
+                    navigateMain()
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
@@ -166,6 +185,11 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 //    }
 
 
+    private fun navigateMain() {
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+    }
 
 
 
@@ -175,18 +199,27 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     }
 
     private fun permissionCheck() {
-        val preference =  requireActivity().getPreferences(MODE_PRIVATE)
+        val preference = requireActivity().getPreferences(MODE_PRIVATE)
         val isFirstCheck = preference.getBoolean("isFirstPermissionCheck", true)
-        if (ContextCompat.checkSelfPermission(requireActivity(), ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                requireActivity(),
+                ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             // 권한이 없는 상태
-            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
-                    ACCESS_FINE_LOCATION)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    requireActivity(),
+                    ACCESS_FINE_LOCATION
+                )
+            ) {
                 // 권한 거절
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setMessage("현재 위치를 확인하시려면 위치 권한을 허용해주세요.")
                 builder.setPositiveButton("확인") { dialog, which ->
-                    ActivityCompat.requestPermissions(requireActivity(),
-                        REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE)
+                    ActivityCompat.requestPermissions(
+                        requireActivity(),
+                        REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE
+                    )
                 }
                 builder.setNegativeButton("취소") { dialog, which ->
 
@@ -196,14 +229,18 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 if (isFirstCheck) {
                     // 최초 권한 요청
                     preference.edit().putBoolean("isFirstPermissionCheck", false).apply()
-                    ActivityCompat.requestPermissions(requireActivity(),
-                        REQUIRED_PERMISSIONS,PERMISSIONS_REQUEST_CODE
+                    ActivityCompat.requestPermissions(
+                        requireActivity(),
+                        REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE
                     )
                 } else {
                     val builder = AlertDialog.Builder(requireActivity())
                     builder.setMessage("현재 위치를 확인하시려면 설정에서 위치 권한을 허용해주세요.")
                     builder.setPositiveButton("설정으로 이동") { dialog, which ->
-                        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:kr.ac.kgu.app.trail"))
+                        val intent = Intent(
+                            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                            Uri.parse("package:kr.ac.kgu.app.trail")
+                        )
                         startActivity(intent)
                     }
                     builder.setNegativeButton("취소") { dialog, which ->
@@ -215,7 +252,11 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSIONS_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -237,11 +278,6 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
 
     }
-
-
-
-
-
 
 
 }
