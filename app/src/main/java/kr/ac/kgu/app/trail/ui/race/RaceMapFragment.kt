@@ -1,10 +1,7 @@
 package kr.ac.kgu.app.trail.ui.race
 
-import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
@@ -12,8 +9,6 @@ import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
-import android.hardware.SensorManager
-import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
@@ -21,10 +16,14 @@ import android.provider.Settings
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.*
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
+import kr.ac.kgu.app.trail.data.model.Facility
 import kr.ac.kgu.app.trail.data.model.SaveCourseInfo
 import kr.ac.kgu.app.trail.databinding.FragmentRaceMapBinding
 import kr.ac.kgu.app.trail.ui.base.BaseFragment
@@ -36,7 +35,6 @@ import kr.ac.kgu.app.trail.util.Constants.REQUIRED_PERMISSIONS
 import kr.ac.kgu.app.trail.util.DataState
 import kr.ac.kgu.app.trail.util.SensorHelper
 import kr.ac.kgu.app.trail.util.toast
-import net.daum.mf.map.api.*
 
 
 import timber.log.Timber
@@ -46,14 +44,13 @@ import timber.log.Timber
 class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>>(
     R.layout.fragment_race_map,
     RaceMapViewModel::class.java
-), SensorEventListener {
+), SensorEventListener, OnMapReadyCallback {
 
-    private lateinit var mapView: MapView
+
     private lateinit var sensorHelper: SensorHelper
     private val binding by viewBinding(FragmentRaceMapBinding::bind)
     private lateinit var locationManager: LocationManager
-    private lateinit var mapPolyline: MapPolyline
-    private lateinit var mapPointBounds: MapPointBounds
+    private lateinit var map: GoogleMap
     private var stepCounter = 0
 
 
@@ -72,30 +69,29 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     }
 
 
+//    private fun setCoursePolyLine(coordinate: Map<String, String>) {
+//        mapPolyline = MapPolyline()
+//        mapPolyline.tag = 1000
+//        mapPolyline.lineColor = resources.getColor(R.color.primaryColor)
+//
+//        setCourseAddPointCoordinate(mapPolyline, coordinate)
+//        mapView.addPolyline(mapPolyline)
+//        mapPointBounds = MapPointBounds(mapPolyline.mapPoints)
+//        mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, 1000))
+//
+//        Timber.i("setCoursePolyLine")
+//    }
 
-    private fun setCoursePolyLine(coordinate: Map<String, String>) {
-        mapPolyline = MapPolyline()
-        mapPolyline.tag = 1000
-        mapPolyline.lineColor = resources.getColor(R.color.primaryColor)
-
-        setCourseAddPointCoordinate(mapPolyline, coordinate)
-        mapView.addPolyline(mapPolyline)
-        mapPointBounds = MapPointBounds(mapPolyline.mapPoints)
-        mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, 1000))
-
-        Timber.i("setCoursePolyLine")
-    }
-
-    private fun setCourseAddPointCoordinate(mapPolyline: MapPolyline, coordinate: Map<String, String>) =
-        coordinate.map {
-            Timber.i("coordinate : ${it.value.toString()} ${it.key.toString()}")
-            mapPolyline.addPoint(
-                MapPoint.mapPointWithGeoCoord(
-                    it.value.toDouble(),
-                    it.key.toDouble()
-                )
-            )
-        }
+//    private fun setCourseAddPointCoordinate(mapPolyline: MapPolyline, coordinate: Map<String, String>) =
+//        coordinate.map {
+//            Timber.i("coordinate : ${it.value.toString()} ${it.key.toString()}")
+//            mapPolyline.addPoint(
+//                MapPoint.mapPointWithGeoCoord(
+//                    it.value.toDouble(),
+//                    it.key.toDouble()
+//                )
+//            )
+//        }
 
 
     private fun initSensor() {
@@ -112,10 +108,13 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     }
 
     private fun initUi() {
-        mapView = MapView(requireActivity())
-        binding.raceMapView.addView(mapView)
+        val mapFragment =
+            childFragmentManager.findFragmentById(R.id.race_map_view) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
 
     }
+
 
     private fun subscribeToObservers() {
         viewModel.getCourseDetailLiveData.observe(viewLifecycleOwner) { result ->
@@ -126,7 +125,8 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 }
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
-                    setCoursePolyLine(result.data.courseCoordinateList)
+                    addCoursePolyLine(result.data.courseCoordinateList)
+                    addFacilityMarker(result.data.facilityList)
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
@@ -165,26 +165,6 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     }
 
 
-//    // 현재 사용자 위치추적
-//    @SuppressLint("MissingPermission")
-//    private fun startTracking() {
-//        mapView.currentLocationTrackingMode = MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
-//
-//        val userNowLocation: Location? = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-//        val uLatitude = userNowLocation?.latitude
-//        val uLongitude = userNowLocation?.longitude
-//        val uNowPosition = MapPoint.mapPointWithGeoCoord(uLatitude!!, uLongitude!!)
-//
-//        // 현 위치에 마커 찍기
-//        val marker = MapPOIItem()
-//        marker.itemName = "현 위치"
-//        marker.mapPoint =uNowPosition
-//        marker.markerType = MapPOIItem.MarkerType.BluePin
-//        marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
-//        mapView.addPOIItem(marker)
-//    }
-
-
     private fun navigateMain() {
         val intent = Intent(requireActivity(), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -192,6 +172,53 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     }
 
 
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+
+    }
+
+    private fun addCoursePolyLine(courseCoordinateList: LinkedHashMap<String, String>) {
+
+        map.addPolyline(
+            PolylineOptions()
+                .clickable(false)
+                .color(resources.getColor(R.color.course_color))
+//            .width(100f)
+                .addAll(courseCoordinateList.map {
+                    Timber.i("coordinate : ${it.value.toString()} ${it.key.toString()}")
+                    LatLng(it.value.toDouble(), it.key.toDouble())
+                }.toList())
+        )
+//        courseCoordinateList.map {
+//
+//        }
+        val coordinate = courseCoordinateList.toList().first()
+        map.animateCamera(
+            com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    coordinate.second.toDouble(),
+                    coordinate.first.toDouble()
+                ), 18f
+            )
+        )
+
+    }
+
+    private fun addFacilityMarker(facilityList: List<Facility>) {
+        facilityList.map {
+            Timber.i("facility coordinate : ${ it.coordinate.values.first().toDouble()} ${it.coordinate.keys.first().toDouble()}")
+            map.addMarker(
+                MarkerOptions().position(
+                    LatLng(
+                        it.coordinate.values.first().toDouble(),
+                        it.coordinate.keys.first().toDouble()
+                    )
+                )
+                    .title(it.facilityName)
+            )
+        }
+
+    }
 
     private fun checkLocationService(): Boolean {
         locationManager = requireActivity().getSystemService(LOCATION_SERVICE) as LocationManager
@@ -281,3 +308,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
 
 }
+
+
+
+

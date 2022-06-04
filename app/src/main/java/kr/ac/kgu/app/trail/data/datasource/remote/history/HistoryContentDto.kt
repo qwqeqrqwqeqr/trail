@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class HistoryContentDto(
     @SerializedName("content")
-    var content: HistoryDto,
+    var content: List<HistoryDto>
 )
+
+
 

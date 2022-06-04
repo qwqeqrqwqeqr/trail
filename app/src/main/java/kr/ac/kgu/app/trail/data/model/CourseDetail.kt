@@ -2,7 +2,7 @@ package kr.ac.kgu.app.trail.data.model
 
 data class CourseDetail(
     val courseDetailId : Int,
-    val courseCoordinateList: Map<String,String>,
+    val courseCoordinateList: LinkedHashMap<String,String>,
     val facilityList: List<Facility>
 )
 

@@ -29,6 +29,7 @@
     <color name="normal_level_color">#F4CF47</color>
     <color name="hard_level_color">#C8331B</color>
 
+    <color name="course_color">#2375FF</color>
 
     <color name="pastel_color_100">#F5BA67</color>
     <color name="pastel_color_200">#E6806C</color>

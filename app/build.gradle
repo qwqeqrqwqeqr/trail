@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 
@@ -22,7 +23,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions { arguments = ["room.schemaLocation": "$projectDir/schemas".toString()] }
         }
-    }
+      }
     packagingOptions {
         pickFirst 'META-INF/DEPENDENCIES'
     }
@@ -158,8 +159,35 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-    //kakaomap
-
+    //kakaoMap
     implementation fileTree(include: ['*.jar'], dir: 'lib')
     implementation files('lib/libDaumMapAndroid.jar')
+
+
+    //googleMap
+    implementation 'com.google.maps.android:maps-ktx:3.2.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.maps.android:maps-utils-ktx:3.2.1'
+
+    implementation "com.google.android.gms:play-services-maps:18.0.2"
+
+    //compose
+    implementation "androidx.compose.ui:ui-tooling-preview:1.1.1"
+    implementation("androidx.compose.ui:ui:1.1.1")
+    // Tooling support (Previews, etc.)
+    implementation("androidx.compose.ui:ui-tooling:1.1.1")
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation:1.1.1")
+    // Material Design
+    implementation("androidx.compose.material:material:1.1.1")
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core:1.1.1")
+    implementation("androidx.compose.material:material-icons-extended:1.1.1")
+    // Integration with observables
+    implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.1.1")
+
+    // UI Tests
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
+
 }

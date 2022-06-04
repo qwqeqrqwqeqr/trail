@@ -8,5 +8,4 @@ data class HistoryEntry(
     var distance: Int,
     var workComplete: Boolean?,
     var courseAddress: String?
-
 )

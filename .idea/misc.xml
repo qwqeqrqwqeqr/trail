@@ -76,6 +76,7 @@
         <entry key="app/src/main/res/drawable/secondary_corner_layout.xml" value="0.2795" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.36770833333333336" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.17999144933732364" />
         <entry key="app/src/main/res/layout/activity_race.xml" value="0.14322359982898675" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.32696228027343754" />
         <entry key="app/src/main/res/layout/address_list_item.xml" value="0.4125" />
@@ -95,6 +96,7 @@
         <entry key="app/src/main/res/menu/history_appbar_menu.xml" value="0.1668648434403488" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.4125" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.4125" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/trail_app_icon.xml" value="0.303" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/trail_icon.xml" value="0.226" />
       </map>
     </option>

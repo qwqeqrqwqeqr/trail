@@ -2,7 +2,9 @@ package kr.ac.kgu.app.trail.data.datasource.remote.history
 
 import com.google.gson.annotations.SerializedName
 import kr.ac.kgu.app.trail.data.datasource.remote.DataTokenDto
+import kr.ac.kgu.app.trail.data.datasource.remote.course.course.GetCourseListResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.user.info.UserInfoDto
+import kr.ac.kgu.app.trail.data.model.CourseEntry
 import kr.ac.kgu.app.trail.data.model.HistoryEntry
 
 data class GetHistoryListResponseDto(
@@ -15,13 +17,17 @@ data class GetHistoryListResponseDto(
     @SerializedName("dataToken")
     var dataTokenDto: DataTokenDto?,
     @SerializedName("data")
-    var data: HistoryContentDto
+    var data: HistoryContentDto?
 )
 
-fun GetHistoryListResponseDto.historyDtoToHistoryEntry() = HistoryEntry(
-    courseName = data.content.courseName,
-    workStartTime = data.content.workStartTime,
-    distance = data.content.distance,
-    workComplete = data.content.workComplete,
-    courseAddress = data.content.courseAddress,
-)
+fun GetHistoryListResponseDto.historyDtoToHistoryEntry()  : List<HistoryEntry>{
+    return data?.content?.map {
+        HistoryEntry(
+            courseName = it.courseName,
+            workStartTime = it.workStartTime,
+            distance = it.distance,
+            workComplete = it.workComplete,
+            courseAddress = it.courseAddress,
+        )
+    } ?: emptyList()
+}
