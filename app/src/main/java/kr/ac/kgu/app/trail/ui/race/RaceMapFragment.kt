@@ -23,7 +23,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
+import kr.ac.kgu.app.trail.data.model.Coordinate
 import kr.ac.kgu.app.trail.data.model.Facility
+import kr.ac.kgu.app.trail.data.model.FacilityType
 import kr.ac.kgu.app.trail.data.model.SaveCourseInfo
 import kr.ac.kgu.app.trail.databinding.FragmentRaceMapBinding
 import kr.ac.kgu.app.trail.ui.base.BaseFragment
@@ -67,31 +69,6 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
 
     }
-
-
-//    private fun setCoursePolyLine(coordinate: Map<String, String>) {
-//        mapPolyline = MapPolyline()
-//        mapPolyline.tag = 1000
-//        mapPolyline.lineColor = resources.getColor(R.color.primaryColor)
-//
-//        setCourseAddPointCoordinate(mapPolyline, coordinate)
-//        mapView.addPolyline(mapPolyline)
-//        mapPointBounds = MapPointBounds(mapPolyline.mapPoints)
-//        mapView.moveCamera(CameraUpdateFactory.newMapPointBounds(mapPointBounds, 1000))
-//
-//        Timber.i("setCoursePolyLine")
-//    }
-
-//    private fun setCourseAddPointCoordinate(mapPolyline: MapPolyline, coordinate: Map<String, String>) =
-//        coordinate.map {
-//            Timber.i("coordinate : ${it.value.toString()} ${it.key.toString()}")
-//            mapPolyline.addPoint(
-//                MapPoint.mapPointWithGeoCoord(
-//                    it.value.toDouble(),
-//                    it.key.toDouble()
-//                )
-//            )
-//        }
 
 
     private fun initSensor() {
@@ -177,48 +154,66 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     }
 
-    private fun addCoursePolyLine(courseCoordinateList: LinkedHashMap<String, String>) {
+    private fun addCoursePolyLine(courseCoordinateList: List<Coordinate>) {
 
         map.addPolyline(
             PolylineOptions()
                 .clickable(false)
-                .color(resources.getColor(R.color.course_color))
-//            .width(100f)
+                .color(resources.getColor(R.color.course_route_color))
+                .width(20f)
                 .addAll(courseCoordinateList.map {
-                    Timber.i("coordinate : ${it.value.toString()} ${it.key.toString()}")
-                    LatLng(it.value.toDouble(), it.key.toDouble())
-                }.toList())
+                    Timber.i("coordinate : ${it.y.toString()} ${it.x.toString()}")
+                    LatLng(it.y, it.x)
+                })
         )
-//        courseCoordinateList.map {
-//
-//        }
-        val coordinate = courseCoordinateList.toList().first()
         map.animateCamera(
             com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(
                 LatLng(
-                    coordinate.second.toDouble(),
-                    coordinate.first.toDouble()
+                    courseCoordinateList.first().y,
+                    courseCoordinateList.first().x
                 ), 18f
             )
         )
 
     }
 
+//    private fun addFacilityMarker(facilityList: List<Facility>) {
+//        facilityList.map {
+//            Timber.i(
+//                "facility coordinate : ${it.coordinate.y.toString()} ${it.coordinate.x.toString()}"
+//            )
+//            map.addMarker(
+//                MarkerOptions().position(LatLng(it.coordinate.y, it.coordinate.x))
+//                    .title(it.facilityName)
+//            )
+//        }
+//
+//    }
+
     private fun addFacilityMarker(facilityList: List<Facility>) {
         facilityList.map {
-            Timber.i("facility coordinate : ${ it.coordinate.values.first().toDouble()} ${it.coordinate.keys.first().toDouble()}")
-            map.addMarker(
-                MarkerOptions().position(
-                    LatLng(
-                        it.coordinate.values.first().toDouble(),
-                        it.coordinate.keys.first().toDouble()
-                    )
-                )
-                    .title(it.facilityName)
+            Timber.i(
+                "facility coordinate : ${it.coordinate.y.toString()} ${it.coordinate.x.toString()}"
+            )
+            map.addPolyline(
+                PolylineOptions()
+                    .clickable(false)
+                    .color(when(it.type){
+                        FacilityType.OBSTACLE-> resources.getColor(R.color.course_obstacle_color)
+                        FacilityType.TOILET-> resources.getColor(R.color.course_toilet_color)
+                        FacilityType.CHARGE-> resources.getColor(R.color.course_charge_color)
+                        FacilityType.STAIR-> resources.getColor(R.color.course_stair_color)
+                        else-> resources.getColor(R.color.course_slope_color)
+                    })
+                    .width(20f)
+                    .add(LatLng(it.coordinate.y, it.coordinate.x))
+                    .add(LatLng(it.coordinate.y+0.00000000000001, it.coordinate.x))
             )
         }
 
     }
+
+
 
     private fun checkLocationService(): Boolean {
         locationManager = requireActivity().getSystemService(LOCATION_SERVICE) as LocationManager

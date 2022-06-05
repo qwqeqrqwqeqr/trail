@@ -10,7 +10,7 @@ data class FacilityDto(
     @SerializedName("type")
     var type: String,
     @SerializedName("coordinate")
-    var coordinate: LinkedHashMap<String,String>,
+    var coordinate: CoordinateDto
 )
 
 

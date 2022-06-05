@@ -4,9 +4,7 @@ import com.google.gson.annotations.SerializedName
 import kr.ac.kgu.app.trail.data.datasource.remote.DataTokenDto
 import kr.ac.kgu.app.trail.data.datasource.remote.course.course.GetCourseListResponseDto
 import kr.ac.kgu.app.trail.data.datasource.remote.history.HistoryContentDto
-import kr.ac.kgu.app.trail.data.model.CourseDetail
-import kr.ac.kgu.app.trail.data.model.CourseEntry
-import kr.ac.kgu.app.trail.data.model.Facility
+import kr.ac.kgu.app.trail.data.model.*
 
 data class GetCourseDetailResponseDto(
     @SerializedName("status")
@@ -26,13 +24,25 @@ fun GetCourseDetailResponseDto.courseDetailDtoToCourseDetail(): CourseDetail {
         Facility(
             it.facilityId,
             it.facilityName,
-            it.type,
-            it.coordinate
+            when(it.type){
+                OBSTACLE -> FacilityType.OBSTACLE
+                TOILET -> FacilityType.TOILET
+                CHARGE -> FacilityType.CHARGE
+                STAIR -> FacilityType.STAIR
+                else -> FacilityType.SLOPE
+            },
+            Coordinate(it.coordinate.x.toDouble(),it.coordinate.y.toDouble())
         )
     }.toList()
+    val coordinateArray = data.coordinateArray.map { Coordinate(it.x.toDouble(),it.y.toDouble()) }.toList()
     return CourseDetail(
         courseDetailId = data.courseDetailId,
-        courseCoordinateList = data.coordinateArray,
+        coordinateArray,
         facilityList
     )
 }
+const val  OBSTACLE = "OBSTACLE"
+const val  TOILET = "TOILET"
+const val  CHARGE = "CHARGE"
+const val  STAIR = "STAIR"
+const val  SLOPE = "SLOPE"

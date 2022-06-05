@@ -29,7 +29,14 @@
     <color name="normal_level_color">#F4CF47</color>
     <color name="hard_level_color">#C8331B</color>
 
-    <color name="course_color">#2375FF</color>
+    <color name="course_route_color">#0C9AFF</color>
+    <color name="course_obstacle_color">#C33325</color>
+    <color name="course_toilet_color">#2C8693</color>
+    <color name="course_charge_color">#F19722</color>2
+    <color name="course_stair_color">#F0F1D5</color>
+    <color name="course_slope_color">#535E17</color>
+
+
 
     <color name="pastel_color_100">#F5BA67</color>
     <color name="pastel_color_200">#E6806C</color>

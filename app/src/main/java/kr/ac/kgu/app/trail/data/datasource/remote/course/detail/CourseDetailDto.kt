@@ -6,16 +6,9 @@ data class CourseDetailDto(
     @SerializedName("courseDetailId")
     var courseDetailId: Int,
     @SerializedName("coordinateArray")
-    var coordinateArray : LinkedHashMap<String,String>,
+    var coordinateArray : List<CoordinateDto>,
     @SerializedName("facilityDtoList")
     var facilityDtoList : List<FacilityDto>
 )
 
 
-//
-//data class Coordinate(
-//    @SerializedName("x")
-//    var x: String,
-//    @SerializedName("y")
-//    var y: String
-//)
