@@ -12,6 +12,7 @@ import kr.ac.kgu.app.trail.di.DispatcherProvider
 import kr.ac.kgu.app.trail.repository.CourseRepository
 import kr.ac.kgu.app.trail.ui.base.BaseViewModel
 import kr.ac.kgu.app.trail.util.DataState
+import kr.ac.kgu.app.trail.util.SingleLiveEvent
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +31,17 @@ class RaceMapViewModel @Inject constructor(
     val saveCourseLiveData: LiveData<DataState<Unit>> = _saveCourseLiveData
 
 
+    private val _workStartTimeLiveData = MutableLiveData<String>()
+    val workStartTimeLiveData: LiveData<String> = _workStartTimeLiveData
+
+    private val _workFinishTimeLiveData = MutableLiveData<String>()
+    val workFinishTimeLiveData: LiveData<String> = _workFinishTimeLiveData
+
+
+    private val workStartTime: String = ""
+    private val workFinishTime: String =""
+    val stepCount : Int =0
+
 
     fun getCourseDetail(){
         viewModelScope.launch(dispatcherProvider.default) {
@@ -37,17 +49,23 @@ class RaceMapViewModel @Inject constructor(
                 _getCourseDetailLiveData.postValue(it)
             }
         }
+
     }
 
-//    fun saveCourse(){
-//        viewModelScope.launch(dispatcherProvider.default) {
+    fun saveCourse(){
+        viewModelScope.launch(dispatcherProvider.default) {
 //            courseRepository.saveCourse().collect{
 //
 //            }
-//        }
-//
-//    } //TODO save course 구현하기
+        }
 
+    } //TODO save course 구현하기
+
+    fun startRace(){
+        viewModelScope.launch(dispatcherProvider.default) {
+
+        }
+    }
 
 
     private fun loadTempCourse() {

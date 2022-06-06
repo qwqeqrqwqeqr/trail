@@ -1,6 +1,8 @@
 package kr.ac.kgu.app.trail.ui.race
 
+import android.Manifest
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context.LOCATION_SERVICE
 import android.content.Context.MODE_PRIVATE
@@ -9,17 +11,20 @@ import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
+import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.UiSettings
 import com.google.android.gms.maps.model.*
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ac.kgu.app.trail.R
@@ -32,7 +37,7 @@ import kr.ac.kgu.app.trail.ui.base.BaseFragment
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.ui.main.MainActivity
 import kr.ac.kgu.app.trail.util.Constants
-import kr.ac.kgu.app.trail.util.Constants.PERMISSIONS_REQUEST_CODE
+import kr.ac.kgu.app.trail.util.Constants.LOCATION_PERMISSION_REQUEST_CODE
 import kr.ac.kgu.app.trail.util.Constants.REQUIRED_PERMISSIONS
 import kr.ac.kgu.app.trail.util.DataState
 import kr.ac.kgu.app.trail.util.SensorHelper
@@ -46,10 +51,13 @@ import timber.log.Timber
 class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>>(
     R.layout.fragment_race_map,
     RaceMapViewModel::class.java
-), SensorEventListener, OnMapReadyCallback {
+), SensorEventListener, OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener,
+    GoogleMap.OnMyLocationClickListener,
+    ActivityCompat.OnRequestPermissionsResultCallback {
 
 
     private lateinit var sensorHelper: SensorHelper
+
     private val binding by viewBinding(FragmentRaceMapBinding::bind)
     private lateinit var locationManager: LocationManager
     private lateinit var map: GoogleMap
@@ -58,29 +66,25 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (checkLocationService()) {
-            permissionCheck()
-        }
         initUi()
         initListener()
         initSensor()
         subscribeToObservers()
-
-
     }
-
 
     private fun initSensor() {
         sensorHelper = SensorHelper(requireContext(), Constants.TYPE_STEP_DETECTOR, this)
         sensorHelper.registerListener()
-        binding.stepDetectorText.text = stepCounter.toString()
+//        binding.stepDetectorText.text = stepCounter.toString()
     }
 
 
     private fun initListener() {
-        binding.raceMapTraceBtn.setOnClickListener {
+        binding.raceMapStartBtn.setOnClickListener {
 
+        }
+        binding.raceMapFinishBtn.setOnClickListener {
+            viewModel.saveCourse()
         }
     }
 
@@ -88,8 +92,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         val mapFragment =
             childFragmentManager.findFragmentById(R.id.race_map_view) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-
+        binding.raceMapTraceBtn.isVisible = false
     }
 
 
@@ -103,7 +106,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
                     addCoursePolyLine(result.data.courseCoordinateList)
-                    addFacilityMarker(result.data.facilityList)
+                    addFacilityCircle(result.data.facilityList)
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
             }
@@ -151,6 +154,11 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
+        googleMap.setOnMyLocationButtonClickListener(this)
+        googleMap.setOnMyLocationClickListener(this)
+        if (checkLocationService()) {
+            permissionCheck()
+        }
 
     }
 
@@ -177,42 +185,45 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     }
 
-//    private fun addFacilityMarker(facilityList: List<Facility>) {
-//        facilityList.map {
-//            Timber.i(
-//                "facility coordinate : ${it.coordinate.y.toString()} ${it.coordinate.x.toString()}"
-//            )
-//            map.addMarker(
-//                MarkerOptions().position(LatLng(it.coordinate.y, it.coordinate.x))
-//                    .title(it.facilityName)
-//            )
-//        }
-//
-//    }
 
-    private fun addFacilityMarker(facilityList: List<Facility>) {
+    private fun addFacilityCircle(facilityList: List<Facility>) {
         facilityList.map {
             Timber.i(
                 "facility coordinate : ${it.coordinate.y.toString()} ${it.coordinate.x.toString()}"
             )
-            map.addPolyline(
-                PolylineOptions()
-                    .clickable(false)
-                    .color(when(it.type){
-                        FacilityType.OBSTACLE-> resources.getColor(R.color.course_obstacle_color)
-                        FacilityType.TOILET-> resources.getColor(R.color.course_toilet_color)
-                        FacilityType.CHARGE-> resources.getColor(R.color.course_charge_color)
-                        FacilityType.STAIR-> resources.getColor(R.color.course_stair_color)
-                        else-> resources.getColor(R.color.course_slope_color)
-                    })
-                    .width(20f)
-                    .add(LatLng(it.coordinate.y, it.coordinate.x))
-                    .add(LatLng(it.coordinate.y+0.00000000000001, it.coordinate.x))
+            map.addCircle(
+                CircleOptions()
+                    .center(LatLng(it.coordinate.y, it.coordinate.x))
+                    .radius(5.0)
+                    .strokeWidth(0f)
+                    .fillColor(
+                        when (it.type) {
+                            FacilityType.OBSTACLE -> resources.getColor(R.color.course_obstacle_color)
+                            FacilityType.TOILET -> resources.getColor(R.color.course_toilet_color)
+                            FacilityType.CHARGE -> resources.getColor(R.color.course_charge_color)
+                            FacilityType.STAIR -> resources.getColor(R.color.course_stair_color)
+                            else -> resources.getColor(R.color.course_slope_color)
+                        }
+                    )
+                    .clickable(true)
             )
+            map.setOnCircleClickListener {  }
+
+
         }
 
     }
 
+    override fun onMyLocationButtonClick(): Boolean {
+        this.toast("MyLocation button clicked")
+        // Return false so that we don't consume the event and the default behavior still occurs
+        // (the camera animates to the user's current position).
+        return false
+    }
+
+    override fun onMyLocationClick(p0: Location) {
+        this.toast("위치클릭")
+    }
 
 
     private fun checkLocationService(): Boolean {
@@ -240,7 +251,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 builder.setPositiveButton("확인") { dialog, which ->
                     ActivityCompat.requestPermissions(
                         requireActivity(),
-                        REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE
+                        REQUIRED_PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE
                     )
                 }
                 builder.setNegativeButton("취소") { dialog, which ->
@@ -253,7 +264,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                     preference.edit().putBoolean("isFirstPermissionCheck", false).apply()
                     ActivityCompat.requestPermissions(
                         requireActivity(),
-                        REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE
+                        REQUIRED_PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE
                     )
                 } else {
                     val builder = AlertDialog.Builder(requireActivity())
@@ -272,6 +283,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 }
             }
         }
+        map.isMyLocationEnabled = true
     }
 
     override fun onRequestPermissionsResult(
@@ -280,7 +292,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSIONS_REQUEST_CODE) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 this.toast("위치 권한이 승인되었습니다")
 
@@ -290,6 +302,9 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
             }
         }
     }
+
+
+
 
     override fun onSensorChanged(sensorEvent: SensorEvent) {
         stepCounter += 1

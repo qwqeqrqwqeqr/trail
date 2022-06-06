@@ -63,7 +63,7 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:textColor="@color/primaryTextColor"
                 android:textStyle="bold"
-                android:text="0"
+                android:text="726걸음"
                 android:textSize="20sp"
                 android:includeFontPadding="false" />
 
@@ -101,11 +101,31 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:textColor="@color/primaryTextColor"
                 android:textStyle="bold"
-                android:text="0"
+                android:text="20분"
                 android:textSize="20sp"
                 android:includeFontPadding="false" />
 
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/race_map_start_btn"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:layout_width="wrap_content"
+            android:layout_weight="4"
+            android:theme="@style/Theme.MaterialComponents.DayNight"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/noto_sans"
+            android:textSize="18sp"
+            app:cornerRadius="@dimen/btn_radius"
+            android:backgroundTint="@color/primaryColor"
+            android:textColor="@color/primaryLightTextColor"
+            android:includeFontPadding="false"
+            android:visibility="gone"
+            android:text="산책시작" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/race_map_finish_btn"
@@ -113,20 +133,20 @@
             android:layout_marginVertical="16dp"
             android:layout_width="wrap_content"
             android:layout_weight="4"
-
+            android:theme="@style/Theme.MaterialComponents.DayNight"
             android:layout_gravity="center"
             android:layout_height="match_parent"
             android:gravity="center"
             android:textStyle="bold"
             android:fontFamily="@font/noto_sans"
             android:textSize="18sp"
-            app:cornerRadius="32dp"
-            android:background="@drawable/primary_color_corner_layout"
+            app:cornerRadius="@dimen/btn_radius"
+            android:backgroundTint="@color/primaryColor"
             android:textColor="@color/primaryLightTextColor"
-            android:text="산책종료"
-            />
+            android:includeFontPadding="false"
 
-
+            android:visibility="visible"
+            android:text="산책종료" />
 
 
 

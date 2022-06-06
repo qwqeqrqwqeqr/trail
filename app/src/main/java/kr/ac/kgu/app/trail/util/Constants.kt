@@ -20,7 +20,7 @@ object Constants {
     const val TYPE_STEP_DETECTOR = Sensor.TYPE_STEP_COUNTER
 
     //Permission
-    const val PERMISSIONS_REQUEST_CODE = 100
+    const val LOCATION_PERMISSION_REQUEST_CODE = 100
     var REQUIRED_PERMISSIONS = arrayOf<String>( Manifest.permission.ACCESS_FINE_LOCATION)
 
 }
