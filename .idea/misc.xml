@@ -39,7 +39,7 @@
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/address_list_item.xml" value="0.1" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/content_main.xml" value="0.34375" />
-        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/course_list_item.xml" value="0.33" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/course_list_item.xml" value="0.1" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_account.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_address.xml" value="0.33" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_address_bottom_sheet.xml" value="0.25" />
@@ -47,10 +47,11 @@
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_address_detail.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_course.xml" value="0.18" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_first.xml" value="0.34375" />
-        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_history.xml" value="0.33" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_history.xml" value="0.1" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_race_map.xml" value="0.1" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/fragment_sign_in.xml" value="0.33" />
+        <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/layout/history_list_item.xml" value="0.33" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/menu/account_appbar_menu.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/menu/account_menu.xml" value="0.1" />
         <entry key="..\:/Users/82105/project/trail/android-trail/app/src/main/res/menu/course_appbar_menu.xml" value="0.34739583333333335" />

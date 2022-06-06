@@ -272,7 +272,6 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                     )
                 }
                 builder.setNegativeButton("취소") { dialog, which ->
-
                 }
                 builder.show()
             } else {

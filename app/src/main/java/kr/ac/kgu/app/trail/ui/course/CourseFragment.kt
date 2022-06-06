@@ -22,7 +22,7 @@ import kr.ac.kgu.app.trail.util.toast
 
 
 @AndroidEntryPoint
-class CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>>>(
+class  CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry>>>(
     R.layout.fragment_course,
     CourseViewModel::class.java
 ),InitView {

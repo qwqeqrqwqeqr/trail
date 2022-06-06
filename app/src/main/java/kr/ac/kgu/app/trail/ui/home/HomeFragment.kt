@@ -15,6 +15,7 @@ import kr.ac.kgu.app.trail.ui.base.InitView
 import kr.ac.kgu.app.trail.ui.base.viewBinding
 import kr.ac.kgu.app.trail.util.DataState
 import net.daum.mf.map.api.MapView
+import kotlin.math.round
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel,DataState<UserInfo>>(
@@ -58,7 +59,7 @@ class HomeFragment : BaseFragment<HomeViewModel,DataState<UserInfo>>(
 
     }
     private fun bindUserInfoText(useInfo: UserInfo){
-        binding.distanceText.text =(Math.round(useInfo.distanceTotal/100.0)).toString()
+        binding.distanceText.text = (round(useInfo.distanceTotal*0.001)/10).toString()
         binding.timeText.text =useInfo.timeTotal.toString()
         binding.stepCounterText.text =useInfo.stepCountTotal.toString()
         binding.nameRewardText.text =useInfo.name.toString()

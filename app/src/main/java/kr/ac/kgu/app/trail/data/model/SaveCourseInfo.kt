@@ -21,7 +21,7 @@ fun SaveCourseInfo.saveCourseInfoToSaveCourseDto() = SaveCourseRequestDto(
     workStartTime = workStartTime,
     workFinishTime = workFinishTime,
     distance = distance,
-    stepCount = distance,
+    stepCount = stepCount,
     workTime= workTime
 )
 

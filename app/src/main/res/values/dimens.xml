@@ -61,6 +61,10 @@
     <dimen name="course_list_item_btn_image_width">32dp</dimen>
     <dimen name="course_list_item_btn_image_height">32dp</dimen>
 
+<!--history-->
+    <dimen name="history_recycler_view_top_margin">64dp</dimen>
+
+
 
 <!--    24 20 18-->
 

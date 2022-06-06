@@ -101,7 +101,7 @@ class RaceMapViewModel @Inject constructor(
         }
 
         viewModelScope.launch(dispatcherProvider.default) {
-            courseRepository.saveCourse(saveCourseInfo!!).collect{
+            courseRepository.saveCourse(saveCourseInfo).collect{
                 _saveCourseLiveData.postValue(it)
             }
         }
