@@ -44,7 +44,6 @@ data class CourseEntity(
 fun CourseEntity.courseEntityToSaveCourseInfo(): SaveCourseInfo = SaveCourseInfo(
     courseName = courseName,
     courseAddress = courseAddress,
-    workStartTime = getCurrentDate(),
     distance = distance
 )
 

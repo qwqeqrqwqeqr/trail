@@ -8,11 +8,11 @@ import kr.ac.kgu.app.trail.data.datasource.remote.course.savecourse.SaveCourseRe
 data class SaveCourseInfo(
     val courseName:String,
     val courseAddress: String,
-    val workStartTime: String = "",
-    val workFinishTime: String ="",
+    var workStartTime: String = "",
+    var workFinishTime: String ="",
     val distance : Int,
-    val stepCount : Int =0,
-    val workTime : Int =0
+    var stepCount : Int =0,
+    var workTime : Int =0
 ): Parcelable
 
 fun SaveCourseInfo.saveCourseInfoToSaveCourseDto() = SaveCourseRequestDto(

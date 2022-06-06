@@ -1,170 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/race"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
+        <variable
+            name="vm"
+            type="kr.ac.kgu.app.trail.ui.race.RaceMapViewModel" />
 
-    <androidx.fragment.app.FragmentContainerView xmlns:map="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/race_map_view"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    </data>
+
+    <FrameLayout
+        android:id="@+id/race"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/race_map_trace_btn"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="160dp"
-        android:layout_gravity="right|bottom"
-        android:background="@drawable/gps_circle_btn"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/secondary_corner_shadow_layout"
-        android:orientation="horizontal"
-        android:layout_marginBottom="32dp"
-        android:layout_marginHorizontal="16dp">
+        <androidx.fragment.app.FragmentContainerView xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/race_map_view"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/race_map_trace_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="right|bottom"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="160dp"
+            android:background="@drawable/gps_circle_btn" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_gravity="bottom"
             android:layout_marginHorizontal="16dp"
-            android:layout_weight="1"
-            android:layout_marginVertical="8dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/secondary_corner_shadow_layout"
+            android:orientation="horizontal">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/step_detector_title_text"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans"
-                android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:textColor="@color/primaryTextColor"
-                android:text="걸음수"
-                android:textSize="16sp"
-                android:includeFontPadding="false" />
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/step_detector_text"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/step_detector_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="걸음 수"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/step_detector_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:fontFamily="@font/noto_sans"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:layout_weight="1"
+                        android:text="@{Integer.toString(vm.stepCountLiveData)}"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/current_time_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="소요시간"
+                    android:textColor="@color/primaryTextColor"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/current_time_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:fontFamily="@font/noto_sans"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:includeFontPadding="false"
+                        android:text="@{Integer.toString(vm.workTimeLiveData)}"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/noto_sans"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:layout_weight="1"
+                        android:text="분"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/race_map_start_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:layout_weight="4"
+                android:backgroundTint="@color/primaryColor"
                 android:fontFamily="@font/noto_sans"
                 android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:textColor="@color/primaryTextColor"
+                android:includeFontPadding="false"
+                android:text="산책시작"
+                android:textColor="@color/primaryLightTextColor"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="726걸음"
-                android:textSize="20sp"
-                android:includeFontPadding="false" />
+                android:theme="@style/Theme.MaterialComponents.DayNight"
+                android:visibility="visible"
+                app:cornerRadius="@dimen/btn_radius" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/race_map_finish_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
+                android:layout_weight="4"
+                android:backgroundTint="@color/primaryColor"
+                android:fontFamily="@font/noto_sans"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="산책종료"
+                android:textColor="@color/primaryLightTextColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:theme="@style/Theme.MaterialComponents.DayNight"
+
+                android:visibility="gone"
+                app:cornerRadius="@dimen/btn_radius" />
+
 
         </LinearLayout>
 
 
-        <LinearLayout
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/current_time_title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans"
-                android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:textColor="@color/primaryTextColor"
-                android:text="소요시간"
-                android:textSize="16sp"
-                android:includeFontPadding="false" />
+            android:visibility="invisible"
+            app:indicatorColor="@color/primaryColor"
+            app:trackColor="@color/secondaryBackgroundColor" />
 
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/current_time_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/noto_sans"
-                android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:textColor="@color/primaryTextColor"
-                android:textStyle="bold"
-                android:text="20분"
-                android:textSize="20sp"
-                android:includeFontPadding="false" />
-
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/race_map_start_btn"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:layout_width="wrap_content"
-            android:layout_weight="4"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:fontFamily="@font/noto_sans"
-            android:textSize="18sp"
-            app:cornerRadius="@dimen/btn_radius"
-            android:backgroundTint="@color/primaryColor"
-            android:textColor="@color/primaryLightTextColor"
-            android:includeFontPadding="false"
-            android:visibility="gone"
-            android:text="산책시작" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/race_map_finish_btn"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
-            android:layout_width="wrap_content"
-            android:layout_weight="4"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
-            android:layout_gravity="center"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:fontFamily="@font/noto_sans"
-            android:textSize="18sp"
-            app:cornerRadius="@dimen/btn_radius"
-            android:backgroundTint="@color/primaryColor"
-            android:textColor="@color/primaryLightTextColor"
-            android:includeFontPadding="false"
-
-            android:visibility="visible"
-            android:text="산책종료" />
-
-
-
-
-
-    </LinearLayout>
-
-
-
-    <com.google.android.material.progressindicator.CircularProgressIndicator
-        android:id="@+id/progress_bar"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:trackColor="@color/secondaryBackgroundColor"
-        app:indicatorColor="@color/primaryColor"
-        android:layout_gravity="center"/>
-
-
-
-</FrameLayout>
+    </FrameLayout>
+</layout>

@@ -57,7 +57,6 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
 
     private lateinit var sensorHelper: SensorHelper
-
     private val binding by viewBinding(FragmentRaceMapBinding::bind)
     private lateinit var locationManager: LocationManager
     private lateinit var map: GoogleMap
@@ -74,14 +73,16 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     private fun initSensor() {
         sensorHelper = SensorHelper(requireContext(), Constants.TYPE_STEP_DETECTOR, this)
-        sensorHelper.registerListener()
 //        binding.stepDetectorText.text = stepCounter.toString()
     }
 
 
     private fun initListener() {
         binding.raceMapStartBtn.setOnClickListener {
-
+            viewModel.startRace()
+            sensorHelper.registerListener()
+            binding.raceMapStartBtn.visibility = View.GONE
+            binding.raceMapFinishBtn.visibility = View.VISIBLE
         }
         binding.raceMapFinishBtn.setOnClickListener {
             viewModel.saveCourse()
@@ -93,6 +94,8 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
             childFragmentManager.findFragmentById(R.id.race_map_view) as SupportMapFragment
         mapFragment.getMapAsync(this)
         binding.raceMapTraceBtn.isVisible = false
+        binding.lifecycleOwner = this
+        binding.vm = viewModel
     }
 
 
@@ -120,6 +123,8 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 }
                 is DataState.Success -> {
                     binding.progressBar.isVisible = false
+                    viewModel.stopTimer()
+                    sensorHelper.unRegisterListener()
                     navigateMain()
                 }
                 DataState.Loading -> binding.progressBar.isVisible = true
@@ -132,7 +137,18 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         when (model) {
             is DataState.Success -> {
                 binding.progressBar.isVisible = false
+                viewModel.setSaveCourseInfo(model.data)
+                with(Timber) {
+                    i("saveCourse distance : ${model.data!!.distance}")
+                    i("saveCourse workFinishTime : ${model.data!!.workFinishTime}")
+                    i("saveCourse workStartTime : ${model.data!!.workStartTime}")
+                    i("saveCourse workTime : ${model.data!!.workTime}")
+                    i("saveCourse stepCount : ${model.data!!.stepCount}")
+                    i("saveCourse courseAddress : ${model.data!!.courseAddress}")
+                    i("saveCourse courseName : ${model.data!!.courseName}")
+                }
                 viewModel.getCourseDetail()
+
             }
             is DataState.Error -> {
                 showErrorDialog()
@@ -215,15 +231,12 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
     }
 
     override fun onMyLocationButtonClick(): Boolean {
-        this.toast("MyLocation button clicked")
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false
     }
 
-    override fun onMyLocationClick(p0: Location) {
-        this.toast("위치클릭")
-    }
+    override fun onMyLocationClick(p0: Location) {}
 
 
     private fun checkLocationService(): Boolean {
@@ -231,6 +244,10 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 
+
+
+
+    //Permission
     private fun permissionCheck() {
         val preference = requireActivity().getPreferences(MODE_PRIVATE)
         val isFirstCheck = preference.getBoolean("isFirstPermissionCheck", true)
@@ -286,6 +303,7 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
         map.isMyLocationEnabled = true
     }
 
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -307,9 +325,9 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
 
     override fun onSensorChanged(sensorEvent: SensorEvent) {
-        stepCounter += 1
-        binding.stepDetectorText.text = stepCounter.toString()
-        Timber.i("counter : $stepCounter")
+        if (sensorEvent.sensor == sensorHelper.getSensor()) {
+            viewModel.addStepCount()
+        }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {

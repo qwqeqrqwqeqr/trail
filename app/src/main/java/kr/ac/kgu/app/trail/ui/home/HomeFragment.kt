@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment<HomeViewModel,DataState<UserInfo>>(
 
     }
     private fun bindUserInfoText(useInfo: UserInfo){
-        binding.distanceText.text =useInfo.distanceTotal.toString()
+        binding.distanceText.text =(Math.round(useInfo.distanceTotal/100.0)).toString()
         binding.timeText.text =useInfo.timeTotal.toString()
         binding.stepCounterText.text =useInfo.stepCountTotal.toString()
         binding.nameRewardText.text =useInfo.name.toString()

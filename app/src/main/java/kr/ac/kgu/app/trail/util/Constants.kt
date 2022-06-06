@@ -23,4 +23,8 @@ object Constants {
     const val LOCATION_PERMISSION_REQUEST_CODE = 100
     var REQUIRED_PERMISSIONS = arrayOf<String>( Manifest.permission.ACCESS_FINE_LOCATION)
 
+
+    //Timer
+    const val TIMER_MINUTE_DELAY =60000L
+
 }
