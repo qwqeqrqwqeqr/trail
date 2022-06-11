@@ -31,7 +31,7 @@
 
 ##  사용기술 및 도구  
 
-🗒️  **Language**:  **Kotlin** **JAVA**
+🗒️  **Language**:  **Kotlin**, **JAVA**
 
 🖍️  **Pattern : Mvvm**
 
