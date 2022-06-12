@@ -21,13 +21,17 @@
 - 산책을 도전할때마다 성취감을 쌓을 수 있도록 리워드나 히스토리를 제공합니다.
 - 해당 서비스는 2022년  경기대 캡스톤 디자인 작품입니다.
 
-#### ☀️ 2022-04 ~  
+#### ☀️ 2022-04 ~ 2022-06-06 (Version 1.0)
+
+## GitHub Repository
+
+#### Android
 
 
 
 ##  사용기술 및 도구  
 
-🗒️  **Language**:  **Kotlin**
+🗒️  **Language**:  **Kotlin**, **JAVA**
 
 🖍️  **Pattern : Mvvm**
 
@@ -61,17 +65,9 @@ MVVM Pattern에 기반한 AAC Architecture를 사용하였습니다.
 
 
 
-##  Storyboard  
-**[Figma](https://www.figma.com/file/jrwPduDIE6RBzsi6FzGWIi/%EB%8A%98%EC%86%94%EA%B8%B8?node-id=0%3A1)** 
-
-   초기 설계 단게에서 작성된 UI 디자인 입니다.
-
-
-
-
 ##  SceenShot  
 
-추가 예정
+
 
 
 
