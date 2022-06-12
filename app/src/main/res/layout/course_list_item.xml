@@ -42,7 +42,7 @@
                 android:maxLines="1"
                 android:includeFontPadding="false"
                 android:text="서울특별시중구세종대로99"
-                android:textColor="@color/tertiaryColor"
+                android:textColor="@color/tertiaryTextColor"
                 android:textSize="@dimen/course_list_item_title_detail_text_size" />
 
 

@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_sans"
                     android:text="늘솔길"
-                    android:textColor="@color/tertiaryColor"
+                    android:textColor="@color/tertiaryTextColor"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -60,7 +60,6 @@
             android:orientation="vertical">
 
 
-
             <LinearLayout
                 android:id="@+id/account_profile_layout"
                 android:layout_width="match_parent"
@@ -86,7 +85,7 @@
                         android:layout_marginRight="2dp"
                         android:fontFamily="@font/noto_sans"
                         android:gravity="center_vertical"
-                        android:text="테스트"
+                        android:text=""
                         android:textColor="@color/primaryTextColor"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -122,7 +121,9 @@
                             android:layout_height="160dp"
                             android:layout_marginHorizontal="8dp"
                             android:background="@drawable/primary_color_corner_layout"
-                            android:orientation="vertical">
+                            android:clickable="true"
+                            android:orientation="vertical"
+                            android:focusable="true">
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
@@ -155,8 +156,10 @@
                             android:layout_width="128dp"
                             android:layout_height="160dp"
                             android:layout_marginHorizontal="8dp"
-                            android:background="@drawable/primary_color_opacity_40_corner_layout"
-                            android:orientation="vertical">
+                            android:background="@drawable/secondary_color_corner_layout"
+                            android:clickable="true"
+                            android:orientation="vertical"
+                            android:focusable="true">
 
 
                             <com.google.android.material.textview.MaterialTextView
@@ -189,8 +192,10 @@
                             android:layout_width="128dp"
                             android:layout_height="160dp"
                             android:layout_marginHorizontal="8dp"
-                            android:background="@drawable/primary_color_opacity_60_corner_layout"
-                            android:orientation="vertical">
+                            android:background="@drawable/tertiary_color_corner_layout"
+                            android:clickable="true"
+                            android:orientation="vertical"
+                            android:focusable="true">
 
 
                             <com.google.android.material.textview.MaterialTextView
@@ -201,7 +206,7 @@
                                 android:fontFamily="@font/noto_sans"
                                 android:gravity="left|top"
                                 android:padding="16dp"
-                                android:text="추천코스 보기"
+                                android:text="도전해볼만한 코스"
                                 android:textColor="@color/primaryLightTextColor"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -247,7 +252,7 @@
                         android:layout_gravity="left|center_vertical"
                         android:fontFamily="@font/noto_sans"
                         android:gravity="center_vertical|center_horizontal"
-                        android:text="테스트"
+                        android:text=""
                         android:textColor="@color/primaryTextColor"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -310,7 +315,7 @@
                             android:layout_weight="8"
                             android:fontFamily="@font/noto_sans"
                             android:gravity="right|center_vertical"
-                            android:text="12,324"
+                            android:text=""
                             android:textColor="@color/primaryTextColor"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -373,7 +378,7 @@
                             android:layout_weight="8"
                             android:fontFamily="@font/noto_sans"
                             android:gravity="right"
-                            android:text="35"
+                            android:text=""
                             android:textColor="@color/primaryTextColor"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -434,7 +439,7 @@
                             android:layout_weight="8"
                             android:fontFamily="@font/noto_sans"
                             android:gravity="right"
-                            android:text="19"
+                            android:text=""
                             android:textColor="@color/primaryTextColor"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -460,11 +465,13 @@
 
 
             <LinearLayout
+                android:id="@+id/home_view_web_service_layout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/primary_color_corner_layout"
+                android:background="@drawable/secondary_color_corner_layout"
+                android:clickable="true"
                 android:orientation="horizontal">
 
 
@@ -480,6 +487,7 @@
                     android:text="저희 서비스에 대해서 궁금하신가요?"
                     android:textColor="@color/primaryLightTextColor"
                     android:textSize="20sp"
+                    android:clickable="false"
                     android:textStyle="bold" />
 
                 <View
@@ -488,6 +496,7 @@
                     android:layout_gravity="center|right"
                     android:layout_marginHorizontal="4dp"
                     android:layout_marginVertical="8dp"
+                    android:clickable="false"
                     android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
                     android:backgroundTint="@color/primaryBackgroundColor" />
 
@@ -495,11 +504,13 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/home_view_web_use_layout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/secondary_color_corner_layout"
+                android:clickable="true"
+                android:background="@drawable/primary_color_corner_layout"
                 android:orientation="horizontal">
 
 
@@ -510,6 +521,7 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_weight="99"
                     android:fontFamily="@font/noto_sans"
+                    android:clickable="false"
                     android:gravity="left"
                     android:letterSpacing="-0.05"
                     android:text="저희 서비스를 활용해 보세요"
@@ -521,6 +533,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_gravity="center|right"
+                    android:clickable="false"
                     android:layout_marginHorizontal="4dp"
                     android:layout_marginVertical="8dp"
                     android:background="@drawable/ic_baseline_keyboard_arrow_right_24"

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryColor">#26dd78</color>
-    <color name="secondaryColor">#DE5D77</color>
+    <color name="secondaryColor">#21ADD7</color>
+    <color name="tertiaryColor">#F4CF47</color>
+    <color name="quaternaryColor">#FF5445</color>
     <color name="primaryBackgroundColor">#f0f2f2</color>
     <color name="secondaryBackgroundColor">#ffffff</color>
-    <color name="tertiaryColor">#B7B7B7</color>
+    <color name="tertiaryTextColor">#B7B7B7</color>
     <color name="secondaryTextColor">#424242</color>
     <color name="primaryTextColor">#212121</color>
     <color name="primaryLightTextColor">#ffffff</color>
@@ -35,6 +37,7 @@
     <color name="course_charge_color">#99F19722</color>2
     <color name="course_stair_color">#99F0F1D5</color>
     <color name="course_slope_color">#99535E17</color>
+
 
 
 
