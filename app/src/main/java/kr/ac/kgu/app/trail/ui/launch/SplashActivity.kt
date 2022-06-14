@@ -43,6 +43,7 @@ class SplashActivity : AppCompatActivity() {
                 is DataState.Success -> {
                     if (result.data) {
                         viewModel.signIn()
+//                        navigateToLogin()
                     } else {
                         navigateToLogin()
                     }

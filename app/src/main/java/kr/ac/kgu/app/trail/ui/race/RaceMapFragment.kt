@@ -73,7 +73,6 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
     private fun initSensor() {
         sensorHelper = SensorHelper(requireContext(), Constants.TYPE_STEP_DETECTOR, this)
-//        binding.stepDetectorText.text = stepCounter.toString()
     }
 
 
@@ -169,11 +168,29 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
 
 
     override fun onMapReady(googleMap: GoogleMap) {
-        map = googleMap
-        googleMap.setOnMyLocationButtonClickListener(this)
-        googleMap.setOnMyLocationClickListener(this)
         if (checkLocationService()) {
             permissionCheck()
+            map = googleMap
+            if (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return
+            }
+            map.isMyLocationEnabled = true
+            googleMap.setOnMyLocationButtonClickListener(this)
+            googleMap.setOnMyLocationClickListener(this)
         }
 
     }
@@ -223,7 +240,9 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                     )
                     .clickable(true)
             )
-            map.setOnCircleClickListener {  }
+            map.setOnCircleClickListener {
+
+            }
 
 
         }
@@ -299,7 +318,6 @@ class RaceMapFragment : BaseFragment<RaceMapViewModel, DataState<SaveCourseInfo>
                 }
             }
         }
-        map.isMyLocationEnabled = true
     }
 
 

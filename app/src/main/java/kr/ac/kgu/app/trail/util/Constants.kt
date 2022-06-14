@@ -17,10 +17,11 @@ object Constants {
     const val BEARER = "Bearer "
 
     //Sensor
-    const val TYPE_STEP_DETECTOR = Sensor.TYPE_STEP_COUNTER
+    const val TYPE_STEP_DETECTOR = Sensor.TYPE_STEP_DETECTOR
 
     //Permission
     const val LOCATION_PERMISSION_REQUEST_CODE = 100
+
     var REQUIRED_PERMISSIONS = arrayOf<String>( Manifest.permission.ACCESS_FINE_LOCATION)
 
 

@@ -61,15 +61,31 @@ class  CourseFragment : BaseFragment<CourseViewModel, DataState<List<CourseEntry
     override fun initListeners() {
         courseAdapter.setItemClickListener { showConfirmationDialog(it) }
 
-        binding.courseFilterChipGroup.setOnCheckedChangeListener {
-                group, checkedId ->
-            when(checkedId){
-                R.id.chip1 -> {
-                    requireActivity().toast("ㅇㄴㅁㅇㅁㅇㅁ")
-                }
-            }
-
-        }
+//        binding.courseChipsGroup.setOnCheckedChangeListener {
+//
+//                group, checkedId ->
+//            when(checkedId){
+//                R.id.course_normal_level_chip -> {
+//                    requireActivity().toast("노말")
+//                }
+//                R.id.course_easy_level_chip -> {
+//                    requireActivity().toast("이지")
+//                }
+//                R.id.course_toilet_chip -> {
+//                    requireActivity().toast("호장실")
+//                }
+//                R.id.course_charge_chip -> {
+//                    requireActivity().toast("차지")
+//                }
+//                R.id.course_30_minutes_chip -> {
+//                    requireActivity().toast("30분")
+//                }
+//                R.id.course_1_hour_chip -> {
+//                    requireActivity().toast("1시간")
+//                }
+//            }
+//
+//        }
     }
 
     override fun updateUi(model: DataState<List<CourseEntry>>) {

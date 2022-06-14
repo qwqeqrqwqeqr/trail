@@ -29,7 +29,6 @@ class RaceMapViewModel @Inject constructor(
 ): BaseViewModel<DataState<SaveCourseInfo>>(){
     override fun fetchInitialData() {
         loadTempCourse()
-        _stepCountLiveData.value =0
     }
 
     private lateinit var timer : Job
@@ -52,6 +51,9 @@ class RaceMapViewModel @Inject constructor(
     private val _stepCountLiveData = MutableLiveData<Int>()
     val stepCountLiveData: LiveData<Int> = _stepCountLiveData
 
+    init {
+        _stepCountLiveData.value =0
+    }
 
     fun setSaveCourseInfo(saveCourseInfo: SaveCourseInfo) {this.saveCourseInfo = saveCourseInfo}
 
