@@ -77,20 +77,23 @@
 
     <style name="Theme.App.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar"><item name="android:windowFullscreen">true</item></style>
+    <style name="FullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
 
 
-<!--    Chip-->
+    <!--    Chip-->
 
 
-<!--        bottomSheet theme-->
+    <!--        bottomSheet theme-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialog</item>
     </style>
-    <style name="BottomSheetDialog"
-        parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+
+    <style name="BottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheet</item>
     </style>
+
     <style name="BottomSheet" parent="Widget.Material3.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceBottomSheetDialog</item>
     </style>
@@ -104,7 +107,7 @@
     </style>
 
 
-<!--    material alert-->
+    <!--    material alert-->
 
     <style name="MaterialAlertDialogStyle" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorPrimary">@color/primaryColor</item>
@@ -129,10 +132,23 @@
         <item name="android:fontFamily">@font/noto_sans</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="MaterialAlertDialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:fontFamily">@font/noto_sans</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+
+    <style name="Widget.MyApp.Chip.Filter" parent="Widget.MaterialComponents.Chip.Filter">
+       <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorOnSurface">@color/hintColor</item>
+        <item name="fontFamily">@font/noto_sans</item>
+        <item name="android:fontFamily">@font/noto_sans</item>
+        <item name="chipBackgroundColor">@color/primaryColor</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
+
+    </style>
+
 
 </resources>

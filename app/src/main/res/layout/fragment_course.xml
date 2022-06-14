@@ -30,9 +30,9 @@
                     android:layout_gravity="start|center_vertical"
                     android:fontFamily="@font/noto_sans"
                     android:text="@string/course_appbar_item_title_text"
-                    android:textStyle="bold"
                     android:textColor="@color/primaryTextColor"
-                    android:textSize="@dimen/default_appbar_title_text_size" />
+                    android:textSize="@dimen/default_appbar_title_text_size"
+                    android:textStyle="bold" />
 
             </com.google.android.material.appbar.MaterialToolbar>
 
@@ -42,84 +42,103 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-        <HorizontalScrollView
-            android:id="@+id/course_chip_layout"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/account_coordinatorLayout">
+<!--    <HorizontalScrollView-->
+<!--        android:id="@+id/course_chip_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="48dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/account_coordinatorLayout">-->
 
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/course_filter_chip_group"
-                    android:padding="16dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:chipSpacingHorizontal="12dp"
-                    app:singleLine="true">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
 
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.Chip.Filter"
-                        android:text="1번"/>
+<!--            <com.google.android.material.chip.ChipGroup-->
+<!--                android:id="@+id/course_chips_group"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:singleLine="true"-->
+<!--                android:padding="16dp">-->
 
-<!--                    android:checked="true"-->
-<!--                    android:textColor="@color/primaryLightTextColor"-->
-<!--                    app:chipBackgroundColor="@color/primaryColor"-->
-<!--                    android:textSize="14sp"-->
-                    <com.google.android.material.chip.Chip
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/course_easy_level_chip"-->
+<!--                    style="@style/Widget.MyApp.Chip.Filter"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="쉬움" />-->
 
-                        android:id="@+id/chip2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.Chip.Filter"
-                        android:text="2번"/>
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/course_normal_level_chip"-->
+<!--                    style="@style/Widget.MyApp.Chip.Filter"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="보통" />-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/course_toilet_chip"-->
+<!--                    style="@style/Widget.MyApp.Chip.Filter"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="장애인화장실" />-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/course_charge_chip"-->
+<!--                    style="@style/Widget.MyApp.Chip.Filter"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="휠체어충전소" />-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/course_30_minutes_chip"-->
+<!--                    style="@style/Widget.MyApp.Chip.Filter"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="30분이상" />-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/course_1_hour_chip"-->
+<!--                    style="@style/Widget.MyApp.Chip.Filter"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="1시간이상" />-->
 
 
-<!--                    android:checked="true"-->
-<!--                    android:textColor="@color/primaryLightTextColor"-->
-<!--                    app:chipBackgroundColor="@color/primaryColor"-->
-<!--                    android:textSize="14sp"-->
-
-                </com.google.android.material.chip.ChipGroup>
-
-
-
-        </HorizontalScrollView>
-
+<!--            </com.google.android.material.chip.ChipGroup>-->
+<!--        </LinearLayout>-->
+<!--    </HorizontalScrollView>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/course_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_marginTop="@dimen/course_recycler_view_top_margin"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progress_bar"
-            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:trackColor="@color/secondaryBackgroundColor"
+            android:layout_gravity="center"
+            android:visibility="invisible"
             app:indicatorColor="@color/primaryColor"
-            android:layout_gravity="center"/>
+            app:trackColor="@color/secondaryBackgroundColor" />
     </FrameLayout>
 
 

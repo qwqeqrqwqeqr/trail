@@ -22,5 +22,5 @@ data class KakaoUserInfoEntity(
 )
 
 
-fun KakaoUserInfoEntity.kakaoUserInfoEntityToSignUpRequestDto(): SignUpRequestDto = SignUpRequestDto(snsId= snsId+"1357",name= nickname)
-fun KakaoUserInfoEntity.kakaoUserInfoEntityToSignInRequestDto(): SignInRequestDto = SignInRequestDto(snsId= snsId+"1357",name= nickname)
+fun KakaoUserInfoEntity.kakaoUserInfoEntityToSignUpRequestDto(): SignUpRequestDto = SignUpRequestDto(snsId= snsId+"111",name= nickname)
+fun KakaoUserInfoEntity.kakaoUserInfoEntityToSignInRequestDto(): SignInRequestDto = SignInRequestDto(snsId= snsId+"111",name= nickname)

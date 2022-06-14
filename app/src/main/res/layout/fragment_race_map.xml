@@ -74,15 +74,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|center_horizontal"
+                        android:layout_weight="1"
                         android:fontFamily="@font/noto_sans"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:layout_weight="1"
                         android:text="@{Integer.toString(vm.stepCountLiveData)}"
                         android:textColor="@color/primaryTextColor"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
 
 
                 </LinearLayout>
@@ -122,9 +121,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|center_horizontal"
+                        android:layout_weight="1"
                         android:fontFamily="@font/noto_sans"
                         android:gravity="center"
-                        android:layout_weight="1"
                         android:includeFontPadding="false"
                         android:text="@{Integer.toString(vm.workTimeLiveData)}"
                         android:textColor="@color/primaryTextColor"
@@ -136,10 +135,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_weight="1"
                         android:fontFamily="@font/noto_sans"
                         android:gravity="center"
                         android:includeFontPadding="false"
-                        android:layout_weight="1"
                         android:text="분"
                         android:textColor="@color/primaryTextColor"
                         android:textSize="16sp" />
@@ -188,6 +187,150 @@
 
                 android:visibility="gone"
                 app:cornerRadius="@dimen/btn_radius" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            android:layout_gravity="left|center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="2dp"
+                    android:background="@drawable/charge_circle"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="충전소"
+                    android:layout_marginVertical="2dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="2dp"
+                    android:background="@drawable/obstacle_circle"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="장애물"
+                    android:layout_marginVertical="2dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="2dp"
+                    android:background="@drawable/slope_circle"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="경사로"
+                    android:layout_marginVertical="2dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="2dp"
+                    android:background="@drawable/toilet_circle"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="화장실"
+                    android:layout_marginVertical="2dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+
+                    android:layout_marginVertical="2dp"
+                    android:background="@drawable/stair_circle"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/noto_sans"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="계단"
+                    android:layout_marginVertical="2dp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
