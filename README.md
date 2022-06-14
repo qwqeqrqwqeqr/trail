@@ -1,16 +1,6 @@
        
   
-    
-     
-      
-      
-      
-      
-      
-      
-      
-        
-          
+
             
               
 ## 교통약자를 위한 코스 추천 서비스앱 (🌲늘솔길 )
@@ -25,8 +15,13 @@
 
 ## GitHub Repository
 
-#### Android
+#### [Android](https://github.com/qwqeqrqwqeqr/trail)**
+#### [FrontEnd](https://github.com/greeneryjin/trail-react-front)**
+#### [BackEnd](https://github.com/greeneryjin/backend-trai)**
 
+
+## App Icon
+<img src="https://github.com/qwqeqrqwqeqr/trail/tree/main/screenshot/trail.png">
 
 
 ##  사용기술 및 도구  
