@@ -15,13 +15,13 @@
 
 ## GitHub Repository
 
-#### [Android](https://github.com/qwqeqrqwqeqr/trail)**
-#### [FrontEnd](https://github.com/greeneryjin/trail-react-front)**
-#### [BackEnd](https://github.com/greeneryjin/backend-trai)**
-
+#### [Android](https://github.com/qwqeqrqwqeqr/trail)
+#### [FrontEnd](https://github.com/greeneryjin/trail-react-front)
+#### [BackEnd](https://github.com/greeneryjin/backend-trai)
 
 ## App Icon
-<img src="https://github.com/qwqeqrqwqeqr/trail/tree/main/screenshot/trail.png">
+
+<img src="https://github.com/qwqeqrqwqeqr/trail/tree/main/screenshot/trail.png"  width="100" height="100"/>
 
 
 ##  사용기술 및 도구  
