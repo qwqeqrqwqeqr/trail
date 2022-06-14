@@ -21,7 +21,9 @@
 
 ## App Icon
 
-<img src="https://github.com/qwqeqrqwqeqr/trail/tree/main/screenshot/trail.png"  width="100" height="100"/>
+<img src="http://github.com/qwqeqrqwqeqr/trail/screenshot/trail.png"  width="100px" height="100px"/>
+
+[https://github.com/qwqeqrqwqeqr/trail/blob/main/screenshot/trail.png]
 
 
 ##  사용기술 및 도구  
@@ -48,6 +50,7 @@
 - **[Kakao](https://developers.kakao.com/docs)**
     
     Kakao login API를 통한 인증방식을 추가하였습니다.
+    
     
     Kakao Maps API를 통하여 지도를 불러옵니다.
     
