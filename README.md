@@ -21,9 +21,7 @@
 
 ## App Icon
 
-<img src="http://github.com/qwqeqrqwqeqr/trail/screenshot/trail.png"  width="100px" height="100px"/>
-
-[https://github.com/qwqeqrqwqeqr/trail/blob/main/screenshot/trail.png]
+<img src="./screenshot/trail.png"  width="100px" height="100px"/>
 
 
 ##  사용기술 및 도구  
@@ -64,6 +62,14 @@ MVVM Pattern에 기반한 AAC Architecture를 사용하였습니다.
 
 
 ##  SceenShot  
+
+<img src="./screenshot/splash.jpeg" align=left  width="100px" height="100px"/>
+<img src="./screenshot/main.jpeg"  align=left  width="100px" height="200px"/>
+<img src="./screenshot/address.jpeg" align=left  width="100px" height="200px"/>
+<img src="./screenshot/course.jpeg"align=left   width="100px" height="200px"/>
+<img src="./screenshot/history.jpeg" align=left  width="100px" height="200px"/>
+<img src="./screenshot/race.jpeg" align=left  width="100px" height="200px"/>
+<img src="./screenshot/account.jpeg" align=left  width="100px" height="200px"/>
 
 
 
