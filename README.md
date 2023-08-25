@@ -55,12 +55,6 @@
 
 
 
-##  Architecture  
-
-MVVM Pattern에 기반한 AAC Architecture를 사용하였습니다.
-
-
-
 ##  SceenShot  
 
 <img src="./screenshot/splash.jpeg" align=left  width="100px" height="100px"/>
