@@ -25,21 +25,18 @@
 
 ##  사용기술 및 도구  
 
-🗒️  **Language**:  **Kotlin**, **JAVA**
+🗒️  **Language**:  **Kotlin**
 
 🖍️  **Pattern : Mvvm**
 
 - Coroutine
 - Timber
-- Rxjava
 - Retrofit
 - Local Database(datastore, room)
 - Dependency Injection (Hilt)
 - Material Design
 - Step Detector Sensor
 - GPS Sensor
-- AAC(LiveData, ViewModel, ViewBinding)
-
 
 
 ##  API  
@@ -47,8 +44,6 @@
 - **[Kakao](https://developers.kakao.com/docs)**
     
     Kakao login API를 통한 인증방식을 추가하였습니다.
-    
-    
     Kakao Maps API를 통하여 지도를 불러옵니다.
     
 
