@@ -51,8 +51,8 @@
 
 ##  SceenShot  
 
-<img src="./screenshot/splash.jpeg" align=left  width="100px" height="100px"/>
-<img src="./screenshot/main.jpeg"  align=left  width="100px" height="200px"/>
+<img src="https://github.com/greeneryjin/backend-trai/assets/87289562/006df773-b4b0-4207-a0c4-b3d19bdc3f51" align=left  width="100px" height="100px"/>
+<img src="https://github.com/greeneryjin/backend-trai/assets/87289562/06635606-2e4f-44da-a5a8-f1034aa83932"  align=left  width="100px" height="200px"/>
 <img src="./screenshot/address.jpeg" align=left  width="100px" height="200px"/>
 <img src="./screenshot/course.jpeg"align=left   width="100px" height="200px"/>
 <img src="./screenshot/history.jpeg" align=left  width="100px" height="200px"/>
